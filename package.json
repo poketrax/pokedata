@@ -1,0 +1,33 @@
+{
+  "name": "pokedata",
+  "version": "0.0.1",
+  "description": "Pokemon TCG data collection suite",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pull-exps": "node ./scripts/expansion-scrapper.js"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poketrax/pokedata.git"
+  },
+  "keywords": [
+    "tcg",
+    "webscrapper"
+  ],
+  "author": "jgunzelman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poketrax/pokedata/issues"
+  },
+  "homepage": "https://github.com/poketrax/pokedata#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "cli-color": "^2.0.3",
+    "jsdom": "^20.0.2",
+    "node-fetch": "^3.3.0",
+    "string-similarity": "^4.0.4"
+  }
+}

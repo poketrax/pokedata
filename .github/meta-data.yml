@@ -1,0 +1,27 @@
+on:
+  schedule:
+    - cron: 0 0 * * MON,WED,FRI
+jobs:
+  auto:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: setConfig files
+      run: |
+        git config --local user.email "poketrax@gmail.com"
+        git config --local user.name "github-actions[bot]"
+    - name: Pull Sets
+      run: npm run pull-exp
+    - name: increment version
+      run: npm version patch
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.JPG_ACTION_TOKEN }}
+        branch: ${{ github.ref }}
