@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2020",
+        "sourceMap": true,
+        "outDir": "dist",
+        "noImplicitAny": false
+    },
+    "include": ["src/**/*", "test/tests.tsec.ts"],
+    "exclude": [
+        "test",
+        "./node_modules/",
+        "./dist/"
+      ]
+}
