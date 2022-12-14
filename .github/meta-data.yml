@@ -16,8 +16,10 @@ jobs:
       run: |
         git config --local user.email "poketrax@gmail.com"
         git config --local user.name "github-actions[bot]"
+    - name: build scripts
+      run: npm run build
     - name: Pull Sets
-      run: npm run pull-exp
+      run: node ./dist/data-scrapper.js
     - name: increment version
       run: npm version patch
     - name: Push changes
