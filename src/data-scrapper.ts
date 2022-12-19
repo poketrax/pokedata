@@ -1,18 +1,21 @@
 import * as fs from 'fs'
 import clc from 'cli-color'
 import minimist from 'minimist'
-import { consoleHeader, downloadFile } from "./common.js"
+import { consoleHeader, downloadFile, cardExpFolder } from "./common.js"
 import { Expansion } from "./CardMeta.js"
-import { getLatestExpansions, upsertExpantion, getLatestSeries, expantionExistsInDB } from './database.js';
-import { findSetFromTCGP } from './tcgp-scrapper.js'
+import { Card } from "./Card.js"
+import { getLatestExpansions, upsertExpantion, getLatestSeries, expantionExistsInDB, findCard, findTcgpCard, upsertCard } from './database.js';
+import { findSetFromTCGP, pullTcgpSetCards } from './tcgp-scrapper.js'
 import { getPMCExpansion } from './pmc-scrapper.js'
-import { getSerebiiExpantion, getSerebiiLastestExpantions } from './serebii-scrapper.js'
+import { getSerebiiExpantion, getSerebiiLastestExpantions, getSerebiiSetCards } from './serebii-scrapper.js'
 
 type MetaData = {
     data: number,
     prices_high_res: number,
     prices_low_res: number
 }
+
+const COUNT = 6
 
 let metaData: MetaData = JSON.parse(fs.readFileSync("./meta.json", "utf-8"));
 let changed = false;
@@ -70,9 +73,8 @@ export async function lookForNewExpantions() {
  * Looks for Updates for the last 6 set to make sure any linguring updates from data sources
  */
 async function updateSets() {
-    let count = 6
-    consoleHeader(`Updating last ${count} expansions`);
-    let exps: Expansion[] = await getLatestExpansions(count);
+    consoleHeader(`Updating last ${COUNT} expansions`);
+    let exps: Expansion[] = await getLatestExpansions(COUNT);
     for (let exp of exps) {
         console.log(clc.green(`Processing ${exp.name}`));
         let updated = false;
@@ -83,7 +85,7 @@ async function updateSets() {
             exp.logoURL != serebii.logo ||
             exp.symbolURL != serebii.symbol ||
             exp.numberOfCards != serebii.numberOfCards
-        )){
+        )) {
             console.log('Serebii set found')
             exp.logoURL = serebii.logo
             exp.symbolURL = serebii.symbol
@@ -118,6 +120,47 @@ async function updateSets() {
             console.log(`No Updates for ${exp.name}`)
         }
     }
+}
+
+async function updateRegCards() {
+    consoleHeader(`Updating Cards from last ${COUNT} expansions`);
+    let exps: Expansion[] = await getLatestExpansions(COUNT);
+    for (let exp of exps) {
+        let serebii = await getSerebiiExpantion(exp.name);
+        let serebiiCards = await getSerebiiSetCards(serebii.page, exp)
+        let tcgpCards = await pullTcgpSetCards(exp)
+
+        for (let card of serebiiCards) {
+            let dbCard = await findCard(card.cardId)
+            if (dbCard != null) {
+                dbCard.img = card.img;
+                if(dryrun) continue
+                let path = cardExpFolder(exp)
+                downloadFile(dbCard.img, `${path}/${dbCard.cardId}`)
+                await upsertCard(dbCard)
+            } else {
+                if(dryrun) continue
+                await upsertCard(card);
+            }
+        }
+        for (let card of tcgpCards) {
+            let tcgpFound = await findTcgpCard(card.idTCGP) != null;
+            let cardFound = await findCard(card.cardId);
+            if (tcgpFound) continue;
+            if (cardFound != null) {
+                card.img = cardFound.img;
+                if(dryrun) continue
+                let path = cardExpFolder(exp)
+                downloadFile(card.img, `${path}/${card.cardId}`)
+            }
+            if(dryrun) continue
+            await upsertCard(card);
+        }
+    }
+}
+
+async function updatePromoCards() {
+    
 }
 
 function change() {

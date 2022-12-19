@@ -17,7 +17,7 @@ export type TcgpCode = {
 export let tcgpSets = new Array<TcgpSet>();
 export let tcgpCodes = new Array<TcgpCode>();
 
-const TCGP_API = "https://mpapi.tcgplayer.com/v2/search/request?q=&isList=false"
+const TCGP_API = "https://mpapi.tcgplayer.com/v2/search/request"
 
 const tcgRequest = `{
     "algorithm": "",
@@ -61,14 +61,17 @@ const tcgRequest = `{
   }`;
 
 /**
- * Pull Cards and 
+ * Pull Cards for a given expantion
  * @param set 
  */
-export async function pullSetCardData(set: Expansion): Promise<Card[]> {
+export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
   let request = JSON.parse(tcgRequest);
-  request.filters.term.setName = [set];
-  let response = await fetch(TCGP_API,
+  request.filters.term.setName = JSON.parse(set.tcgName);
+  let url = new URL(TCGP_API)
+  url.searchParams.set("q", "")
+  url.searchParams.set("isList", "false")
+  let response = await fetch(url.toString(),
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -76,32 +79,44 @@ export async function pullSetCardData(set: Expansion): Promise<Card[]> {
     });
   let data: any = await response.json();
   for (let card of data.results[0].results) {
-    let name = card.productName;
-    if (name.includes("Code Card")) continue
-
-    let releaseDate = card.customAttributes.releaseDate ?? set.releaseDate;
-    let cardNum = card.customAttributes.number.split("/")[0]
-    let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`
-    let variants = await pullVariants(card.productId);
-    let newCard: Card = {
-      cardId: `${card.setUrlName.replaceAll(" ", "-")}-${name.replaceAll(" ", "-")}-${cardNum}`,
-      idTCGP: card.productId,
-      name: name,
-      expIdTCGP: card.setUrlName,
-      expCodeTCGP: await getTcgpCode(card.setName) ?? "",
-      expName: set.name,
-      expCardNumber: cardNum,
-      rarity: card.rarityName,
-      img: img,
-      price: card.marketPrice,
-      releaseDate: releaseDate,
-      energyType: card.customAttributes.energyType != null ? card.customAttributes.energyType[0] ?? "" : "",
-      cardType: card.customAttributes.cardType != null ? card.customAttributes.cardType[0] ?? "" : "",
-      variants: variants
-    }
+    if (card.productName.includes("Code Card")) continue
+    let newCard: Card = await convertCard(card, set.name, set.releaseDate);
     cards.push(newCard)
   }
   return cards;
+}
+
+/**
+ * Convert tcgp card result into Card object
+ * @param card 
+ * @param setName 
+ * @param setReleaseDate 
+ * @returns 
+ */
+async function convertCard(card: any, setName: string, setReleaseDate: string): Promise<Card> {
+  let releaseDate = card.customAttributes.releaseDate ?? setReleaseDate;
+  let cardNum = card.customAttributes.number.split("/")[0]
+  let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`
+  let variants = await pullVariants(card.productId);
+  let id = `${setName}-${card.productName}-${cardNum}`
+  id = id.replaceAll(" ","-")
+  let newCard: Card = {
+    cardId: id,
+    idTCGP: card.productId,
+    name: card.productName,
+    expIdTCGP: card.setUrlName,
+    expCodeTCGP: await getTcgpCode(card.setName) ?? "",
+    expName: setName,
+    expCardNumber: cardNum,
+    rarity: card.rarityName,
+    img: img,
+    price: card.marketPrice,
+    releaseDate: releaseDate,
+    energyType: card.customAttributes.energyType != null ? card.customAttributes.energyType[0] ?? "" : "",
+    cardType: card.customAttributes.cardType != null ? card.customAttributes.cardType[0] ?? "" : "",
+    variants: variants
+  }
+  return newCard;
 }
 
 /**
@@ -118,13 +133,13 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let conf = stringSimilarity.compareTwoStrings(tcgpSet.value, name)
     let tcgpName = tcgpSet.value.toLowerCase();
     let nameNorm = name.toLowerCase();
-    
+
     let push = false;
     if (conf > 0.5) push = true
     if (tcgpName.includes(nameNorm)) push = true
     if (nameNorm.includes("promo") && tcgpName.includes("promo") == false) push = false
 
-    if(push) matches.push(tcgpSet.urlVal)
+    if (push) matches.push(tcgpSet.urlVal)
   }
   return matches;
 }
@@ -187,3 +202,16 @@ async function getCodes() {
   tcgpCodes = await res.json().then();
 }
 
+async function tcgpCardSearch(name: string, set: string): Promise<Card> {
+  let url = new URL(TCGP_API);
+  url.searchParams.set("q", `${set} ${name}`)
+  url.searchParams.set("isList", "false")
+
+  let res = await fetch(url.toString(), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: tcgRequest
+  });
+  let data: any = await res.json().then()
+  return await convertCard(data.results[0].results[0], set, "");
+}

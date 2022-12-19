@@ -3,7 +3,7 @@ import type { Card } from './Card.js'
 import type { Expansion } from './CardMeta.js'
 import * as stringSimilarity from 'string-similarity'
 
-const db = new Database('./databases/data.sqlite')
+export const DB_FILE = './databases/data.sqlite';
 const SEARCH = "SELECT * FROM expansions WHERE name like ?";
 const ADD_SET = "INSERT INTO expansions (name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
     "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate)";
@@ -13,6 +13,11 @@ const ADD_CARD = "INSERT INTO cards (cardId, idTCGP, name, expIdTCGP, expCodeTCG
     "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants);"
 const UPDATE_CARD = "UPDATE cards SET expName = $expName, variants = $variants, img = $img, description = $description " +
     "WHERE cardId = $cardId"
+let db = new Database()
+
+export function setDbFile(file: string){
+    db = new Database(file)
+}
 
 /**
  * Get the latest (num) of expansions
@@ -34,9 +39,13 @@ export async function getLatestSeries() : Promise<string>{
     return ""
 }
 
+/**
+ * Upsert an expansion to the database
+ * @param exp 
+ */
 export function upsertExpantion(exp: Expansion) {
     let _exp = JSON.parse(JSON.stringify(exp))
-    if (db.prepare(`SELECT * FROM expansions WHERE name == '${exp.name}'`).get() == null) {
+    if (db.prepare(`SELECT * FROM expansions WHERE name = '${exp.name}'`).get() == null) {
         db.prepare(ADD_SET).run(_exp)
     } else {
         db.prepare(UPDATE_SET).run(_exp)
@@ -44,16 +53,29 @@ export function upsertExpantion(exp: Expansion) {
 }
 
 /**
- * Upsert card
+ * Upsert card to the database
  * @param card 
  */
-export function updsertCard(card: Card) {
+export function upsertCard(card: Card) {
     let _card = JSON.parse(JSON.stringify(card))
-    if (db.prepare(`SELECT * FROM cards WHERE cardId == '${card.cardId}'`).get() == null) {
+    if (db.prepare(`SELECT * FROM cards WHERE cardId = $cardId`).get({cardId: card.cardId}) == null) {
         db.prepare(ADD_CARD).run(_card)
     } else {
         db.prepare(UPDATE_CARD).run(_card)
     }
+}
+
+/**
+ * Get Card with provided TCGP id
+ * @param tcgpId 
+ * @returns 
+ */
+export async function findTcgpCard(tcgpId: number): Promise<Card>{
+  return db.prepare(`SELECT * FROM cards WHERE idTCGP = $idTCGP`).get({idTCGP: tcgpId.toFixed(0)})
+}
+
+export async function findCard(id: string): Promise<Card>{
+    return db.prepare(`SELECT * FROM cards WHERE cardId = $id`).get({id: id})
 }
 
 /**
@@ -75,4 +97,11 @@ export async function expantionExistsInDB(name: string): Promise<boolean> {
         }
     }
     return found;
+}
+
+export async function upsertPokemon(name: string, id: number){
+    let pokemon = db.prepare("SELECT * FROM pokedex WHERE id == $id").get({id: id});
+    if(pokemon == null){
+        db.prepare("INSERT INTO pokemon (id, name) values ($id, $name)").run({id: id, name: name});
+    }
 }
