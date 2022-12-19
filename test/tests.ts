@@ -1,6 +1,11 @@
-import { describe, it } from 'node:test';
 import { scrapeEbay } from '../src/price-scrapper.js'
 import { getSerebiiLastestExpantions, serebiiSets } from '../src/serebii-scrapper.js'
+import { setDbFile, DB_FILE, getLatestExpansions, getLatestSeries } from "../src/database.js"
+import * as fs from "fs"
+import { expect } from 'chai';
+import { describe, before, it} from 'mocha';
+
+const TEST_DB = "./test-data.sql"
 
 describe("Scrape data", () => {
     it("scrape serebii sets", async () => {
@@ -17,6 +22,20 @@ describe("Scrape prices", () => {
         let grade10 = await scrapeEbay(card, "grade10");
         console.log({ raw: raw, grade9: grade9, grade10: grade10 })
     })
+})
+
+describe("SQL Tests", () => {
+    before(() => {
+        if(fs.existsSync(TEST_DB)) fs.rmSync(TEST_DB)
+        fs.copyFileSync(DB_FILE, TEST_DB)
+        setDbFile(TEST_DB)
+    });
+    
+    it("should get Latest Expanation", async () => {
+        let expansions = await getLatestExpansions(5);
+        expect(expansions.length).to.equal(5);
+    })
+
 })
 
 function testCard() {
