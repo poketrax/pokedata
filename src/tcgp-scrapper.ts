@@ -147,7 +147,7 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
 /**
  * Populate the TCG Player sets
  */
-export async function getTcgpExpsData() {
+async function getTcgpExpsData() {
   let response = await fetch(TCGP_API,
     {
       method: "POST",
@@ -173,8 +173,8 @@ export async function pullVariants(idTCGP): Promise<string[]> {
   if (data.result != null && data.result.length != 0) {
     let prices = data.result[0].variants
     if (prices != null) {
-      for (let variant of prices.variants) {
-        variants.push(variant)
+      for (let price of prices) {
+        variants.push(price.variant)
       }
     }
   }

@@ -27,7 +27,8 @@ export async function getSerebiiLastestExpantions(num: number) : Promise<Serebii
     let data = await res.text()
     const { window } = new jsdom.JSDOM(data)
     let setTable: HTMLTableElement = window.document.getElementsByTagName("table")[0];
-
+    
+    num++//increament since we start on row 1 to skip table headers
     for (let i = 1; i < num; i++) {
         let cells = setTable.rows[i].cells;
         let pageUrl = `https://www.serebii.net${(cells[0].children[0] as HTMLAnchorElement).href}`
@@ -57,7 +58,7 @@ export async function getSerebiiExpantion(name: string): Promise<SerebiiExpantio
  * @param setUrl 
  * @returns 
  */
-async function getLogoUrl(setUrl: string): Promise<string> {
+export async function getLogoUrl(setUrl: string): Promise<string> {
     let res = await fetch(setUrl);
     let data = await res.text()
     const { window } = new jsdom.JSDOM(data)
@@ -65,6 +66,12 @@ async function getLogoUrl(setUrl: string): Promise<string> {
     return `https://www.serebii.net${logo.src}`;
 }
 
+/**
+ * Get Serebii cards
+ * @param setUrl 
+ * @param set 
+ * @returns 
+ */
 export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promise<Card[]> {
     let res = await fetch(setUrl);
     let data = await res.text()
@@ -74,13 +81,14 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
     let cards = new Array<Card>();
     for(let i = 1; i < rows.length; i ++){
         let row = rows[i];
+        if(row.cells.length !== 4) continue
         let rawNum = row.cells[0].textContent;
         let cardNum = rawNum.split("/")[0];
         let rarity = parseRarity((row.cells[0].getElementsByTagName("img")[0] as HTMLImageElement))
         let img = `https://www.serebii.net${(row.cells[1].getElementsByTagName("img")[0] as HTMLImageElement).src}`
         let name = getName(row.cells[2])
         let energy = parseEnergy(row.cells[3])
-        let id = new String(`${set.name}-${name}-${cardNum}`)
+        let id = `${set.name}-${name}-${cardNum}`
         id = id.replaceAll(" ", "-")
         cards.push(
             {
@@ -103,7 +111,7 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
 function getName(cell : HTMLTableCellElement): string{
     let a = cell.getElementsByTagName("a")[0]
     let font = cell.getElementsByTagName("font")[0]
-    return font.textContent + a.textContent
+    return font?.textContent + a?.textContent
 }
 
 function parseRarity(img: HTMLImageElement): string{
@@ -117,7 +125,7 @@ function parseRarity(img: HTMLImageElement): string{
 
 function parseEnergy(cell: HTMLTableCellElement): string{
     let img = cell.getElementsByTagName("img")
-    if(img == null) return ""
+    if(img.length === 0) return ""
     let raw = img[0].src
     if(raw.includes("grass")) return "Grass"
     if(raw.includes("fire")) return "Fire"
