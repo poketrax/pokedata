@@ -33,7 +33,7 @@ export async function getSerebiiLastestExpantions(num: number) : Promise<Serebii
         let cells = setTable.rows[i].cells;
         let pageUrl = `https://www.serebii.net${(cells[0].children[0] as HTMLAnchorElement).href}`
         serebiiSets.push({
-            name: cells[0].children[0].textContent,
+            name: cells[0].children[0].textContent.trim(),
             page: pageUrl,
             logo: await getLogoUrl(pageUrl),
             symbol: `https://www.serebii.net${(cells[2].children[0].children[0] as HTMLImageElement).src}`,
@@ -83,10 +83,11 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
         let row = rows[i];
         if(row.cells.length !== 4) continue
         let rawNum = row.cells[0].textContent;
-        let cardNum = rawNum.split("/")[0];
+        rawNum = rawNum.replace(set.name, "")
+        let cardNum = rawNum.split("/")[0].trim();
         let rarity = parseRarity((row.cells[0].getElementsByTagName("img")[0] as HTMLImageElement))
         let img = `https://www.serebii.net${(row.cells[1].getElementsByTagName("img")[0] as HTMLImageElement).src}`
-        let name = getName(row.cells[2])
+        let name = row.cells[2].textContent.trim()
         let energy = parseEnergy(row.cells[3])
         let id = `${set.name}-${name}-${cardNum}`
         id = id.replaceAll(" ", "-")
@@ -106,12 +107,6 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
         )
     }
     return cards;
-}
-
-function getName(cell : HTMLTableCellElement): string{
-    let a = cell.getElementsByTagName("a")[0]
-    let font = cell.getElementsByTagName("font")[0]
-    return font?.textContent + a?.textContent
 }
 
 function parseRarity(img: HTMLImageElement): string{
