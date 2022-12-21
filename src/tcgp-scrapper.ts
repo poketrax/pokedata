@@ -105,7 +105,7 @@ async function convertCard(card: any, setName: string, setReleaseDate: string): 
     idTCGP: card.productId,
     name: card.productName,
     expIdTCGP: card.setUrlName,
-    expCodeTCGP: await getTcgpCode(card.setName) ?? "",
+    expCodeTCGP: await getTcgpCode(card.setUrlName) ?? "",
     expName: setName,
     expCardNumber: cardNum,
     rarity: card.rarityName,
@@ -183,14 +183,14 @@ export async function pullVariants(idTCGP): Promise<string[]> {
 
 /**
  * Get the Tcgp Code for 
- * @param setName 
+ * @param tcgpSetName 
  * @returns Tcgp code or ""
  */
-export async function getTcgpCode(setName) {
+export async function getTcgpCode(tcgpSetName) : Promise<string> {
   if (tcgpCodes.length === 0) {
     await getCodes();
   }
-  let codes = tcgpCodes.find((value) => stringSimilarity.compareTwoStrings(setName, value.name) > 0.8)
+  let codes = tcgpCodes.find((value) => stringSimilarity.compareTwoStrings(tcgpSetName, value.name) > 0.8)
   return codes != null ? codes.code : ""
 }
 
