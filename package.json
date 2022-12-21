@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "c8 mocha",
-    "build": "tsc"
+    "test": "c8 mocha --timeout 5000",
+    "build": "tsc",
+    "data": "tsc & node dist/data-scrapper.js"
   },
   "repository": {
     "type": "git",
