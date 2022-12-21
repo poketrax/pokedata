@@ -13,10 +13,6 @@ export class Expansion {
         this.logoURL = logo
         this.symbolURL = symbol
     }
-
-    public getId(): string {
-        return this.name.toLowerCase().replace(" ", "-")
-    }
 }
 
 export class Series {
