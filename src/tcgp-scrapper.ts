@@ -67,6 +67,7 @@ const tcgRequest = `{
 export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
   let request = JSON.parse(tcgRequest);
+  request.size = 300
   request.filters.term.setName = JSON.parse(set.tcgName);
   let url = new URL(TCGP_API)
   url.searchParams.set("q", "")
@@ -75,12 +76,13 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: tcgRequest
+      body: JSON.stringify(request)
     });
   let data: any = await response.json();
   for (let card of data.results[0].results) {
-    if (card.productName.includes("Code Card")) continue
+    if (card.productName.includes("Code Card")) continue 
     let newCard: Card = await convertCard(card, set.name, set.releaseDate);
+    //console.log(`TCGP Card: ${newCard.cardId}`)
     cards.push(newCard)
   }
   return cards;
@@ -94,12 +96,12 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
  * @returns 
  */
 async function convertCard(card: any, setName: string, setReleaseDate: string): Promise<Card> {
-  let releaseDate = card.customAttributes.releaseDate ?? setReleaseDate;
+  let releaseDate = card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
   let cardNum = card.customAttributes.number.split("/")[0]
   let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`
   let variants = await pullVariants(card.productId);
   let id = `${setName}-${card.productName}-${cardNum}`
-  id = id.replaceAll(" ","-")
+  id = id.replaceAll(" ", "-")
   let newCard: Card = {
     cardId: id,
     idTCGP: card.productId,
@@ -133,12 +135,10 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let conf = stringSimilarity.compareTwoStrings(tcgpSet.value, name)
     let tcgpName = tcgpSet.value.toLowerCase();
     let nameNorm = name.toLowerCase();
-
     let push = false;
     if (conf > 0.5) push = true
     if (tcgpName.includes(nameNorm)) push = true
-    if (nameNorm.includes("promo") && tcgpName.includes("promo") == false) push = false
-
+    if (nameNorm.includes("promo") && tcgpName.includes("promo") === false) push = false
     if (push) matches.push(tcgpSet.urlVal)
   }
   return matches;
@@ -186,7 +186,7 @@ export async function pullVariants(idTCGP): Promise<string[]> {
  * @param tcgpSetName 
  * @returns Tcgp code or ""
  */
-export async function getTcgpCode(tcgpSetName) : Promise<string> {
+export async function getTcgpCode(tcgpSetName): Promise<string> {
   if (tcgpCodes.length === 0) {
     await getCodes();
   }
@@ -199,10 +199,11 @@ export async function getTcgpCode(tcgpSetName) : Promise<string> {
  */
 async function getCodes() {
   let res = await fetch(`https://mpapi.tcgplayer.com/v2/massentry/sets/3`);
-  tcgpCodes = await res.json().then();
+  let data: any = await res.json()
+  tcgpCodes = data.results;
 }
 
-async function tcgpCardSearch(name: string, set: string): Promise<Card> {
+export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
   let url = new URL(TCGP_API);
   url.searchParams.set("q", `${set} ${name}`)
   url.searchParams.set("isList", "false")
