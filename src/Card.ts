@@ -12,6 +12,7 @@ export class Card {
     public price?: number
     public pokedex?: number
     public releaseDate?: string
+    public description?: string 
     public variants?: string[]
     public img?: string;
     //collection vrs
