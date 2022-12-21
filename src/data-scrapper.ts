@@ -3,7 +3,6 @@ import clc from 'cli-color'
 import minimist from 'minimist'
 import { consoleHeader, downloadFile, cardExpFolder } from "./common.js"
 import { Expansion } from "./CardMeta.js"
-import { Card } from "./Card.js"
 import { getLatestExpansions, upsertExpantion, getLatestSeries, expantionExistsInDB, findCard, findTcgpCard, upsertCard } from './database.js';
 import { findSetFromTCGP, pullTcgpSetCards } from './tcgp-scrapper.js'
 import { getPMCExpansion } from './pmc-scrapper.js'
@@ -47,7 +46,7 @@ export async function lookForNewExpantions() {
         console.log(`Processing: ${set.name}`)
         let tcgpMatches = JSON.stringify(await findSetFromTCGP(set.name))
         console.log(`TCG Player matches: ${tcgpMatches}`)
-        let series = await getLatestSeries();
+        let series = getLatestSeries();
         let prSet = await getPMCExpansion(set.name);
         if (tcgpMatches !== "[]" && await expantionExistsInDB(set.name) == false) {
             let exp: Expansion = new Expansion(
