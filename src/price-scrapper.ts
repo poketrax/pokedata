@@ -8,7 +8,7 @@ const grade9 = "(PSA 9,BGS 9,CGC 9)"
 const LH_BIN = "1"
 const _SOP = "15"
 
-export async function scrapeEbay(card, type) {
+export async function scrapeEbay(card, type) : Promise<number | undefined> {
     let url = new URL(ebayUrl)
     switch (type) {
         case 'raw':
@@ -24,7 +24,6 @@ export async function scrapeEbay(card, type) {
     url.searchParams.set("LH_BIN", LH_BIN)
     url.searchParams.set("_SOP", _SOP)
 
-    console.log(url.toString())
     let prices = [];
     let resp = await fetch(url.toString());
     let data = await resp.text()
@@ -33,7 +32,7 @@ export async function scrapeEbay(card, type) {
     for (let listing of listings) {
         let raw_str = listing.getElementsByClassName("s-item__price")[0].innerHTML.replace("$", "");
         let price = parseFloat(raw_str)
-        if (isNaN(price) == false) {
+        if (isNaN(price) === false) {
             prices.push(price)
         }
     }
