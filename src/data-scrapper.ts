@@ -73,7 +73,7 @@ export async function lookForNewExpantions() {
  */
 async function updateSets() {
     consoleHeader(`Updating last ${COUNT} expansions`);
-    let exps: Expansion[] = await getLatestExpansions(COUNT);
+    let exps: Expansion[] = getLatestExpansions(COUNT);
     for (let exp of exps) {
         console.log(clc.green(`Processing ${exp.name}`));
         let updated = false;
@@ -123,28 +123,28 @@ async function updateSets() {
 
 async function updateRegCards() {
     consoleHeader(`Updating Cards from last ${COUNT} expansions`);
-    let exps: Expansion[] = await getLatestExpansions(COUNT);
+    let exps: Expansion[] = getLatestExpansions(COUNT);
     for (let exp of exps) {
         let serebii = await getSerebiiExpantion(exp.name);
         let serebiiCards = await getSerebiiSetCards(serebii.page, exp)
         let tcgpCards = await pullTcgpSetCards(exp)
 
         for (let card of serebiiCards) {
-            let dbCard = await findCard(card.cardId)
+            let dbCard = findCard(card.cardId)
             if (dbCard != null) {
                 dbCard.img = card.img;
                 if(dryrun) continue
                 let path = cardExpFolder(exp)
                 downloadFile(dbCard.img, `${path}/${dbCard.cardId}`)
-                await upsertCard(dbCard)
+                 upsertCard(dbCard)
             } else {
                 if(dryrun) continue
-                await upsertCard(card);
+                upsertCard(card);
             }
         }
         for (let card of tcgpCards) {
-            let tcgpFound = await findTcgpCard(card.idTCGP) != null;
-            let cardFound = await findCard(card.cardId);
+            let tcgpFound = findTcgpCard(card.idTCGP) != null;
+            let cardFound = findCard(card.cardId);
             if (tcgpFound) continue;
             if (cardFound != null) {
                 card.img = cardFound.img;
@@ -153,7 +153,7 @@ async function updateRegCards() {
                 downloadFile(card.img, `${path}/${card.cardId}`)
             }
             if(dryrun) continue
-            await upsertCard(card);
+            upsertCard(card);
         }
     }
 }
