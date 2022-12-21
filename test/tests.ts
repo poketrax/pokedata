@@ -2,7 +2,6 @@ import { scrapeEbay } from '../src/price-scrapper.js'
 import {
     getLogoUrl,
     getSerebiiLastestExpantions,
-    serebiiSets,
     getSerebiiSetCards
 } from '../src/serebii-scrapper.js'
 import {
@@ -20,12 +19,14 @@ import {
     getPokemon
 } from "../src/database.js"
 import {
-    findSetFromTCGP, pullVariants
+    findSetFromTCGP, getTcgpCode, pullVariants, pullTcgpSetCards, tcgpCardSearch
 } from "../src/tcgp-scrapper.js"
 import * as fs from "fs"
 import { expect } from 'chai';
 import { describe, before, it } from 'mocha';
 import { URL } from 'url';
+import { Expansion } from '../src/CardMeta.js'
+import {Card} from '../src/Card.js'
 
 const TEST_DB = "./test-data.sql"
 
@@ -35,7 +36,7 @@ describe("Scrape Serebii data", () => {
         return getSerebiiLastestExpantions(5)
             .then((exps) => {expect(exps.length).to.be.equal(5)})
             .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
-    }).timeout(5000)
+    })
     it("scrape serebii logo url", async () => {
         return getLogoUrl(testSet).then((url) => { let _url = new URL(url) })
             .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
@@ -51,7 +52,7 @@ describe("Scrape Serebii data", () => {
             symbolURL: "",
         }
        return getSerebiiSetCards(testSet, exp)
-            .then((data) => {console.log(data);expect(data.length).to.be.equal(exp.numberOfCards)})
+            .then((data) => {console.log(data[0]);expect(data.length).to.be.equal(exp.numberOfCards)})
             .catch((e) => expect.fail(`Error scraping ebay ${e.stack}`))
     })
 })
@@ -60,21 +61,36 @@ describe("Test TCGP api fetch", () => {
     it("should get tcgp set names from give name", async () => {
         return findSetFromTCGP("Silver Tempest")
             .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.contain("swsh12-silver-tempest"))
-            .catch((e) => expect.fail(`Error scraping ebay ${e.stack}`))
-    }).timeout(5000)
+            .catch((e) => expect.fail(`Error ${e.stack}`))
+    })
     it("should get variants for a cards", async () => {
         return pullVariants("263872")
             .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.contain("Holofoil"))
-            .catch((e) => expect.fail(`Error scraping ebay ${e.stack}`))
-    }).timeout(5000)
+            .catch((e) => expect.fail(`Error  ${e.stack}`))
+    })
+    it("should get tcgp code for a set name", async () => {
+        return getTcgpCode("SWSH12 Silver Tempest")
+            .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.be.equal("SWSH12"))
+            .catch((e) => expect.fail(`Error ${e.stack}`))
+    })
+    it("should get tcgp cards from a given set", async () => {
+        return pullTcgpSetCards(testSetReal())
+            .then((value) => expect(value.length,`returned value: ${JSON.stringify(value.length)}`).to.be.greaterThan(200))
+            .catch((e) => expect.fail(`Error  ${e.stack}`))
+    }).timeout(120000)
+    it("should get tcgp card via name and set", async () => {
+        let card = testCard();
+        return tcgpCardSearch(card.name, card.expName)
+            .then((value) => expect(value.name,`returned value: ${JSON.stringify(value)}`).to.be.equal(card.name))
+            .catch((e) => expect.fail(`Error  ${e.stack}`))
+    })
 })
 
-describe("Scrape prices", () => {
+describe("Scrape ebay prices", () => {
     it("should scrape raw ebay price", async () => {
         let card = testCard();
         scrapeEbay(card, "raw").then(
             (data) => {
-                console.log(`Raw data: ${data}`)
                 expect(data).to.be.not.null;
                 expect(data).to.be.a('number')
             }
@@ -84,7 +100,6 @@ describe("Scrape prices", () => {
         let card = testCard();
         scrapeEbay(card, "grade9").then(
             (data) => {
-                console.log(`Grade 9 data: ${data}`)
                 expect(data).to.be.not.null;
                 expect(data).to.be.a('number')
             }
@@ -96,7 +111,6 @@ describe("Scrape prices", () => {
         let card = testCard();
         scrapeEbay(card, "grade10").then(
             (data) => {
-                console.log(`Grade 10 data: ${data}`)
                 expect(data).to.be.not.null
                 expect(data).to.be.a('number')
             }
@@ -121,15 +135,7 @@ describe("SQL Tests", () => {
         expect(series).to.be.not.null
     })
     it("should insert Expansion and find it", () => {
-        let exp = {
-            name: "test-1",
-            series: "Sword & Shield",
-            tcgName: "[\'test\']",
-            numberOfCards: 2,
-            releaseDate: "2022-12-19T18:20:16+0000",
-            logoURL: "",
-            symbolURL: "",
-        }
+        let exp = testSet()
         upsertExpantion(exp);
         expect(expantionExistsInDB(exp.name)).to.be.equal(true)
     })
@@ -192,10 +198,33 @@ describe("SQL Tests", () => {
     })
 })
 
-function testCard() {
+function testSet() : Expansion {
+    return {
+        name: "test-1",
+        series: "Sword & Shield",
+        tcgName: "[\"test\"]",
+        numberOfCards: 2,
+        releaseDate: "2022-12-19T18:20:16+0000",
+        logoURL: "",
+        symbolURL: "",
+    }
+}
+
+function testSetReal() : Expansion {
+    return {
+        name: "Silver Tempest",
+        series: "Sword & Shield",
+        tcgName: `["swsh12-silver-tempest","swsh12-silver-tempest-trainer-gallery"]`,
+        numberOfCards: 2,
+        releaseDate: "2022-12-19T18:20:16+0000",
+        logoURL: "",
+        symbolURL: "",
+    }
+}
+
+function testCard() : Card {
     return {
         cardId: "SWSH09-Brilliant-Stars-Charizard-V-(Full-Art)-153",
-        collection: "Buy List",
         variant: "Holofoil",
         paid: 0,
         count: 1,
