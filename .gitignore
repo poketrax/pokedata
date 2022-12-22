@@ -4,3 +4,4 @@ dist
 coverage
 test-data.sql
 test.json
+dryrun**.json
