@@ -203,6 +203,12 @@ async function getCodes() {
   tcgpCodes = data.results;
 }
 
+/**
+ * Search for a card on tcgp
+ * @param name 
+ * @param set set name to add to card returned
+ * @returns 
+ */
 export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
   let url = new URL(TCGP_API);
   url.searchParams.set("q", `${set} ${name}`)
