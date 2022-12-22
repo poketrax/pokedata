@@ -7,6 +7,7 @@ import { getLatestExpansions, upsertExpantion, getLatestSeries, expantionExistsI
 import { findSetFromTCGP, pullTcgpSetCards } from './tcgp-scrapper.js'
 import { getPMCExpansion } from './pmc-scrapper.js'
 import { getSerebiiExpantion, getSerebiiLastestExpantions, getSerebiiSetCards } from './serebii-scrapper.js'
+import { Card } from './Card.js'
 
 type MetaData = {
     data: number,
@@ -33,6 +34,7 @@ async function run() {
     }
     await lookForNewExpantions();
     await updateSets();
+    await updateRegCards();
 }
 
 /**
@@ -125,20 +127,22 @@ async function updateRegCards() {
     consoleHeader(`Updating Cards from last ${COUNT} expansions`);
     let exps: Expansion[] = getLatestExpansions(COUNT);
     for (let exp of exps) {
+        console.log(clc.green(`Processing ${exp.name} Cards`))
         let serebii = await getSerebiiExpantion(exp.name);
         let serebiiCards = await getSerebiiSetCards(serebii.page, exp)
         let tcgpCards = await pullTcgpSetCards(exp)
+        let cards = new Array<Card>();
 
         for (let card of serebiiCards) {
             let dbCard = findCard(card.cardId)
             if (dbCard != null) {
                 dbCard.img = card.img;
-                if(dryrun) continue
+                if (dryrun) { cards.push(card); continue }
                 let path = cardExpFolder(exp)
                 downloadFile(dbCard.img, `${path}/${dbCard.cardId}`)
-                 upsertCard(dbCard)
+                upsertCard(dbCard)
             } else {
-                if(dryrun) continue
+                if (dryrun) { cards.push(card); continue }
                 upsertCard(card);
             }
         }
@@ -148,18 +152,21 @@ async function updateRegCards() {
             if (tcgpFound) continue;
             if (cardFound != null) {
                 card.img = cardFound.img;
-                if(dryrun) continue
+                if (dryrun) { cards.push(card); continue }
                 let path = cardExpFolder(exp)
                 downloadFile(card.img, `${path}/${card.cardId}`)
             }
-            if(dryrun) continue
+            if (dryrun) { cards.push(card); continue }
             upsertCard(card);
         }
+
+        if(dryrun) fs.writeFileSync(`./dryrun-${exp.name.replace(" ","-")}.json`, JSON.stringify(cards, null, 1))
     }
+    
 }
 
 async function updatePromoCards() {
-    
+
 }
 
 function change() {
