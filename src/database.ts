@@ -13,7 +13,7 @@ const ADD_CARD = "INSERT INTO cards (cardId, idTCGP, name, expIdTCGP, expCodeTCG
     "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants);"
 const UPDATE_CARD = "UPDATE cards SET expName = $expName, variants = $variants, img = $img, description = $description " +
     "WHERE cardId = $cardId"
-let db = new Database()
+let db = new Database(DB_FILE)
 
 export function setDbFile(file: string) {
     db = new Database(file)
