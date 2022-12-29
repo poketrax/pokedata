@@ -1,11 +1,11 @@
-import { scrapeEbay } from '../src/price-scrapper.js'
 import {
     getLogoUrl,
-    getSerebiiLastestExpantions,
+    getSerebiiExpantion,
+    getSerebiiLastestNormalExpantions,
+    getSerebiiPokemon,
     getSerebiiSetCards
 } from '../src/serebii-scrapper.js'
 import {
-    setDbFile,
     DB_FILE,
     getLatestExpansions,
     getLatestSeries,
@@ -16,25 +16,43 @@ import {
     findTcgpCard,
     getHighestPokedexNumber,
     upsertPokemon,
-    getPokemon
+    getPokemon,
+    useTestDbFile,
 } from "../src/database.js"
 import {
-    findSetFromTCGP, getTcgpCode, pullVariants, pullTcgpSetCards, tcgpCardSearch
+    findSetFromTCGP,
+    getTcgpCode,
+    pullVariants,
+    pullTcgpSetCards,
+    tcgpCardSearch
 } from "../src/tcgp-scrapper.js"
+import { scrapeEbay } from '../src/price-scrapper.js'
 import * as fs from "fs"
 import { expect } from 'chai';
 import { describe, before, it } from 'mocha';
 import { URL } from 'url';
 import { Expansion } from '../src/CardMeta.js'
-import {Card} from '../src/Card.js'
+import { Card } from '../src/Card.js'
+import { getExpNumber } from '../src/common.js'
 
 const TEST_DB = "./test-data.sql"
+
+describe("Meta Tests", () => {
+    it("should normalize Exp Num", () => {
+        expect(getExpNumber("TG40")).to.be.equal("TG40")
+        expect(getExpNumber("TG1")).to.be.equal("TG01")
+        expect(getExpNumber("1")).to.be.equal("001")
+        expect(getExpNumber("001")).to.be.equal("001")
+        expect(getExpNumber("011")).to.be.equal("011")
+        expect(getExpNumber("11")).to.be.equal("011")
+    })
+})
 
 describe("Scrape Serebii data", () => {
     let testSet = `https://www.serebii.net/card/silvertempest/`
     it("scrape serebii sets", async () => {
-        return getSerebiiLastestExpantions(5)
-            .then((exps) => {expect(exps.length).to.be.equal(5)})
+        return getSerebiiLastestNormalExpantions(5)
+            .then((exps) => { expect(exps.length).to.be.equal(5) })
             .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
     })
     it("scrape serebii logo url", async () => {
@@ -51,37 +69,46 @@ describe("Scrape Serebii data", () => {
             logoURL: "",
             symbolURL: "",
         }
-       return getSerebiiSetCards(testSet, exp)
-            .then((data) => {console.log(data[0]);expect(data.length).to.be.equal(exp.numberOfCards)})
-            .catch((e) => expect.fail(`Error scraping ebay ${e.stack}`))
+        return getSerebiiSetCards(testSet, exp)
+            .then((data) => { console.log(data[0]); expect(data.length).to.be.equal(exp.numberOfCards)})
+            .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
+    })
+    it("scrape serebii pokemon", async () => {
+        return getSerebiiPokemon()
+            .then((p) => {
+                expect(p.length).is.greaterThan(1000)
+                expect(p[0].name, JSON.stringify(p[0])).is.equal("Bulbasaur")
+                expect(p[0].id).is.equal(1)
+            })
+            .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
     })
 })
 
 describe("Test TCGP api fetch", () => {
     it("should get tcgp set names from give name", async () => {
         return findSetFromTCGP("Silver Tempest")
-            .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.contain("swsh12-silver-tempest"))
+            .then((value) => expect(value, `returned value: ${JSON.stringify(value)}`).to.contain("swsh12-silver-tempest"))
             .catch((e) => expect.fail(`Error ${e.stack}`))
     })
     it("should get variants for a cards", async () => {
         return pullVariants("263872")
-            .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.contain("Holofoil"))
+            .then((value) => expect(value, `returned value: ${JSON.stringify(value)}`).to.contain("Holofoil"))
             .catch((e) => expect.fail(`Error  ${e.stack}`))
     })
     it("should get tcgp code for a set name", async () => {
         return getTcgpCode("SWSH12 Silver Tempest")
-            .then((value) => expect(value,`returned value: ${JSON.stringify(value)}`).to.be.equal("SWSH12"))
+            .then((value) => expect(value, `returned value: ${JSON.stringify(value)}`).to.be.equal("SWSH12"))
             .catch((e) => expect.fail(`Error ${e.stack}`))
     })
     it("should get tcgp cards from a given set", async () => {
         return pullTcgpSetCards(testSetReal())
-            .then((value) => expect(value.length,`returned value: ${JSON.stringify(value.length)}`).to.be.greaterThan(200))
+            .then((value) => expect(value.length, `returned value: ${JSON.stringify(value.length)}`).to.be.greaterThan(200))
             .catch((e) => expect.fail(`Error  ${e.stack}`))
     }).timeout(120000)
     it("should get tcgp card via name and set", async () => {
         let card = testCard();
         return tcgpCardSearch(card.name, card.expName)
-            .then((value) => expect(value.name,`returned value: ${JSON.stringify(value)}`).to.be.equal(card.name))
+            .then((value) => expect(value.name, `returned value: ${JSON.stringify(value)}`).to.be.equal(card.name))
             .catch((e) => expect.fail(`Error  ${e.stack}`))
     })
 })
@@ -124,7 +151,7 @@ describe("SQL Tests", () => {
     before(() => {
         if (fs.existsSync(TEST_DB)) fs.rmSync(TEST_DB)
         fs.copyFileSync(DB_FILE, TEST_DB)
-        setDbFile(TEST_DB)
+        useTestDbFile()
     });
     it("should get Latest Expanation", () => {
         let exps = getLatestExpansions(5);
@@ -181,24 +208,29 @@ describe("SQL Tests", () => {
     })
     it("should find card by tcgpId", () => {
         let oldCard = testCard()
-        expect(findTcgpCard(oldCard.idTCGP).cardId).to.be.equal(oldCard.cardId)
+        expect(findTcgpCard(oldCard.idTCGP)?.cardId).to.be.equal(oldCard.cardId)
     })
     it("should get the lastest pokedex number", () => {
         expect(getHighestPokedexNumber()).to.be.greaterThan(800)
     })
     it("should insert pokedex value", () => {
-        let id = 100000
-        upsertPokemon("test", id)
+        let id = "test"
+        upsertPokemon("test", 100000)
         expect(getPokemon(id).name).to.be.equal("test")
     })
-    it("should update pokedex value", () => {
-        let id = 100
-        upsertPokemon("test", id)
-        expect(getPokemon(id).name).to.be.equal("Voltorb")
+    it("should find pokedex value", () => {
+        expect(getPokemon("Radiant Hisuian Sneasler").name).to.be.equal("Sneasler")
+        expect(getPokemon("Hisuian Goodra VSTAR").name).to.be.equal("Goodra")
+        expect(getPokemon("Giratina V").name).to.be.equal("Giratina")
+        expect(getPokemon("Pikachu VMAX (Secret)").name).to.be.equal("Pikachu")
+        expect(getPokemon("Hisuian Zoroark VSTAR (213) (Secret)").name).to.be.equal("Zoroark")
+        expect(getPokemon("Inkay - 121/196").name).to.be.equal("Inkay")
+        expect(getPokemon("Mr. Mime").name).to.be.equal("Mr. Mime")
+        expect(getPokemon("Porygon-Z").name).to.be.equal("Porygon-Z")
     })
 })
 
-function testSet() : Expansion {
+function testSet(): Expansion {
     return {
         name: "test-1",
         series: "Sword & Shield",
@@ -210,7 +242,7 @@ function testSet() : Expansion {
     }
 }
 
-function testSetReal() : Expansion {
+function testSetReal(): Expansion {
     return {
         name: "Silver Tempest",
         series: "Sword & Shield",
@@ -222,7 +254,7 @@ function testSetReal() : Expansion {
     }
 }
 
-function testCard() : Card {
+function testCard(): Card {
     return {
         cardId: "SWSH09-Brilliant-Stars-Charizard-V-(Full-Art)-153",
         variant: "Holofoil",

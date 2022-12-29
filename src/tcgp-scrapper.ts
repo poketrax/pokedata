@@ -2,6 +2,8 @@ import * as stringSimilarity from "string-similarity";
 import fetch from 'node-fetch'
 import { Card } from './Card.js'
 import { Expansion } from "./CardMeta.js";
+import { getExpNumber, getId, cardExpFolder, addCard } from "./common.js";
+import { findCardComplex } from "./database.js";
 
 export type TcgpSet = {
   urlVal: string,
@@ -97,11 +99,10 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
  */
 async function convertCard(card: any, setName: string, setReleaseDate: string): Promise<Card> {
   let releaseDate = card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
-  let cardNum = card.customAttributes.number.split("/")[0]
+  let cardNum = getExpNumber(card.customAttributes.number.split("/")[0])
   let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`
   let variants = await pullVariants(card.productId);
-  let id = `${setName}-${card.productName}-${cardNum}`
-  id = id.replaceAll(" ", "-")
+  let id = getId(setName, card.productName, cardNum);
   let newCard: Card = {
     cardId: id,
     idTCGP: card.productId,
@@ -221,4 +222,19 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
   });
   let data: any = await res.json().then()
   return await convertCard(data.results[0].results[0], set, "");
+}
+
+/**
+ * Add card from TCGP
+ * @param card 
+ * @param exp 
+ */
+export async function tcgpUpsertCard(card: Card, exp: Expansion){
+  let db_card = findCardComplex(exp.name, card.expCardNumber)
+  let path = cardExpFolder(exp)
+  if (db_card != null) {
+      path = null
+      card.img = db_card.img;
+  }
+  await addCard(card, path);
 }

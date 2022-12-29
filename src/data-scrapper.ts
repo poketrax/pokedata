@@ -1,13 +1,32 @@
 import * as fs from 'fs'
 import clc from 'cli-color'
 import minimist from 'minimist'
-import { consoleHeader, downloadFile, cardExpFolder } from "./common.js"
 import { Expansion } from "./CardMeta.js"
-import { getLatestExpansions, upsertExpantion, getLatestSeries, expantionExistsInDB, findCard, findTcgpCard, upsertCard } from './database.js';
-import { findSetFromTCGP, pullTcgpSetCards } from './tcgp-scrapper.js'
 import { getPMCExpansion } from './pmc-scrapper.js'
-import { getSerebiiExpantion, getSerebiiLastestExpantions, getSerebiiSetCards } from './serebii-scrapper.js'
-import { Card } from './Card.js'
+import { findSetFromTCGP, pullTcgpSetCards, tcgpUpsertCard } from './tcgp-scrapper.js'
+import {
+    consoleHeader,
+    downloadFile,
+    setUpLogger,
+    getLogger
+} from "./common.js"
+import {
+    getLatestExpansions,
+    upsertExpantion,
+    getLatestSeries,
+    expantionExistsInDB,
+    useTestDbFile,
+    getHighestPokedexNumber,
+    upsertPokemon,
+} from './database.js';
+import {
+    getSerebiiLastestNormalExpantions,
+    getSerebiiExpantion,
+    getSerebiiPokemon,
+    getSerebiiSetCards,
+    serebiiUpsertCard
+} from './serebii-scrapper.js'
+import { Category } from 'typescript-logging-category-style'
 
 type MetaData = {
     data: number,
@@ -15,39 +34,45 @@ type MetaData = {
     prices_low_res: number
 }
 
-const COUNT = 6
+export const COUNT = 4
+export let logger: Category;
 
 let metaData: MetaData = JSON.parse(fs.readFileSync("./meta.json", "utf-8"));
-let changed = false;
-export let dryrun = false;
+let args: minimist.ParsedArgs;
 
 run();
 
 async function run() {
-    let args = minimist(process.argv.slice(2), {
-        boolean: ['dryrun'],
-        alias: { d: 'dryrun' }
+    args = minimist(process.argv.slice(2), {
+        boolean: ['dryrun', 'fresh', 'verbose'],
+        alias: { d: 'dryrun', f: 'fresh', v: 'verbose' }
     })
+    setUpLogger(args.v);
+    logger = getLogger("data-scraper");
     if (args.d) {
-        dryrun = true;
-        console.log(clc.red.bold(`------------------ DRYRUN --------------------`))
+        useTestDbFile(args.f)
+        logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
+        logger.info(clc.red.bold(`--------- Results at test-data.sql -----------`))
+        logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
     }
     await lookForNewExpantions();
     await updateSets();
+    await updatePokedex();
     await updateRegCards();
+    if (args.d) updateMetaFile()
 }
 
 /**
  * Scrapes data from multiple sources to get set metadata 
  */
 export async function lookForNewExpantions() {
-    consoleHeader("Searching for new sets");
-    let serebiiNewSets = await getSerebiiLastestExpantions(5);
-    //console.log(prNewSets)
+    consoleHeader("Searching for new sets", logger);
+    let serebiiNewSets = await getSerebiiLastestNormalExpantions(5);
+
     for (let set of serebiiNewSets) {
-        console.log(`Processing: ${set.name}`)
+        logger.info(clc.greenBright(`Processing: ${set.name}`))
         let tcgpMatches = JSON.stringify(await findSetFromTCGP(set.name))
-        console.log(`TCG Player matches: ${tcgpMatches}`)
+        logger.info(`TCG Player matches: ${tcgpMatches}`)
         let series = getLatestSeries();
         let prSet = await getPMCExpansion(set.name);
         if (tcgpMatches !== "[]" && await expantionExistsInDB(set.name) == false) {
@@ -60,12 +85,9 @@ export async function lookForNewExpantions() {
             exp.tcgName = tcgpMatches
             exp.numberOfCards = 0;
             exp.releaseDate = prSet?.relDate ?? ""
-            consoleHeader(`Adding new Set`);
-            console.log(exp)
-            change()
-            if (dryrun === false) {
-                upsertExpantion(exp)
-            }
+            consoleHeader(`Adding new Set`, logger);
+            logger.info(JSON.stringify(exp))
+            upsertExpantion(exp)
         }
     }
 }
@@ -74,10 +96,10 @@ export async function lookForNewExpantions() {
  * Looks for Updates for the last 6 set to make sure any linguring updates from data sources
  */
 async function updateSets() {
-    consoleHeader(`Updating last ${COUNT} expansions`);
+    consoleHeader(`Updating last ${COUNT} expansions`, logger);
     let exps: Expansion[] = getLatestExpansions(COUNT);
     for (let exp of exps) {
-        console.log(clc.green(`Processing ${exp.name}`));
+        logger.info(clc.green(`Processing ${exp.name}`));
         let updated = false;
         let serebii = await getSerebiiExpantion(exp.name)
         let prSet = await getPMCExpansion(exp.name);
@@ -87,91 +109,76 @@ async function updateSets() {
             exp.symbolURL != serebii.symbol ||
             exp.numberOfCards != serebii.numberOfCards
         )) {
-            console.log('Serebii set found')
+            logger.info('Serebii set found')
             exp.logoURL = serebii.logo
             exp.symbolURL = serebii.symbol
             exp.numberOfCards = serebii.numberOfCards
             updated = true
-            if (dryrun === false) {
-                await downloadFile(serebii.logo, `./images/exp_logo/${exp.name.replace(" ", "-")}.png`)
-                await downloadFile(serebii.symbol, `./images/exp_symb/${exp.name.replace(" ", "-")}.png`)
-            }
+            await downloadFile(serebii.logo, `./images/exp_logo/${exp.name.replace(" ", "-")}.png`)
+            await downloadFile(serebii.symbol, `./images/exp_symb/${exp.name.replace(" ", "-")}.png`)
         }
         //Update Set from PMC PR web site
         if (prSet != null && exp.releaseDate == null) {
             exp.releaseDate = prSet.relDate
             updated = true;
         }
-        //Update Set from tcgp 
+        //Update Set from tcgp
         let tcgp = JSON.stringify(await findSetFromTCGP(exp.name))
-        console.log(`TCGP Sets found ${tcgp}`)
+        logger.info(`TCGP Sets found ${tcgp}`)
         if (tcgp !== "[]" && tcgp !== exp.tcgName) {
             updated = true;
             exp.tcgName = tcgp
         }
-
         if (updated) {
-            console.log(`Updating ${exp.name}`)
-            console.log(exp)
-            if (dryrun === false) {
-                change()
-                upsertExpantion(exp)
-            }
+            logger.info(`Updating ${exp.name}`)
+            logger.info(JSON.stringify(exp))
+
+            upsertExpantion(exp)
         } else {
-            console.log(`No Updates for ${exp.name}`)
+            logger.info(`No Updates for ${exp.name}`)
         }
     }
 }
 
+/**
+ * Update Regular set cards
+ */
 async function updateRegCards() {
-    consoleHeader(`Updating Cards from last ${COUNT} expansions`);
+    consoleHeader(`Updating Cards from last ${COUNT} expansions`, logger);
     let exps: Expansion[] = getLatestExpansions(COUNT);
     for (let exp of exps) {
-        console.log(clc.green(`Processing ${exp.name} Cards`))
+        logger.info(clc.blueBright(`Processing ${exp.name} Cards`))
         let serebii = await getSerebiiExpantion(exp.name);
+        if (serebii == null) { logger.info(clc.red(`Failed to find serebii set : ${exp.name} could be promo set`)); continue }
         let serebiiCards = await getSerebiiSetCards(serebii.page, exp)
         let tcgpCards = await pullTcgpSetCards(exp)
-        let cards = new Array<Card>();
-
         for (let card of serebiiCards) {
-            let dbCard = findCard(card.cardId)
-            if (dbCard != null) {
-                dbCard.img = card.img;
-                if (dryrun) { cards.push(card); continue }
-                let path = cardExpFolder(exp)
-                downloadFile(dbCard.img, `${path}/${dbCard.cardId}`)
-                upsertCard(dbCard)
-            } else {
-                if (dryrun) { cards.push(card); continue }
-                upsertCard(card);
-            }
+            await serebiiUpsertCard(card, exp)
         }
         for (let card of tcgpCards) {
-            let tcgpFound = findTcgpCard(card.idTCGP) != null;
-            let cardFound = findCard(card.cardId);
-            if (tcgpFound) continue;
-            if (cardFound != null) {
-                card.img = cardFound.img;
-                if (dryrun) { cards.push(card); continue }
-                let path = cardExpFolder(exp)
-                downloadFile(card.img, `${path}/${card.cardId}`)
-            }
-            if (dryrun) { cards.push(card); continue }
-            upsertCard(card);
+            await tcgpUpsertCard(card, exp)
         }
-
-        if(dryrun) fs.writeFileSync(`./dryrun-${exp.name.replace(" ","-")}.json`, JSON.stringify(cards, null, 1))
     }
-    
 }
 
 async function updatePromoCards() {
 
 }
 
-function change() {
-    if (changed) return;
-    changed = true;
+/**
+ * Update Pokedex 
+ */
+async function updatePokedex() {
+    consoleHeader(`Updating Pokedex`, logger);
+    let serebiiPokemon = await getSerebiiPokemon()
+    let highest = getHighestPokedexNumber()
+    for (let i = highest; i < serebiiPokemon.length; i++) {
+        let pokemon = serebiiPokemon[i]
+        upsertPokemon(pokemon.name, pokemon.id)
+    }
+}
+
+export function updateMetaFile() {
     metaData.data++;
     fs.writeFileSync("./meta.json", JSON.stringify(metaData));
 }
