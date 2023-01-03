@@ -1,11 +1,14 @@
 import * as jsdom from 'jsdom'
 import * as stringSimilarity from "string-similarity";
-import { getLatestSeries, expantionExistsInDB } from "./database.js"
-import { downloadFile } from './common.js';
+import { expantionExistsInDB, getLatestSeries, upsertExpantion } from "./database.js"
+import { downloadFile, normalizeSetName, logger } from './common.js';
 import fetch from 'node-fetch';
+import { Expansion } from './CardMeta.js';
 
 const PMC_MARKETING_URL = "https://press.pokemon.com/en/Items/Schedule/Pokemon-Trading-Card-Game?types=3"
 const PMC_CARD_DB_BASE_URL = "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/"
+
+const UPDATE_SET = "UPDATE expansions SET releaseDate = $releaseDate WHERE name = $name"
 
 export type PmcSet = {
     name: string,
@@ -34,8 +37,6 @@ async function scrapePmcCardDBExps() {
     const series_tag = series_search?.getElementsByTagName("fieldset")[0];
 
     if (series_tag == null) return;
-
-    let latest_series = series_tag.getElementsByTagName("h2")[0].textContent
     let exps_tags = series_tag.getElementsByTagName("li")
     for (let exp_tag of exps_tags) {
         let code = exp_tag.getElementsByTagName("input")[0].id
@@ -56,7 +57,7 @@ async function scrapPmcPressReleases(): Promise<PmcExpansion[]> {
     const { window } = new jsdom.JSDOM(data)
     const lauch_table = window.document.getElementsByTagName("tbody")[0];
     const rows = lauch_table.getElementsByTagName("tr")
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         let row = rows[i];
         //Conditions
         const product = row.getElementsByClassName("prod-name")[0]
@@ -92,7 +93,7 @@ async function scrapPmcPressReleases(): Promise<PmcExpansion[]> {
  * Get sets from PMC marketing website
  * @returns 
  */
-export async function getPmcExpansions() : Promise<PmcExpansion[]> {
+async function getPmcExpansions(): Promise<PmcExpansion[]> {
     let pressRels: PmcExpansion[] = await scrapPmcPressReleases();
     for (let rel of pressRels) {
         newsets.push(rel)
@@ -105,10 +106,28 @@ export async function getPmcExpansions() : Promise<PmcExpansion[]> {
  * @param name 
  * @returns 
  */
-export async function getPMCExpansion(name: string): Promise<PmcExpansion>{
-    if(newsets.length === 0) {await getPmcExpansions()}
-    let set = newsets.find(set => {return stringSimilarity.compareTwoStrings(set.name, name) > 0.6})
+async function getPMCExpansion(name: string): Promise<PmcExpansion> {
+    if (newsets.length === 0) { await getPmcExpansions() }
+    let set = newsets.find(
+        set => {
+            let conf = stringSimilarity.compareTwoStrings(normalizeSetName(set.name), normalizeSetName(name));
+            logger.debug(`pmc: ${normalizeSetName(set.name)}, look: ${normalizeSetName(name)} ${conf}`)
+            return conf > 0.5;
+        }
+    )
     return set;
+}
+
+/**
+ * Updates the expantion with values from PMC
+ * @param exp 
+ * @returns 
+ */
+export async function updateExpansionPmc(exp: Expansion) {
+    let pmcExp = await getPMCExpansion(exp.name)
+    if (pmcExp == null) { logger.debug(`Could not find PMC set for name: ${exp.name}`); return }
+    exp.releaseDate = pmcExp.relDate
+    upsertExpantion(exp, UPDATE_SET)
 }
 
 /**
@@ -117,7 +136,7 @@ export async function getPMCExpansion(name: string): Promise<PmcExpansion>{
  * @param {string} marketingPage 
  * @returns 
  */
-export async function getExpLogo(name, marketingPage) {
+async function getExpLogo(name, marketingPage) {
     let response = await fetch(marketingPage)
     let data = await response.text()
     const { window } = new jsdom.JSDOM(data)
@@ -131,7 +150,7 @@ export async function getExpLogo(name, marketingPage) {
  * @param {string} name 
  * @returns 
  */
-export async function getExpSymbol(name: string) {
+async function getExpSymbol(name: string) {
     if (pmcDbSets.length == 0) {
         await scrapePmcCardDBExps()
     }

@@ -4,7 +4,7 @@ import type { Expansion } from './CardMeta.js'
 import * as stringSimilarity from 'string-similarity'
 import * as fs from 'fs'
 import clc from 'cli-color'
-import {logger} from './data-scrapper.js' 
+import { normalizeSetName, logger } from './common.js'
 
 export const DB_FILE = './databases/data.sqlite';
 export const TEST_FILE = 'test-data.sql';
@@ -12,14 +12,8 @@ export const TEST_FILE = 'test-data.sql';
 const SEARCH_SET = "SELECT * FROM expansions WHERE name like ?";
 const ADD_SET = "INSERT INTO expansions (name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
     "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate)";
-const UPDATE_SET = "UPDATE expansions SET series = $series, tcgName = $tcgName, " +
-    "numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL, releaseDate = $releaseDate WHERE name = $name"
-
 const ADD_CARD = "INSERT INTO cards (cardId, idTCGP, name, expIdTCGP, expCodeTCGP, expName, expCardNumber, rarity, img, price, description, releaseDate, energyType, cardType, variants) " +
     "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants);"
-const UPDATE_CARD = "UPDATE cards SET cardId = $cardId, idTCGP = $idTCGP, expIdTCGP = $expIdTCGP, cardType = $cardType, " +
-    "expCodeTCGP = $expCodeTCGP, rarity = $rarity, variants = $variants, img = $img, description = $description, releaseDate = $releaseDate " +
-    "WHERE expCardNumber = $expCardNumber AND expName = $expName"
 
 let db = new Database(DB_FILE)
 
@@ -30,6 +24,16 @@ export function useTestDbFile(del?: boolean) {
     }
     db = new Database(TEST_FILE)
 }
+
+/**
+ * Get expansion
+ * @param num 
+ * @returns 
+ */
+export function getExpansion(name: string): Expansion {
+    return db.prepare(`SELECT * FROM expansions WHERE name = $name`).get({name: name});
+}
+
 
 /**
  * Get the latest (num) of expansions
@@ -53,15 +57,18 @@ export function getLatestSeries(): string {
 
 /**
  * Upsert an expansion to the database
- * @param exp 
+ * @param exp expantion to update
+ * @param update update statement
  */
-export function upsertExpantion(exp: Expansion) {
+export function upsertExpantion(exp: Expansion, update: string) {
     let _exp = JSON.parse(JSON.stringify(exp))
     let db_exp = db.prepare(`SELECT * FROM expansions WHERE name = '${exp.name}'`).get()
     if (db_exp == null) {
+        logger.info(clc.greenBright(`Adding new set ${JSON.stringify(exp)}`))
         db.prepare(ADD_SET).run(_exp)
     } else {
-        db.prepare(UPDATE_SET).run(_exp)
+        logger.info(clc.magenta(`Updating set ${JSON.stringify(exp)}`))
+        db.prepare(update).run(_exp)
     }
     return db_exp;
 }
@@ -69,9 +76,10 @@ export function upsertExpantion(exp: Expansion) {
 /**
  * Upserts a card and returns the result of the upsert
  * @param card 
+ * @param
  * @returns Returns Card that is in the DB
  */
-export function upsertCard(card: Card) {
+export function upsertCard(card: Card, update: string) {
     let _card = {
         cardId: card.cardId,
         idTCGP: card.idTCGP,
@@ -91,11 +99,19 @@ export function upsertCard(card: Card) {
         variants: JSON.stringify(card.variants)
     }
     if (findCardComplex(card.expName, card.expCardNumber) == null) {
-        db.prepare(ADD_CARD).run(_card)
-        logger.info(clc.green(`Adding : ${JSON.stringify(_card)}`))
+        try {
+            db.prepare(ADD_CARD).run(_card)
+            logger.info(clc.green(`Adding : ${JSON.stringify(_card)}`))
+        } catch (e) {
+            logger.error(clc.red(`Failed to Add : ${JSON.stringify(_card)}`))
+        }
     } else {
-        db.prepare(UPDATE_CARD).run(_card)
-        logger.info(clc.blackBright(`Updating : ${JSON.stringify(_card)}`))
+        try {
+            db.prepare(update).run(_card)
+            logger.info(clc.magenta(`Updating : ${JSON.stringify(_card)}`))
+        } catch (e) {
+            logger.error(clc.red(`Failed to Update : ${JSON.stringify(_card)}`))
+        }
     }
 }
 
@@ -192,20 +208,23 @@ export function findCard(id: string): Card {
  * @param name 
  * @returns 
  */
-export function expantionExistsInDB(name: string): boolean {
+export function expantionExistsInDB(name: string): string | undefined {
     let results = db.prepare(SEARCH_SET).get(name);
     let found = results == null ? false : true;
     if (found === false) {
         let exps = db.prepare(SEARCH_SET).all("%%");
+        let matches = []
         for (let exp of exps) {
-            let confidence: number = stringSimilarity.compareTwoStrings(exp.name, name)
+            let confidence: number = stringSimilarity.compareTwoStrings(normalizeSetName(exp.name), normalizeSetName(name))
             if (confidence > 0.6) {
                 logger.info(`Expantion ${name} already found with ${(confidence * 100).toFixed(0)}% confidence: ${exp.name}`)
-                found = true;
+                matches.push( {name: exp.name, conf: confidence})
             }
         }
+        matches.sort((a,b) => b.conf - a.conf)
+        if(matches.length != 0) return matches[0].name;
     }
-    return found;
+    return results == null ? null : results.name;
 }
 
 /**
@@ -233,7 +252,7 @@ export function getPokemon(name: string) {
         .replaceAll(/[0-9]+\/[0-9]+/g, "")
         .trim()
     let pokemon = db.prepare("SELECT * from pokedex WHERE name = $name").get({ name: _name })
-    return pokemon ?? {id: 10000, name: "Trainer"}
+    return pokemon ?? { id: 10000, name: "Trainer" }
 }
 
 /**

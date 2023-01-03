@@ -2,8 +2,8 @@ import * as stringSimilarity from "string-similarity";
 import fetch from 'node-fetch'
 import { Card } from './Card.js'
 import { Expansion } from "./CardMeta.js";
-import { getExpNumber, getId, cardExpFolder, addCard } from "./common.js";
-import { findCardComplex } from "./database.js";
+import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger } from "./common.js";
+import { findCardComplex, upsertExpantion } from "./database.js";
 
 export type TcgpSet = {
   urlVal: string,
@@ -20,6 +20,18 @@ export let tcgpSets = new Array<TcgpSet>();
 export let tcgpCodes = new Array<TcgpCode>();
 
 const TCGP_API = "https://mpapi.tcgplayer.com/v2/search/request"
+const UPDATE_SET = "UPDATE expansions SET tcgName = $tcgName WHERE name = $name"
+const UPDATE_CARD =
+  "UPDATE cards SET " +
+  "idTCGP = $idTCGP, " +
+  "expIdTCGP = $expIdTCGP, " +
+  "rarity = $rarity, " +
+  "cardType = $cardType, " +
+  "expCodeTCGP = $expCodeTCGP, " +
+  "releaseDate = $releaseDate, " +
+  "description = $description, " +
+  "variants = $variants, "
+  "WHERE expCardNumber = $expCardNumber AND expName = $expName"
 
 const tcgRequest = `{
     "algorithm": "",
@@ -60,7 +72,7 @@ const tcgRequest = `{
       "shippingCountry": "US"
     },
     "sort": {}
-  }`;
+}`;
 
 /**
  * Pull Cards for a given expantion
@@ -82,7 +94,7 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
     });
   let data: any = await response.json();
   for (let card of data.results[0].results) {
-    if (card.productName.includes("Code Card")) continue 
+    if (card.productName.includes("Code Card")) continue
     let newCard: Card = await convertCard(card, set.name, set.releaseDate);
     //console.log(`TCGP Card: ${newCard.cardId}`)
     cards.push(newCard)
@@ -99,10 +111,10 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
  */
 async function convertCard(card: any, setName: string, setReleaseDate: string): Promise<Card> {
   let releaseDate = card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
-  let cardNum = getExpNumber(card.customAttributes.number.split("/")[0])
+  let cardNum = formatExpNumber(card.customAttributes.number.split("/")[0])
   let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`
   let variants = await pullVariants(card.productId);
-  let id = getId(setName, card.productName, cardNum);
+  let id = formatId(setName, card.productName, cardNum);
   let newCard: Card = {
     cardId: id,
     idTCGP: card.productId,
@@ -127,17 +139,18 @@ async function convertCard(card: any, setName: string, setReleaseDate: string): 
  * @param name 
  * @returns 
  */
-export async function findSetFromTCGP(name: string): Promise<string[]> {
+async function findSetFromTCGP(name: string): Promise<string[]> {
   if (tcgpSets.length === 0) {
     await getTcgpExpsData();
   }
   let matches = new Array<string>();
   for (let tcgpSet of tcgpSets) {
-    let conf = stringSimilarity.compareTwoStrings(tcgpSet.value, name)
+    let tcgpNorm = normalizeSetName(tcgpSet.value).toLowerCase();
+    let nameNorm = normalizeSetName(name).toLowerCase();
+    let conf = stringSimilarity.compareTwoStrings(tcgpNorm, nameNorm)
     let tcgpName = tcgpSet.value.toLowerCase();
-    let nameNorm = name.toLowerCase();
     let push = false;
-    if (conf > 0.5) push = true
+    if (conf > 0.5) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
     if (tcgpName.includes(nameNorm)) push = true
     if (nameNorm.includes("promo") && tcgpName.includes("promo") === false) push = false
     if (push) matches.push(tcgpSet.urlVal)
@@ -229,12 +242,16 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
  * @param card 
  * @param exp 
  */
-export async function tcgpUpsertCard(card: Card, exp: Expansion){
+export async function tcgpUpsertCard(card: Card, exp: Expansion) {
   let db_card = findCardComplex(exp.name, card.expCardNumber)
   let path = cardExpFolder(exp)
-  if (db_card != null) {
-      path = null
-      card.img = db_card.img;
-  }
-  await addCard(card, path);
+  if (db_card != null) path = null
+  await addCard(card, UPDATE_CARD, path);
+}
+
+export async function updateExpansionTCGP(exp: Expansion) {
+  let tcgpExp = findSetFromTCGP(exp.name)
+  if (tcgpExp == null) { logger.debug(`Could not find TCGP set for name: ${exp.name}`) }
+  exp.tcgName = JSON.stringify(tcgpExp)
+  upsertExpantion(exp, UPDATE_SET)
 }

@@ -33,18 +33,24 @@ import { describe, before, it } from 'mocha';
 import { URL } from 'url';
 import { Expansion } from '../src/CardMeta.js'
 import { Card } from '../src/Card.js'
-import { getExpNumber } from '../src/common.js'
+import { formatExpNumber,setUpLogger } from '../src/common.js'
 
 const TEST_DB = "./test-data.sql"
 
+before(()=> {
+    setUpLogger(true)
+})
+
 describe("Meta Tests", () => {
     it("should normalize Exp Num", () => {
-        expect(getExpNumber("TG40")).to.be.equal("TG40")
-        expect(getExpNumber("TG1")).to.be.equal("TG01")
-        expect(getExpNumber("1")).to.be.equal("001")
-        expect(getExpNumber("001")).to.be.equal("001")
-        expect(getExpNumber("011")).to.be.equal("011")
-        expect(getExpNumber("11")).to.be.equal("011")
+        expect(formatExpNumber("TG40")).to.be.equal("TG40")
+        expect(formatExpNumber("TG1")).to.be.equal("TG01")
+        expect(formatExpNumber("1")).to.be.equal("001")
+        expect(formatExpNumber("001")).to.be.equal("001")
+        expect(formatExpNumber("011")).to.be.equal("011")
+        expect(formatExpNumber("11")).to.be.equal("011")
+        expect(formatExpNumber("SM11")).to.be.equal("SM011")
+        expect(formatExpNumber("Evolving Skies1 / 225")).to.be.equal("001")
     })
 })
 
@@ -227,6 +233,10 @@ describe("SQL Tests", () => {
         expect(getPokemon("Inkay - 121/196").name).to.be.equal("Inkay")
         expect(getPokemon("Mr. Mime").name).to.be.equal("Mr. Mime")
         expect(getPokemon("Porygon-Z").name).to.be.equal("Porygon-Z")
+    })
+    it("should find the right exp", () => {
+        expect(expantionExistsInDB("SM Promos")).to.be.equal("Sun & Moon Promos")
+        expect(expantionExistsInDB("SWSH Promos")).to.be.equal("Sword & Shield Promos")
     })
 })
 

@@ -6,14 +6,17 @@ import { CategoryProvider, Category } from "typescript-logging-category-style";
 import { LogLevel } from 'typescript-logging';
 import { Card } from "./Card.js"
 import { getPokemon, upsertCard } from './database.js';
-import { logger } from './data-scrapper.js';
+
 
 let dryrun = false;
 let provider: CategoryProvider;
 
-function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
+export let logger: Category;
+
+export function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
 
 export async function downloadFile(url: string, path: string) {
+    if(dryrun) return;
     const res = await fetch(url);
     const fileStream = fs.createWriteStream(path);
     await new Promise((resolve, reject) => {
@@ -25,20 +28,23 @@ export async function downloadFile(url: string, path: string) {
             reject()
         }
     });
+    await delay(200)
 };
 
-export async function consoleHeader(msg: string, logger: Category) {
+export async function consoleHeader(msg: string) {
     logger.info(clc.blueBright.bold("----------------------------------------------"))
     logger.info(clc.blueBright.bold(msg))
     logger.info(clc.blueBright.bold("----------------------------------------------"))
 }
 
 export function setUpLogger(verbose: boolean) {
+    if (provider) return
     if (verbose) {
         provider = CategoryProvider.createProvider("Pokedata", { level: LogLevel.Debug });
     } else {
         provider = CategoryProvider.createProvider("Pokedata", { level: LogLevel.Info });
     }
+    logger = getLogger("data-scraper")
 }
 
 export function setDryrun() {
@@ -57,14 +63,21 @@ export function cardExpFolder(exp: Expansion): string {
  * @param number 
  * @returns 
  */
-export function getExpNumber(number: string) {
-    let regex = /([a-zA-Z]+)([0-9]+)/g
+export function formatExpNumber(number: string) {
+    let regex = /(TG)?([A-Z]+)?([0-9]+)\s?( \/)?\s?([0-9]+)?([A-Z]+)?/g
     let results = regex.exec(number)
-    if (results) return `${results[1]}${results[2].padStart(2, "0")}`
-    return number.padStart(3, "0")
+    if(results){
+        let tg = results[1];
+        let alpha = results[2];
+        let num = results[3]
+        if(tg) return `${tg}${num.padStart(2, "0")}`
+        if(alpha) return `${alpha}${num.padStart(3, "0")}`
+        return `${num.padStart(3, "0")}`
+    }
+    return ''
 }
 
-export function getId(set: string, name: string, number: string) {
+export function formatId(set: string, name: string, number: string) {
     let _set = set.trim().replaceAll(' ', '-').replaceAll(`/`, `-`)
     let _name = name
         .replaceAll(/\([a-zA-Z\s0-9]+\)/g, "")
@@ -72,7 +85,7 @@ export function getId(set: string, name: string, number: string) {
         .trim()
         .replaceAll(' ', '-')
         .replaceAll(`/`, `-`)
-    let _num = getExpNumber(number.trim())
+    let _num = formatExpNumber(number.trim())
     return `${_set}-${_name}-${_num}`
 }
 
@@ -99,13 +112,24 @@ export function getLogger(name: string): Category {
     return provider.getCategory(name);
 }
 
-export async function addCard(card: Card, downloadPath?: string) {
+export async function addCard(card: Card, update: string, downloadPath?: string) {
     if (downloadPath != null) {
         let file = `${downloadPath}/${card.cardId.replaceAll("/", "-")}.jpg`
         logger.debug(clc.blackBright(`Downloading picture to ${file}`))
         if (dryrun) await downloadFile(card.img, file)
         await delay(300)
     }
-    card.pokedex = getPokemon(card.name)
-    upsertCard(card)
+    let dex = getPokemon(card.name)
+    card.pokedex = dex == null ? null : dex.id
+    upsertCard(card, update)
+}
+
+export function normalizeSetName(name: string): string {
+    return name
+        .replace(/Pokemon|pokemon|Pokémon|pokémon/, "PKM")
+        .replace(/swsh-sword-and-shield/, "Sword & Shield")
+        .replace(/swsh|SWSH/, "Sword & Shield")
+        .replace(/sm|SM/, "Sun & Moon")
+        .replace(/hgss/, "HeartGold SoulSilver")
+        .replace(/and/, "&")
 }

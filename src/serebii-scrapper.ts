@@ -1,10 +1,24 @@
-import fetch from "node-fetch"
 import * as stringSimilarity from "string-similarity";
 import * as jsdom from 'jsdom'
+import fetch from "node-fetch"
+import clc from 'cli-color'
 import type { Card } from "./Card.js";
 import { Expansion } from "./CardMeta.js";
-import { getExpNumber, getId, addCard, cardExpFolder } from "./common.js";
-import { findCardComplex } from "./database.js";
+import { formatExpNumber, formatId, addCard, cardExpFolder, normalizeSetName, logger, downloadFile } from "./common.js";
+import { COUNT } from './data-scrapper.js'
+import { findCardComplex, getLatestSeries, expantionExistsInDB, upsertExpantion, getExpansion } from "./database.js";
+
+const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
+const UPDATE_CARD =
+    "UPDATE cards " +
+    "SET cardId = $cardId, " +
+    "idTCGP = $idTCGP, " +
+    "expIdTCGP = $expIdTCGP, " +
+    "cardType = $cardType, " +
+    "expCodeTCGP = $expCodeTCGP, " +
+    "img = $img, " +
+    "WHERE expCardNumber = $expCardNumber AND expName = $expName"
+
 
 export type SerebiiExpantion =
     {
@@ -64,10 +78,10 @@ export async function getSerebiiLastestPromoExpantions(num: number) {
  * @returns 
  */
 export async function getSerebiiExpantion(name: string): Promise<SerebiiExpantion> {
-    if (serebiiNormalSets.length <= 0) await getSerebiiLastestNormalExpantions(4);
-    if (serebiiPromoSets.length <= 0) await getSerebiiLastestPromoExpantions(5);
-    let set = serebiiNormalSets.find((set) => stringSimilarity.compareTwoStrings(set.name, name) > 0.7)
-    if (set == null) { return serebiiPromoSets.find((set) => stringSimilarity.compareTwoStrings(set.name, name) > 0.7) }
+    if (serebiiNormalSets.length <= 0) await getSerebiiLastestNormalExpantions(COUNT);
+    if (serebiiPromoSets.length <= 0) await getSerebiiLastestPromoExpantions(COUNT);
+    let set = serebiiNormalSets.find((set) => stringSimilarity.compareTwoStrings(normalizeSetName(set.name), normalizeSetName(name)) > 0.7)
+    if (set == null) { return serebiiPromoSets.find((set) => stringSimilarity.compareTwoStrings(normalizeSetName(set.name), normalizeSetName(name)) > 0.7) }
     return set;
 }
 
@@ -102,12 +116,12 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
         if (row.cells.length !== 4) continue
         let rawNum = row.cells[0].textContent;
         rawNum = rawNum.replace(set.name, "")
-        let cardNum = getExpNumber(rawNum.split("/")[0].trim());
+        let cardNum = formatExpNumber(rawNum);
         let rarity = parseRarity((row.cells[0].getElementsByTagName("img")[0] as HTMLImageElement))
         let img = `https://www.serebii.net${(row.cells[1].getElementsByTagName("img")[0] as HTMLImageElement).src}`.replace("/th", "")
         let name = row.cells[2].textContent.trim()
         let energy = parseEnergy(row.cells[3])
-        let id = getId(set.name, name, cardNum)
+        let id = formatId(set.name, name, cardNum)
         id = id.replaceAll(" ", "-")
         cards.push(
             {
@@ -146,11 +160,11 @@ export async function getSerebiiPokemon(): Promise<any[]> {
 export async function serebiiUpsertCard(card: Card, exp: Expansion) {
     let dbCard = findCardComplex(exp.name, card.expCardNumber)
     //Case where img was already downloaded
-    if (dbCard != null && dbCard.img === card.img) { await addCard(card); return }
+    if (dbCard != null && dbCard.img === card.img) { await addCard(card, UPDATE_CARD); return }
     //Case where img has not been downloaded 
-    if (dbCard != null) { dbCard.img = card.img; await addCard(dbCard, cardExpFolder(exp)); return }
+    if (dbCard != null) { dbCard.img = card.img; await addCard(dbCard, UPDATE_CARD, cardExpFolder(exp)); return }
     //Case where card is new
-    await addCard(card, cardExpFolder(exp))
+    await addCard(card, UPDATE_CARD, cardExpFolder(exp))
 }
 
 function parseRarity(img: HTMLImageElement): string {
@@ -178,3 +192,40 @@ function parseEnergy(cell: HTMLTableCellElement): string {
     if (raw.includes("colorless")) return "Colorless"
     return ""
 }
+
+/**
+ * Upsert a serebii set
+ * @param set 
+ * @returns 
+ */
+export async function serebiiUpsertSet(set: SerebiiExpantion): Promise<Expansion | undefined> {
+    logger.info(clc.green(`Processing Serebii Set: ${set.name}`))
+    let series = getLatestSeries();
+    let foundName = await expantionExistsInDB(set.name)
+    let exp: Expansion;
+    if (foundName) {
+        exp = getExpansion(foundName)
+        exp.numberOfCards = set.numberOfCards;
+        if (exp.logoURL !== set.logo || exp.symbolURL !== set.symbol) {
+            exp.logoURL = set.logo;
+            exp.symbolURL = set.symbol;
+            await downloadFile(set.logo, `./images/exp_logo/${exp.name.replace(" ", "-")}.png`)
+            await downloadFile(set.symbol, `./images/exp_symb/${exp.name.replace(" ", "-")}.png`)
+        }
+    } else {
+        exp = new Expansion(
+            normalizeSetName(set.name).replace("PKM", "Pokemon"),
+            series,
+            set.logo,
+            set.symbol
+        );
+        exp.numberOfCards = set.numberOfCards;
+        exp.releaseDate = "";
+        exp.tcgName = "";
+        await downloadFile(set.logo, `./images/exp_logo/${exp.name.replace(" ", "-")}.png`)
+        await downloadFile(set.symbol, `./images/exp_symb/${exp.name.replace(" ", "-")}.png`)
+    }
+    upsertExpantion(exp, UPDATE_SET)
+    return exp;
+}
+
