@@ -35,7 +35,20 @@ import { Expansion } from '../src/CardMeta.js'
 import { Card } from '../src/Card.js'
 import { formatExpNumber,setUpLogger } from '../src/common.js'
 
+const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
 const TEST_DB = "./test-data.sql"
+const UPDATE_CARD =
+  "UPDATE cards SET " +
+  "idTCGP = $idTCGP, " +
+  "expIdTCGP = $expIdTCGP, " +
+  "rarity = $rarity, " +
+  "cardType = $cardType, " +
+  "expCodeTCGP = $expCodeTCGP, " +
+  "releaseDate = $releaseDate, " +
+  "description = $description, " +
+  "variants = $variants " +
+  "WHERE expCardNumber = $expCardNumber AND expName = $expName"
+
 
 before(()=> {
     setUpLogger(true)
@@ -114,7 +127,7 @@ describe("Test TCGP api fetch", () => {
     it("should get tcgp card via name and set", async () => {
         let card = testCard();
         return tcgpCardSearch(card.name, card.expName)
-            .then((value) => expect(value.name, `returned value: ${JSON.stringify(value)}`).to.be.equal(card.name))
+            .then((value) => expect(value?.name, `returned value: ${JSON.stringify(value)}`).to.be.equal(card.name))
             .catch((e) => expect.fail(`Error  ${e.stack}`))
     })
 })
@@ -169,13 +182,13 @@ describe("SQL Tests", () => {
     })
     it("should insert Expansion and find it", () => {
         let exp = testSet()
-        upsertExpantion(exp);
+        upsertExpantion(exp, UPDATE_SET);
         expect(expantionExistsInDB(exp.name)).to.be.equal(true)
     })
     it("should update Expansion", () => {
         let exps = getLatestExpansions(5);
         exps[0].numberOfCards = 300
-        upsertExpantion(exps[0]);
+        upsertExpantion(exps[0], UPDATE_SET);
         exps = getLatestExpansions(5);
         expect(exps[0].numberOfCards).to.be.equal(300)
     })
@@ -203,13 +216,13 @@ describe("SQL Tests", () => {
             pokedex: 6,
             variants: ["Holofoil"]
         }
-        upsertCard(newCard)
+        upsertCard(newCard, UPDATE_CARD)
         expect(findCard(newCard.cardId).cardId).to.be.equal(newCard.cardId)
     })
     it("should update Card", () => {
         let oldCard = testCard()
         oldCard.variants = ["vmax"];
-        upsertCard(oldCard)
+        upsertCard(oldCard, UPDATE_CARD)
         expect(findCard(oldCard.cardId).variants).to.include("vmax")
     })
     it("should find card by tcgpId", () => {

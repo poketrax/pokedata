@@ -14,6 +14,7 @@ export class Card {
     public releaseDate?: string
     public description?: string 
     public variants?: string[]
+    public vairantMap?: Variant[]
     public img?: string;
     //collection vrs
     public tags?: string[]
@@ -22,7 +23,6 @@ export class Card {
     public count?: number
     public grade?: string
     
-
     constructor(cardId: string, idTCGP: number, name: string, expId: string, expName: string, expCardNumber: string, rarity: string) {
         this.cardId = cardId
         this.idTCGP = idTCGP
@@ -50,7 +50,12 @@ export class Card {
         copy.tags = tags;
         return copy;
     }
+}
 
+export type Variant = {
+    name: string,
+    img: string,
+    tcgp: number
 }
 
 export class Price {

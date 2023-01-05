@@ -111,6 +111,7 @@ export function upsertCard(card: Card, update: string) {
             logger.info(clc.magenta(`Updating : ${JSON.stringify(_card)}`))
         } catch (e) {
             logger.error(clc.red(`Failed to Update : ${JSON.stringify(_card)}`))
+            logger.error(clc.red(e.stack))
         }
     }
 }
@@ -150,8 +151,8 @@ export function findTcgpCard(tcgpId: number): Card | null {
  * @returns 
  */
 export function findCardComplex(setName: string, setNumber: string): Card | undefined {
-    let card = db.prepare(`SELECT * FROM cards WHERE expName == $setName AND expCardNumber == $setNumber`)
-        .get({ setName: setName, setNumber: setNumber })
+    let card = db.prepare(`SELECT * FROM cards WHERE expName = $setName AND (expCardNumber = $setNumber OR expCardNumber = $deNormSetNumber)`)
+        .get({ setName: setName, setNumber: setNumber, deNormSetNumber: setNumber.replaceAll("0","") })
     if (card == null) return null;
     let _card = {
         cardId: card.cardId,

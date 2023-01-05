@@ -30,7 +30,7 @@ const UPDATE_CARD =
   "expCodeTCGP = $expCodeTCGP, " +
   "releaseDate = $releaseDate, " +
   "description = $description, " +
-  "variants = $variants, "
+  "variants = $variants " +
   "WHERE expCardNumber = $expCardNumber AND expName = $expName"
 
 const tcgRequest = `{
@@ -80,6 +80,8 @@ const tcgRequest = `{
  */
 export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
+  logger.debug(`Pulling TCGP Set: ${set.name} tcgp: ${set.tcgName}`)
+  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]`) return cards
   let request = JSON.parse(tcgRequest);
   request.size = 300
   request.filters.term.setName = JSON.parse(set.tcgName);
@@ -139,7 +141,7 @@ async function convertCard(card: any, setName: string, setReleaseDate: string): 
  * @param name 
  * @returns 
  */
-async function findSetFromTCGP(name: string): Promise<string[]> {
+export async function findSetFromTCGP(name: string): Promise<string[]> {
   if (tcgpSets.length === 0) {
     await getTcgpExpsData();
   }
@@ -223,7 +225,7 @@ async function getCodes() {
  * @param set set name to add to card returned
  * @returns 
  */
-export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
+export async function tcgpCardSearch(name: string, set: string): Promise<Card | undefined> {
   let url = new URL(TCGP_API);
   url.searchParams.set("q", `${set} ${name}`)
   url.searchParams.set("isList", "false")
@@ -234,6 +236,7 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card> {
     body: tcgRequest
   });
   let data: any = await res.json().then()
+  if(data.results[0].results.length === 0 ) return null
   return await convertCard(data.results[0].results[0], set, "");
 }
 
@@ -249,6 +252,10 @@ export async function tcgpUpsertCard(card: Card, exp: Expansion) {
   await addCard(card, UPDATE_CARD, path);
 }
 
+/**
+ * Update expansion TCGP
+ * @param exp
+ */
 export async function updateExpansionTCGP(exp: Expansion) {
   let tcgpExp = findSetFromTCGP(exp.name)
   if (tcgpExp == null) { logger.debug(`Could not find TCGP set for name: ${exp.name}`) }

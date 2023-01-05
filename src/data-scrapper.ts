@@ -13,6 +13,8 @@ import {
     useTestDbFile,
     getHighestPokedexNumber,
     upsertPokemon,
+    expantionExistsInDB,
+    getExpansion,
 } from './database.js';
 import {
     getSerebiiLastestNormalExpantions,
@@ -39,12 +41,15 @@ run();
 
 async function run() {
     args = minimist(process.argv.slice(2), {
-        boolean: ['dryrun', 'fresh', 'verbose', 'cards', 'all'],
+        string: ["cards"],
+        boolean: ['dryrun', 'fresh', 'verbose'],
         alias: {
             d: 'dryrun',
             f: 'fresh',
             v: 'verbose',
-            c: 'cards'
+        },
+        default: {
+            cards: null
         }
     })
     setUpLogger(args.v);
@@ -54,35 +59,47 @@ async function run() {
         logger.info(clc.red.bold(`--------- Results at test-data.sql -----------`))
         logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
     }
+    // Update one exp's cards
+    if (args.cards) {
+        let expName = expantionExistsInDB(args.cards)
+        if (expName == null) { logger.error(`Could Not find set : ${args.cards}`); return }
+        let exp = getExpansion(expName);
+        updateCards([exp])
+        return
+    }
+    //update all
     let exps = await updateExpansions();
     await updatePokedex();
-    if (args.a || args.c) await updateCards(exps);
-    if (args.d) updateMetaFile()
+    await updateCards(exps);
+    if (args.d === false) updateMetaFile()
 }
 
 /**
  * Scrapes data from multiple sources to get set metadata 
  */
-export async function updateExpansions() : Promise<Expansion[]>{
+export async function updateExpansions(): Promise<Expansion[]> {
     let expansions = new Array<Expansion>()
     consoleHeader("Searching for new sets");
     let serebiiNewSets = await getSerebiiLastestNormalExpantions(COUNT);
     for (let set of serebiiNewSets) {
         let exp = await serebiiUpsertSet(set)
         await updateExpansionPmc(exp)
-        if(exp) expansions.push(exp)
+        if (exp) expansions.push(exp)
     }
     consoleHeader("Searching for new promo sets");
-    let serebiiPromoSets = await getSerebiiLastestPromoExpantions(COUNT);
+    let serebiiPromoSets = await getSerebiiLastestPromoExpantions(COUNT - 1);
     for (let set of serebiiPromoSets) {
         let exp = await serebiiUpsertSet(set)
         await updateExpansionPmc(exp)
-        if(exp) expansions.push(exp)
+        if (exp) expansions.push(exp)
     }
     return expansions;
 }
 
-
+/**
+ * Update cards
+ * @param exps 
+ */
 async function updateCards(exps: Expansion[]) {
     consoleHeader("Updating Cards")
     for (let exp of exps) {
@@ -95,6 +112,7 @@ async function updateCards(exps: Expansion[]) {
             await serebiiUpsertCard(card, exp)
             if (tcgpCards.length === 0) {
                 let tcgpCard = await tcgpCardSearch(card.name, exp.name)
+                if (tcgpCard == null) continue
                 tcgpCard.img = card.img
                 if (tcgpCard) await tcgpUpsertCard(tcgpCard, exp)
             }

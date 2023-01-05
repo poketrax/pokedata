@@ -12,11 +12,7 @@ const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoUR
 const UPDATE_CARD =
     "UPDATE cards " +
     "SET cardId = $cardId, " +
-    "idTCGP = $idTCGP, " +
-    "expIdTCGP = $expIdTCGP, " +
-    "cardType = $cardType, " +
-    "expCodeTCGP = $expCodeTCGP, " +
-    "img = $img, " +
+    "img = $img " +
     "WHERE expCardNumber = $expCardNumber AND expName = $expName"
 
 
@@ -115,7 +111,8 @@ export async function getSerebiiSetCards(setUrl: string, set: Expansion): Promis
         let row = rows[i];
         if (row.cells.length !== 4) continue
         let rawNum = row.cells[0].textContent;
-        rawNum = rawNum.replace(set.name, "")
+        let rawSet = row.cells[0].getElementsByTagName("a")[0].text
+        if(rawSet) rawNum = rawNum.replace(rawSet, "")
         let cardNum = formatExpNumber(rawNum);
         let rarity = parseRarity((row.cells[0].getElementsByTagName("img")[0] as HTMLImageElement))
         let img = `https://www.serebii.net${(row.cells[1].getElementsByTagName("img")[0] as HTMLImageElement).src}`.replace("/th", "")
