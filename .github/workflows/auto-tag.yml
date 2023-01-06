@@ -1,0 +1,20 @@
+# This will look at the package.json and if the version is bumped it will create a tag
+name: Auto-Tag
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.JPG_ACTION_TOKEN }}"
+ 
+
+      
