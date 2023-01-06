@@ -1,3 +1,4 @@
+#This incrememnets the version to trigger an the release action every tuesday and friday
 on:
   schedule:
     - cron: 0 0 * * 2,5
@@ -16,10 +17,6 @@ jobs:
         run: |
           git config --local user.email "poketrax@gmail.com"
           git config --local user.name "github-actions[bot]"
-      - name: Build scripts
-        run: npm run build
-      - name: Pull Sets
-        run: node ./dist/data-scrapper.js
       - name: Increment version
         run: npm version patch
       - name: Push changes
