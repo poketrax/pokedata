@@ -24,7 +24,6 @@ export type SerebiiExpantion =
         symbol: string,
         numberOfCards: number
     }
-
 export let serebiiNormalSets = new Array<SerebiiExpantion>();
 export let serebiiPromoSets = new Array<SerebiiExpantion>();
 

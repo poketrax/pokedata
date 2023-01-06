@@ -5,25 +5,39 @@ jobs:
   auto:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 16
-    - name: setConfig files
-      run: |
-        git config --local user.email "poketrax@gmail.com"
-        git config --local user.name "github-actions[bot]"
-    - name: build scripts
-      run: npm run build
-    - name: Pull Sets
-      run: node ./dist/data-scrapper.js
-    - name: increment version
-      run: npm version patch
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.JPG_ACTION_TOKEN }}
-        branch: ${{ github.ref }}
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - name: setConfig files
+        run: |
+          git config --local user.email "poketrax@gmail.com"
+          git config --local user.name "github-actions[bot]"
+      - name: Build scripts
+        run: npm run build
+      - name: Pull Sets
+        run: node ./dist/data-scrapper.js
+      - name: Increment version
+        run: npm version patch
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.JPG_ACTION_TOKEN }}
+          branch: ${{ github.ref }}
+      - name: Get latest tag number
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+      - name: Bump Version
+        uses: actions-ecosystem/action-bump-semver@v1
+        id: bump-semver
+        with:
+          current_version: ${{ steps.get-latest-tag.outputs.tag }}
+          level: minor
+      - name: Create tag
+        uses: actions-ecosystem/action-push-tag@v1
+        with:
+          tag: ${{ steps.bump-semver.outputs.new_version }}
+          message: "${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}"
