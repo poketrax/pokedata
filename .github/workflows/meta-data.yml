@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: 0 0 * * MON,WED,FRI
+    - cron: 0 0 * * 2,5
 jobs:
   auto:
     runs-on: ubuntu-latest
