@@ -1,28 +1,43 @@
 import Database from 'better-sqlite3'
-import type { Card } from './Card.js'
-import type { Expansion } from './CardMeta.js'
+import type { Card, Price } from './model/Card.js'
+import { Expansion } from './model/CardMeta.js'
 import * as stringSimilarity from 'string-similarity'
+import { normalizeSetName, logger } from './common.js'
+import { PRICE_LIMIT } from './price-scrapper.js'
 import * as fs from 'fs'
 import clc from 'cli-color'
-import { normalizeSetName, logger } from './common.js'
 
 export const DB_FILE = './databases/data.sqlite';
-export const TEST_FILE = 'test-data.sql';
+export const TEST_FILE = 'test-data.sqlite';
+
+export const PRICE_DB_FILE = './databases/prices.sqlite'
+export const PRICE_TEST_FILE = 'test-prices.sqlite'
 
 const SEARCH_SET = "SELECT * FROM expansions WHERE name like ?";
-const ADD_SET = "INSERT INTO expansions (name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
+const ADD_SET = "INSERT INTO expansions " +
+    "(name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
     "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate)";
-const ADD_CARD = "INSERT INTO cards (cardId, idTCGP, name, expIdTCGP, expCodeTCGP, expName, expCardNumber, rarity, img, price, description, releaseDate, energyType, cardType, variants) " +
+const ADD_CARD = "INSERT INTO cards " +
+    "(cardId, idTCGP, name, expIdTCGP, expCodeTCGP, expName, expCardNumber, rarity, img, price, description, releaseDate, energyType, cardType, variants) " +
     "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants);"
+const ADD_PRICE = "INSERT INTO prices " +
+    "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
+    "VALUES ($date, $cardId, $variant, $rawPrice, $gradedPriceTen, $gradedPriceNine)"
 
 let db = new Database(DB_FILE)
+let pricedb = new Database(PRICE_DB_FILE)
 
 export function useTestDbFile(del?: boolean) {
     if (fs.existsSync(TEST_FILE) && del) {
         fs.rmSync(TEST_FILE);
         fs.copyFileSync(DB_FILE, TEST_FILE);
     }
+    if (fs.existsSync(PRICE_TEST_FILE) && del) {
+        fs.rmSync(PRICE_TEST_FILE);
+        fs.copyFileSync(PRICE_DB_FILE, PRICE_TEST_FILE);
+    }
     db = new Database(TEST_FILE)
+    pricedb = new Database(PRICE_TEST_FILE)
 }
 
 /**
@@ -31,9 +46,8 @@ export function useTestDbFile(del?: boolean) {
  * @returns 
  */
 export function getExpansion(name: string): Expansion {
-    return db.prepare(`SELECT * FROM expansions WHERE name = $name`).get({name: name});
+    return db.prepare(`SELECT * FROM expansions WHERE name = $name`).get({ name: name });
 }
-
 
 /**
  * Get the latest (num) of expansions
@@ -152,7 +166,7 @@ export function findTcgpCard(tcgpId: number): Card | null {
  */
 export function findCardComplex(setName: string, setNumber: string): Card | undefined {
     let card = db.prepare(`SELECT * FROM cards WHERE expName = $setName AND (expCardNumber = $setNumber OR expCardNumber = $deNormSetNumber)`)
-        .get({ setName: setName, setNumber: setNumber, deNormSetNumber: setNumber.replaceAll("0","") })
+        .get({ setName: setName, setNumber: setNumber, deNormSetNumber: setNumber.replaceAll("0", "") })
     if (card == null) return null;
     let _card = {
         cardId: card.cardId,
@@ -219,11 +233,11 @@ export function expantionExistsInDB(name: string): string | undefined {
             let confidence: number = stringSimilarity.compareTwoStrings(normalizeSetName(exp.name), normalizeSetName(name))
             if (confidence > 0.6) {
                 logger.info(`Expantion ${name} already found with ${(confidence * 100).toFixed(0)}% confidence: ${exp.name}`)
-                matches.push( {name: exp.name, conf: confidence})
+                matches.push({ name: exp.name, conf: confidence })
             }
         }
-        matches.sort((a,b) => b.conf - a.conf)
-        if(matches.length != 0) return matches[0].name;
+        matches.sort((a, b) => b.conf - a.conf)
+        if (matches.length != 0) return matches[0].name;
     }
     return results == null ? null : results.name;
 }
@@ -249,6 +263,8 @@ export function upsertPokemon(name: string, id: number) {
 export function getPokemon(name: string) {
     let _name = name
         .replaceAll(/VMAX|VSTAR| - |Origin Forme|Radiant|Hisuian|Alolan|Paldean|Galarian/g, "")
+        .trim()
+        .replaceAll(" V", "")
         .replaceAll(/\([a-zA-Z\s0-9]+\)/g, "")
         .replaceAll(/[0-9]+\/[0-9]+/g, "")
         .trim()
@@ -262,4 +278,66 @@ export function getPokemon(name: string) {
  */
 export function getHighestPokedexNumber(): number {
     return db.prepare("SELECT id FROM pokedex ORDER BY id DESC LIMIT 1").get().id
+}
+
+/**
+ * Get Latest Price from a card
+ * @param cardId 
+ * @returns 
+ */
+export function getLatestPrice(cardId: string) {
+    return pricedb.prepare("SELECT * FROM prices WHERE cardId = $cardId ORDER BY date(date)").get({ cardId: cardId })
+}
+
+/**
+ * Upsert Price
+ * @param price 
+ */
+export function upsertPrice(price: Price) {
+    pricedb.prepare(ADD_PRICE).run(price)
+}
+
+/**
+ * Get cards between these to dates 
+ * @param start start time exclusive
+ * @param end end time exclusive 
+ * @param rare only pull rare cards
+ * @returns 
+ */
+export function getCardsByDate(start: Date, end: Date, rare: boolean): Array<Card> {
+    let query = `SELECT * FROM cards ` +
+        `WHERE date(releaseDate) > date($start) AND date(releaseDate) < date($end)`
+    if (rare) query = query + ` AND rarity NOT IN ('Common', 'Uncommon')`
+    return db.prepare(query).all({ start: start.toISOString(), end: end.toISOString() })
+}
+
+/**
+ * Complex query for prices
+ * @param relStart Start of range for release date of card
+ * @param relEnd End of range for release date of card
+ * @param priceFilter Filters out and results after this date
+ * @param rare Only rare cards
+ * @returns 
+ */
+export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date, rare?: boolean): any[] {
+    let sqlAttach = `ATTACH DATABASE '${DB_FILE}' AS cardDB;`
+    let query =
+        `SELECT * FROM (
+            SELECT max(date) as date, prices.cardId, idTCGP, name, expIdTCGP, expName, expCardNumber, rarity, releaseDate FROM prices
+            INNER JOIN cardDB.cards ON prices.cardId = cards.cardId
+            WHERE date(cards.releaseDate) > date($relStart) 
+            AND date(cards.releaseDate) < date($relEnd) `
+    if (rare) query += `AND rarity NOT IN ('Common', 'Uncommon') `
+    query += `GROUP BY prices.cardId ) `
+    query += 'WHERE date(date) < date($priceFilter) '
+    query += `LIMIT ${PRICE_LIMIT}`
+    logger.debug(`SQL prices complex statement :\n${query}`)
+    pricedb.prepare(sqlAttach).run();
+    return pricedb.prepare(query).get(
+        {
+            relStart: relStart.toISOString(),
+            relEnd: relEnd.toISOString(),
+            priceFilter: priceFilter.toISOString()
+        }
+    )
 }

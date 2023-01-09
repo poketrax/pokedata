@@ -2,11 +2,11 @@ import * as stringSimilarity from "string-similarity";
 import * as jsdom from 'jsdom'
 import fetch from "node-fetch"
 import clc from 'cli-color'
-import type { Card } from "./Card.js";
-import { Expansion } from "./CardMeta.js";
-import { formatExpNumber, formatId, addCard, cardExpFolder, normalizeSetName, logger, downloadFile } from "./common.js";
-import { COUNT } from './data-scrapper.js'
-import { findCardComplex, getLatestSeries, expantionExistsInDB, upsertExpantion, getExpansion } from "./database.js";
+import type { Card } from "../model/Card.js";
+import { Expansion } from "../model/CardMeta.js";
+import { formatExpNumber, formatId, addCard, cardExpFolder, normalizeSetName, logger, downloadFile } from "../common.js";
+import { COUNT } from '../data-scrapper.js'
+import { findCardComplex, getLatestSeries, expantionExistsInDB, upsertExpantion, getExpansion } from "../database.js";
 
 const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
 const UPDATE_CARD =

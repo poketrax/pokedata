@@ -1,9 +1,9 @@
 import * as stringSimilarity from "string-similarity";
 import fetch from 'node-fetch'
-import { Card } from './Card.js'
-import { Expansion } from "./CardMeta.js";
-import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger } from "./common.js";
-import { findCardComplex, upsertExpantion } from "./database.js";
+import { Card } from '../model/Card.js'
+import { Expansion } from "../model/CardMeta.js";
+import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger } from "../common.js";
+import { findCardComplex, upsertExpantion } from "../database.js";
 
 export type TcgpSet = {
   urlVal: string,

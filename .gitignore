@@ -2,6 +2,7 @@ node_modules
 dist
 .nyc_output
 coverage
-test-data.sql
+test-data.sqlite
+test-prices.sqlite
 test.json
 dryrun**.json

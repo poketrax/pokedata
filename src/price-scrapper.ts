@@ -1,46 +1,84 @@
-import * as jsdom from 'jsdom'
-import fetch from 'node-fetch'
 
-const ebayUrl = "https://www.ebay.com/sch/i.html"
-const raw = "-PSA -BGS -CGC"
-const grade10 = "(PSA 10,BGS 10,CGC 10)"
-const grade9 = "(PSA 9,BGS 9,CGC 9)"
-const LH_BIN = "1"
-const _SOP = "15"
+import minimist, { ParsedArgs } from 'minimist'
+import * as cliProgress from 'cli-progress';
+import { consoleHeader, logger, setDryrun, setUpLogger, dejoinCard } from './common.js';
+import { upsertPrice, useTestDbFile, getPricesComplex } from './database.js';
+import clc from 'cli-color'
+import { scrapeEbay } from './scrappers/ebay-scrapper.js';
+import { Price } from './model/Card.js';
 
-export async function scrapeEbay(card, type) : Promise<number | undefined> {
-    let url = new URL(ebayUrl)
-    switch (type) {
-        case 'raw':
-            url.searchParams.set("kw", `${card.name} ${card.expCardNumber} ${raw} -Digital -Online`)
-            break
-        case 'grade9':
-            url.searchParams.set("kw", `${card.name} ${card.expCardNumber} ${grade9} -Digital -Online`)
-            break
-        case 'grade10':
-            url.searchParams.set("kw", `${card.name} ${card.expCardNumber} ${grade10} -Digital -Online`)
-            break
-    }
-    url.searchParams.set("LH_BIN", LH_BIN)
-    url.searchParams.set("_SOP", _SOP)
+//Cards with a release date between now and RECENT_HIGH_RES_PERIOD days ago will be pulled weekly
+const RECENT_HIGH_RES_REL_PERIOD = 3 * 360
+const RECENT_HIGH_RES_PRICE_PERIOD = 7
+//Cards with a release date between LEGAVY_MED_RES_PERIOD and the begining of time will be pulled quarterly
+const LEGAVY_MED_RES_PERIOD = 15 * 360
 
-    let prices = [];
-    let resp = await fetch(url.toString());
-    let data = await resp.text()
-    const { window } = new jsdom.JSDOM(data)
-    const listings = window.document.getElementsByClassName("s-item__info");
-    for (let listing of listings) {
-        let raw_str = listing.getElementsByClassName("s-item__price")[0].innerHTML.replace("$", "");
-        let price = parseFloat(raw_str)
-        if (isNaN(price) === false) {
-            prices.push(price)
+export const PRICE_LIMIT = 300
+let args: ParsedArgs;
+run();
+
+export async function run() {
+    args = minimist(process.argv.slice(2), {
+        boolean: ['dryrun', 'fresh', 'verbose', 'recent', 'legacy', 'all'],
+        alias: {
+            d: 'dryrun',
+            f: 'fresh',
+            v: 'verbose',
+            r: 'recent',
+            l: 'legacy',
+            a: 'all'
+        },
+        default: {
+            set: null
         }
+    })
+    setUpLogger(args.v)
+    if (args.d === true) {
+        useTestDbFile(args.f)
+        logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
+        logger.info(clc.red.bold(`--------- Results at test-data.sql -----------`))
+        logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
+        setDryrun()
     }
-    prices.splice(0,1);
-    prices.sort((a,b) => a - b);
-    let midpoint = Math.floor(prices.length / 2);
-    if(prices.length > 0){
-        return prices[midpoint];
+    if (args.r) await getRecentHighResPrices()
+}
+
+/**
+ * Function finds cards whos
+ *    - Release date is between now and RECENT_HIGH_RES_REL_PERIOD
+ *    - Doesn't have a price 
+ */
+async function getRecentHighResPrices() {
+    const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+    consoleHeader("Pulling Recent Rare Cards")
+    let relStart = new Date();
+    relStart.setDate(relStart.getDate() - RECENT_HIGH_RES_REL_PERIOD)
+    let priceStart = new Date();
+    priceStart.setDate(priceStart.getDate() - RECENT_HIGH_RES_PRICE_PERIOD);
+    let end = new Date();
+
+    let complexRows = getPricesComplex(priceStart, end, relStart, end, true)
+    logger.info(clc.green(`Get Recent Rare Cards pulling high res pricing: ${complexRows.length} prices`))
+    let date = new Date()
+    bar.start(complexRows.length, 0)
+    let index = 0
+    for (let complexRow of complexRows) {
+        let card = dejoinCard(complexRow)
+        let raw = await scrapeEbay(card, 'raw')
+        let grade9 = await scrapeEbay(card, 'grade9')
+        let grade10 = await scrapeEbay(card, 'grade10')
+        let variant = card.variants?.length === 1 ? card.variants[0] : ""
+        let price: Price =
+        {
+            date: date.toISOString(),
+            cardId: card.cardId,
+            variant: variant,
+            rawPrice: raw,
+            gradedPriceNine: grade9,
+            gradedPriceTen: grade10
+        };
+        upsertPrice(price)
+        index++
+        bar.update(index)
     }
-    return null;
 }

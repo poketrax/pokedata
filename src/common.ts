@@ -1,14 +1,13 @@
 import clc from 'cli-color'
 import * as fs from 'fs'
 import fetch from 'node-fetch'
-import { Expansion } from './CardMeta.js';
+import { Expansion } from './model/CardMeta.js';
 import { CategoryProvider, Category } from "typescript-logging-category-style";
 import { LogLevel } from 'typescript-logging';
-import { Card } from "./Card.js"
+import { Card, Price } from "./model/Card.js"
 import { getPokemon, upsertCard } from './database.js';
 
-
-let dryrun = false;
+export let dryrun = false;
 let provider: CategoryProvider;
 
 export let logger: Category;
@@ -16,7 +15,7 @@ export let logger: Category;
 export function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
 
 export async function downloadFile(url: string, path: string) {
-    if(dryrun) return;
+    if (dryrun) return;
     const res = await fetch(url);
     const fileStream = fs.createWriteStream(path);
     await new Promise((resolve, reject) => {
@@ -66,12 +65,12 @@ export function cardExpFolder(exp: Expansion): string {
 export function formatExpNumber(number: string) {
     let regex = /(TG)?([A-Z]+)?([0-9]+)\s?( \/)?\s?([0-9]+)?([A-Z]+)?/g
     let results = regex.exec(number)
-    if(results){
+    if (results) {
         let tg = results[1];
         let alpha = results[2];
         let num = results[3]
-        if(tg) return `${tg}${num.padStart(2, "0")}`
-        if(alpha) return `${alpha}${num.padStart(3, "0")}`
+        if (tg) return `${tg}${num.padStart(2, "0")}`
+        if (alpha) return `${alpha}${num.padStart(3, "0")}`
         return `${num.padStart(3, "0")}`
     }
     return ''
@@ -132,4 +131,38 @@ export function normalizeSetName(name: string): string {
         .replace(/sm|SM/, "Sun & Moon")
         .replace(/hgss/, "HeartGold SoulSilver")
         .replace(/and/, "&")
+}
+
+/**
+ * Dejoin a record from sql join 
+ * @param complex joined sql record
+ * @returns 
+ */
+export function dejoinCard(complex: any): Card {
+    return {
+        cardId: complex.cardId,
+        name: complex.name,
+        idTCGP: complex.idTCGP,
+        expIdTCGP: complex.expIdTCGP,
+        expName: complex.expName,
+        expCardNumber: complex.expCardNumber,
+        rarity: complex.rarity,
+        releaseDate: complex.releaseDate
+    }
+}
+
+/**
+ * Dejoin a record from sql join
+ * @param complex joined sql record
+ * @returns 
+ */
+export function dejoinPrice(complex: any): Price {
+    return {
+        date: complex.date,
+        cardId: complex.cardId,
+        variant: complex.variant,
+        rawPrice: complex.rawPrice,
+        gradedPriceNine: complex.gradedPriceNine,
+        gradedPriceTen: complex.gradedPriceTen
+    }
 }

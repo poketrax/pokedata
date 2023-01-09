@@ -1,9 +1,9 @@
 import * as jsdom from 'jsdom'
 import * as stringSimilarity from "string-similarity";
-import { expantionExistsInDB, getLatestSeries, upsertExpantion } from "./database.js"
-import { downloadFile, normalizeSetName, logger } from './common.js';
+import { expantionExistsInDB, getLatestSeries, upsertExpantion } from "../database.js"
+import { downloadFile, normalizeSetName, logger } from '../common.js';
 import fetch from 'node-fetch';
-import { Expansion } from './CardMeta.js';
+import { Expansion } from '../model/CardMeta.js';
 
 const PMC_MARKETING_URL = "https://press.pokemon.com/en/Items/Schedule/Pokemon-Trading-Card-Game?types=3"
 const PMC_CARD_DB_BASE_URL = "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/"

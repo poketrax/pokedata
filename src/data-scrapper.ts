@@ -1,13 +1,14 @@
 import * as fs from 'fs'
 import clc from 'cli-color'
 import minimist from 'minimist'
-import { Expansion } from "./CardMeta.js"
-import { updateExpansionPmc } from './pmc-scrapper.js'
-import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard } from './tcgp-scrapper.js'
+import { Expansion } from "./model/CardMeta.js"
+import { updateExpansionPmc } from './scrappers/pmc-scrapper.js'
+import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard } from './scrappers/tcgp-scrapper.js'
 import {
     consoleHeader,
     setUpLogger,
-    logger
+    logger,
+    setDryrun
 } from "./common.js"
 import {
     useTestDbFile,
@@ -24,7 +25,7 @@ import {
     serebiiUpsertCard,
     serebiiUpsertSet,
     getSerebiiLastestPromoExpantions
-} from './serebii-scrapper.js'
+} from './scrappers/serebii-scrapper.js'
 
 type MetaData = {
     data: number,
@@ -58,6 +59,7 @@ async function run() {
         logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
         logger.info(clc.red.bold(`--------- Results at test-data.sql -----------`))
         logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
+        setDryrun()
     }
     // Update one exp's cards
     if (args.cards) {

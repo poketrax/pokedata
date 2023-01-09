@@ -12,7 +12,7 @@ export class Card {
     public price?: number
     public pokedex?: number
     public releaseDate?: string
-    public description?: string 
+    public description?: string
     public variants?: string[]
     public vairantMap?: Variant[]
     public img?: string;
@@ -22,7 +22,7 @@ export class Card {
     public paid?: number
     public count?: number
     public grade?: string
-    
+
     constructor(cardId: string, idTCGP: number, name: string, expId: string, expName: string, expCardNumber: string, rarity: string) {
         this.cardId = cardId
         this.idTCGP = idTCGP
@@ -58,25 +58,18 @@ export type Variant = {
     tcgp: number
 }
 
-export class Price {
-    public date: number
-    public cardId: string
-    public variant: string
-    public rawPrice: number
-    public gradedPriceTen: number
-    public gradedPriceNine: number
-
-    constructor(date: number, cardId: string, variant: string) {
-        this.date = date
-        this.cardId = cardId
-        this.variant = variant
-    }
+export type Price = {
+    date: string
+    cardId: string
+    variant: string
+    rawPrice: number
+    gradedPriceTen: number
+    gradedPriceNine: number
 }
 
 export class LinkRequest {
     public type: string
     public card: Card
-
     constructor(type: string, card: Card) {
         this.card = card
         this.type = type

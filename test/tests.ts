@@ -1,10 +1,9 @@
 import {
     getLogoUrl,
-    getSerebiiExpantion,
     getSerebiiLastestNormalExpantions,
     getSerebiiPokemon,
     getSerebiiSetCards
-} from '../src/serebii-scrapper.js'
+} from '../src/scrappers/serebii-scrapper.js'
 import {
     DB_FILE,
     getLatestExpansions,
@@ -18,6 +17,7 @@ import {
     upsertPokemon,
     getPokemon,
     useTestDbFile,
+    getCardsByDate,
 } from "../src/database.js"
 import {
     findSetFromTCGP,
@@ -25,14 +25,14 @@ import {
     pullVariants,
     pullTcgpSetCards,
     tcgpCardSearch
-} from "../src/tcgp-scrapper.js"
-import { scrapeEbay } from '../src/price-scrapper.js'
+} from "../src/scrappers/tcgp-scrapper.js"
+import { scrapeEbay } from '../src/scrappers/ebay-scrapper.js'
 import * as fs from "fs"
 import { expect } from 'chai';
 import { describe, before, it } from 'mocha';
 import { URL } from 'url';
-import { Expansion } from '../src/CardMeta.js'
-import { Card } from '../src/Card.js'
+import { Expansion } from '../src/model/CardMeta.js'
+import { Card } from '../src/model/Card.js'
 import { formatExpNumber,setUpLogger } from '../src/common.js'
 
 const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
@@ -183,7 +183,7 @@ describe("SQL Tests", () => {
     it("should insert Expansion and find it", () => {
         let exp = testSet()
         upsertExpantion(exp, UPDATE_SET);
-        expect(expantionExistsInDB(exp.name)).to.be.equal(true)
+        expect(expantionExistsInDB(exp.name)).to.be.equal("test-1")
     })
     it("should update Expansion", () => {
         let exps = getLatestExpansions(5);
@@ -193,29 +193,7 @@ describe("SQL Tests", () => {
         expect(exps[0].numberOfCards).to.be.equal(300)
     })
     it("should insert Card", () => {
-        let newCard = {
-            cardId: "test-card",
-            collection: "Buy List",
-            variant: "Holofoil",
-            paid: 0,
-            count: 1,
-            grade: "",
-            idTCGP: 263872,
-            name: "Test Card",
-            expIdTCGP: "SWSH09 Brilliant Stars",
-            expName: "Brilliant Stars",
-            expCardNumber: "153",
-            expCodeTCGP: "SWSH09",
-            rarity: "Ultra Rare",
-            img: "https://product-images.tcgplayer.com/fit-in/437x437/263872.jpg",
-            price: 37.46,
-            description: "",
-            releaseDate: "2022-02-25T00:00:00Z",
-            energyType: "Fire",
-            cardType: "Pokemon",
-            pokedex: 6,
-            variants: ["Holofoil"]
-        }
+        let newCard = testCard()
         upsertCard(newCard, UPDATE_CARD)
         expect(findCard(newCard.cardId).cardId).to.be.equal(newCard.cardId)
     })
@@ -251,6 +229,14 @@ describe("SQL Tests", () => {
         expect(expantionExistsInDB("SM Promos")).to.be.equal("Sun & Moon Promos")
         expect(expantionExistsInDB("SWSH Promos")).to.be.equal("Sword & Shield Promos")
     })
+    it("should get cards via date", () => {
+        let start = new Date("2022-11-1")
+        let end = new Date("2022-11-30")
+        let cards = getCardsByDate(start, end, false)
+        let rares = getCardsByDate(start, end, true)
+        expect(cards.length, JSON.stringify(cards[0])).to.be.equal(246)
+        expect(rares.length, JSON.stringify(cards[0])).to.be.equal(137)
+    })
 })
 
 function testSet(): Expansion {
@@ -279,16 +265,16 @@ function testSetReal(): Expansion {
 
 function testCard(): Card {
     return {
-        cardId: "SWSH09-Brilliant-Stars-Charizard-V-(Full-Art)-153",
+        cardId: "Test-Card-1",
         variant: "Holofoil",
         paid: 0,
         count: 1,
         grade: "",
-        idTCGP: 263872,
+        idTCGP: 9999999999,
         name: "Charizard V (Full Art)",
         expIdTCGP: "SWSH09 Brilliant Stars",
         expName: "Brilliant Stars",
-        expCardNumber: "153",
+        expCardNumber: "1500",
         expCodeTCGP: "SWSH09",
         rarity: "Ultra Rare",
         img: "https://product-images.tcgplayer.com/fit-in/437x437/263872.jpg",

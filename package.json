@@ -29,6 +29,7 @@
     "@types/node": "^18.11.13",
     "better-sqlite3": "^7.6.2",
     "cli-color": "^2.0.3",
+    "cli-progress": "^3.11.2",
     "jsdom": "^20.0.2",
     "minimist": "^1.2.7",
     "node-fetch": "^3.3.0",
