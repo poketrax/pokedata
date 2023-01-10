@@ -2,7 +2,7 @@ import Database from 'better-sqlite3'
 import type { Card, Price } from './model/Card.js'
 import { Expansion } from './model/CardMeta.js'
 import * as stringSimilarity from 'string-similarity'
-import { normalizeSetName, logger } from './common.js'
+import { normalizeSetName, logger, cardExpFolder } from './common.js'
 import { PRICE_LIMIT } from './price-scrapper.js'
 import * as fs from 'fs'
 import clc from 'cli-color'
@@ -43,10 +43,20 @@ export function useTestDbFile(del?: boolean) {
 }
 
 function resetCardDB(){
+    db.close()
     if(dryrun){
         db = new Database(TEST_FILE)
     }else{
         db = new Database(DB_FILE)
+    }
+}
+
+function resetPricesDB(){
+    pricedb.close()
+    if(dryrun){
+        pricedb = new Database(PRICE_TEST_FILE)
+    }else{
+        pricedb = new Database(PRICE_DB_FILE)
     }
 }
 
@@ -365,5 +375,6 @@ export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date
         }
     )
     resetCardDB();
+    resetPricesDB();
     return results
 }
