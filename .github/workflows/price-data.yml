@@ -25,11 +25,6 @@ jobs:
           npm install
           npm run build
           node ./dist/price-scrapper.js -a -l -h
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.JPG_ACTION_TOKEN }}
-          branch: ${{ github.ref }}
       - name: Get latest tag number
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
@@ -38,9 +33,9 @@ jobs:
         id: bump-semver
         with:
           current_version: ${{ steps.get-latest-tag.outputs.tag }}
-          level: minor
-      - name: Create tag
-        uses: actions-ecosystem/action-push-tag@v1
+          level: patch
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          tag: ${{ steps.bump-semver.outputs.new_version }}
-          message: "${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}"
+          github_token: ${{ secrets.JPG_ACTION_TOKEN }}
+          branch: ${{ github.ref }}
