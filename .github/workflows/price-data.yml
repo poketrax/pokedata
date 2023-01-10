@@ -22,7 +22,8 @@ jobs:
         run: npm version patch
       - name: Pull data
         run: |
-            node ./dist/price-scrapper.js -a -l -h
+          npm run build
+          node ./dist/price-scrapper.js -a -l -h
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
