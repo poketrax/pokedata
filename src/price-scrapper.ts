@@ -99,6 +99,8 @@ async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: 
         bar.update(index)
     }
     updated = true;
+    bar.stop()
+    return;
 }
 
 async function pullAll() {
@@ -131,6 +133,8 @@ async function pullAll() {
         index++
         bar.update(index)
     }
+    bar.stop()
+    return;
 }
 
 export function updateMetaFile() {

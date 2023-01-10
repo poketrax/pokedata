@@ -24,10 +24,12 @@ const ADD_PRICE = "INSERT INTO prices " +
     "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
     "VALUES ($date, $cardId, $variant, $rawPrice, $gradedPriceTen, $gradedPriceNine)"
 
+let dryrun = false
 let db = new Database(DB_FILE)
 let pricedb = new Database(PRICE_DB_FILE)
 
 export function useTestDbFile(del?: boolean) {
+    dryrun = true;
     if (fs.existsSync(TEST_FILE) && del) {
         fs.rmSync(TEST_FILE);
         fs.copyFileSync(DB_FILE, TEST_FILE);
@@ -38,6 +40,14 @@ export function useTestDbFile(del?: boolean) {
     }
     db = new Database(TEST_FILE)
     pricedb = new Database(PRICE_TEST_FILE)
+}
+
+function resetCardDB(){
+    if(dryrun){
+        db = new Database(TEST_FILE)
+    }else{
+        db = new Database(DB_FILE)
+    }
 }
 
 /**
@@ -331,6 +341,7 @@ export function getPrice(cardId: string): Price {
  * @returns 
  */
 export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date, rare?: boolean): any[] {
+    db.close();
     let sqlAttach = `ATTACH DATABASE '${DB_FILE}' AS cardDB;`
     let query =
         `SELECT * FROM (
@@ -346,11 +357,13 @@ export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date
     query += `LIMIT ${PRICE_LIMIT}`
     logger.debug(`SQL prices complex statement :\n${query}`)
     pricedb.prepare(sqlAttach).run();
-    return pricedb.prepare(query).get(
+    let results = pricedb.prepare(query).all(
         {
             relStart: relStart.toISOString(),
             relEnd: relEnd.toISOString(),
             priceFilter: priceFilter.toISOString()
         }
     )
+    resetCardDB();
+    return results
 }
