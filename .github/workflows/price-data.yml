@@ -1,4 +1,5 @@
 #This incrememnets the version to trigger an the release action every tuesday and friday
+name: price-scrapper
 on:
   schedule:
     - cron: 0 0 * * *
