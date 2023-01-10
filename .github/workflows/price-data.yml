@@ -1,7 +1,7 @@
 #This incrememnets the version to trigger an the release action every tuesday and friday
 on:
   schedule:
-    - cron: 0 0 * * 2,5
+    - cron: 0 0 * * *
 jobs:
   auto:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
         run: npm version patch
       - name: Pull data
         run: |
-          node ./dist/data-scrapper.js 
+            node ./dist/price-scrapper.js -a -l -h
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

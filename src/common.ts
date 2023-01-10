@@ -14,6 +14,10 @@ export let logger: Category;
 
 export function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
 
+export type MetaData = {
+    data: number,
+    prices: number
+}
 export async function downloadFile(url: string, path: string) {
     if (dryrun) return;
     const res = await fetch(url);

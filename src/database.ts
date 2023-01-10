@@ -306,9 +306,20 @@ export function upsertPrice(price: Price) {
  */
 export function getCardsByDate(start: Date, end: Date, rare: boolean): Array<Card> {
     let query = `SELECT * FROM cards ` +
-        `WHERE date(releaseDate) > date($start) AND date(releaseDate) < date($end)`
-    if (rare) query = query + ` AND rarity NOT IN ('Common', 'Uncommon')`
+        `WHERE date(releaseDate) > date($start) AND date(releaseDate) < date($end) `
+    if (rare) query += `AND rarity NOT IN ('Common', 'Uncommon') `
+    query += `LIMIT ${PRICE_LIMIT}`
     return db.prepare(query).all({ start: start.toISOString(), end: end.toISOString() })
+}
+
+/**
+ * 
+ * @param cardId 
+ * @returns 
+ */
+export function getPrice(cardId: string): Price {
+    let query = 'SELECT * FROM prices WHERE cardId = $cardId'
+    return pricedb.prepare(query).get({cardId: cardId})
 }
 
 /**
@@ -323,7 +334,9 @@ export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date
     let sqlAttach = `ATTACH DATABASE '${DB_FILE}' AS cardDB;`
     let query =
         `SELECT * FROM (
-            SELECT max(date) as date, prices.cardId, idTCGP, name, expIdTCGP, expName, expCardNumber, rarity, releaseDate FROM prices
+            SELECT max(date) as date, prices.cardId, variant, rawPrice, gradedPriceNine, gradedPriceTen, 
+            idTCGP, name, expIdTCGP, expName, expCardNumber, rarity, releaseDate
+            FROM prices
             INNER JOIN cardDB.cards ON prices.cardId = cards.cardId
             WHERE date(cards.releaseDate) > date($relStart) 
             AND date(cards.releaseDate) < date($relEnd) `

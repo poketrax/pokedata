@@ -8,7 +8,8 @@ import {
     consoleHeader,
     setUpLogger,
     logger,
-    setDryrun
+    setDryrun,
+    MetaData
 } from "./common.js"
 import {
     useTestDbFile,
@@ -26,12 +27,6 @@ import {
     serebiiUpsertSet,
     getSerebiiLastestPromoExpantions
 } from './scrappers/serebii-scrapper.js'
-
-type MetaData = {
-    data: number,
-    prices_high_res: number,
-    prices_low_res: number
-}
 
 export const COUNT = 5
 
