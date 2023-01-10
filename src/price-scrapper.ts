@@ -100,7 +100,6 @@ async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: 
     }
     updated = true;
     bar.stop()
-    return;
 }
 
 async function pullAll() {
@@ -113,7 +112,7 @@ async function pullAll() {
     for (let card of cards) {
         let found = getPrice(card.cardId)
         if (found) continue;
-        if (index > PRICE_LIMIT) return;
+        if (index > PRICE_LIMIT) {logger.info(clc.blue(`Updated ${index} cards with no price`)); bar.stop(); return;}
         updated = true;
         let raw = await scrapeEbay(card, 'raw')
         let grade9 = await scrapeEbay(card, 'grade9')
@@ -133,8 +132,8 @@ async function pullAll() {
         index++
         bar.update(index)
     }
+    logger.info(clc.blue(`Updated ${index} cards with no price`));
     bar.stop()
-    return;
 }
 
 export function updateMetaFile() {
