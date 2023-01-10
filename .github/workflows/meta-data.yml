@@ -4,7 +4,7 @@ on:
     - cron: 0 0 * * 2,5
   workflow_dispatch: 
 jobs:
-  auto:
+  data-scrapper:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
