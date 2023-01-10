@@ -22,6 +22,7 @@ jobs:
         run: npm version patch
       - name: Pull data
         run: |
+          npm install
           npm run build
           node ./dist/price-scrapper.js -a -l -h
       - name: Push changes
