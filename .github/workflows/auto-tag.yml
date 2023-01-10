@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: Klemensas/action-autotag@stable
+      - uses: butlerlogic/action-autotag@stable
         with:
           GITHUB_TOKEN: "${{ secrets.JPG_ACTION_TOKEN }}"
