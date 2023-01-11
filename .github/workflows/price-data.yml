@@ -26,11 +26,11 @@ jobs:
           npm install
           npm run build
           node ./dist/price-scrapper.js -a -l -h
-          git add -a
+          git add -A
           git commit -m "🤖 Auto Update Prices"
       - name: Update 
         run: |
           npm verison patch
-          git add -a
+          git add -A
           git commit -m "🏷️ Auto version update"
           git push
