@@ -26,6 +26,9 @@ jobs:
           npm install
           npm run build
           node ./dist/data-scrapper.js 
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 🤖 Auto Commit Meta Database Changes
       - name: Get latest tag number
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
