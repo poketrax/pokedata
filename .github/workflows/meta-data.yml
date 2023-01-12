@@ -1,5 +1,5 @@
 #This incrememnets the version to trigger an the release action every tuesday and friday
-name: data-scrapper
+name: Data-scrapper
 on:
   schedule:
     - cron: 0 0 * * 2,5
@@ -28,4 +28,8 @@ jobs:
           node ./dist/data-scrapper.js 
           git add -A
           git commit -m "🤖 Auto Update Prices"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
+          branch: ${{ github.ref }}

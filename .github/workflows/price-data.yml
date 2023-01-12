@@ -1,5 +1,5 @@
 #This incrememnets the version to trigger an the release action every tuesday and friday
-name: price-scrapper
+name: Price-scrapper
 on:
   schedule:
     - cron: 0 0 * * *
@@ -17,8 +17,8 @@ jobs:
           node-version: 18
       - name: setConfig files
         run: |
-          git config --local user.email "poketrax@gmail.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "poketraxapp@gmail.com"
+          git config --local user.name "poketrax-app"
       - name: Increment version
         run: npm version patch
       - name: Pull data
@@ -28,4 +28,8 @@ jobs:
           node ./dist/price-scrapper.js -a -l -h
           git add -A
           git commit -m "🤖 Auto Update Prices"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
+          branch: ${{ github.ref }}
