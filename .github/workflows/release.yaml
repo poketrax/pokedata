@@ -16,6 +16,6 @@ jobs:
         with:
           files: |
             databases/data.sqlite
-            datebases/prices.sqlite
+            databases/prices.sqlite
             meta.json
-          token: "${{ secrets.JPG_ACTION_TOKEN }}"
+          token: "${{ secrets.SERVICE_ACCOUNT_TOKEN }}"

@@ -106,7 +106,7 @@ async function pullAll() {
     consoleHeader(`Pulling Cards with no price`)
     const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
     bar.start(PRICE_LIMIT, 0)
-    let cards = getCardsByDate(new Date(0), new Date(), false)
+    let cards = getCardsByDate(new Date(0), new Date(), false, 20000)
     let index = 0;
     let date = new Date()
     for (let card of cards) {

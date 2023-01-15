@@ -324,11 +324,11 @@ export function upsertPrice(price: Price) {
  * @param rare only pull rare cards
  * @returns 
  */
-export function getCardsByDate(start: Date, end: Date, rare: boolean): Array<Card> {
+export function getCardsByDate(start: Date, end: Date, rare: boolean, limit: number): Array<Card> {
     let query = `SELECT * FROM cards ` +
         `WHERE date(releaseDate) > date($start) AND date(releaseDate) < date($end) `
     if (rare) query += `AND rarity NOT IN ('Common', 'Uncommon') `
-    query += `LIMIT ${PRICE_LIMIT}`
+    query += `LIMIT ${limit}`
     return db.prepare(query).all({ start: start.toISOString(), end: end.toISOString() })
 }
 
