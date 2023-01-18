@@ -3,7 +3,7 @@ import minimist, { ParsedArgs } from 'minimist'
 import * as fs from 'fs'
 import * as cliProgress from 'cli-progress';
 import { consoleHeader, logger, setDryrun, setUpLogger, dejoinCard, MetaData } from './common.js';
-import { upsertPrice, useTestDbFile, getPricesComplex, getCardsByDate, getPrice } from './database.js';
+import { upsertPrice, useTestDbFile, getPricesComplex, getCardsByDate, getPrice, PRICE_LIMIT } from './database.js';
 import clc from 'cli-color'
 import { scrapeEbay } from './scrappers/ebay-scrapper.js';
 import { Price } from './model/Card.js';
@@ -14,8 +14,6 @@ const RECENT_HIGH_RES_PRICE_PERIOD = 7
 //Cards with a release date between LEGAVY_MED_RES_PERIOD and the begining of time will be pulled quarterly
 const LOW_RES_REL_PERIOD = 15 * 360
 const LOW_RES_PRICE_PERIOD = 90
-
-export const PRICE_LIMIT = 300
 let args: ParsedArgs;
 let metaData: MetaData = JSON.parse(fs.readFileSync("./meta.json", "utf-8"));
 

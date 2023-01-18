@@ -153,9 +153,10 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let tcgpName = tcgpSet.value.toLowerCase();
     let push = false;
     if (conf > 0.5) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
-    if (tcgpName.includes(nameNorm)) push = true
-    if (nameNorm.includes("promo") && tcgpName.includes("promo") === false) push = false
-    if (push) matches.push(tcgpSet.urlVal)
+    if (tcgpName.includes(nameNorm)) { push = true } 
+    if(push === true) logger.debug(`Promo match ${nameNorm.includes("promo")} ${tcgpName.includes("promo")}`)
+    if (nameNorm.includes("promo") === false && tcgpName.includes("promo") === true) { push = false }
+    if (push) {matches.push(tcgpSet.urlVal)}
   }
   return matches;
 }
@@ -175,7 +176,6 @@ async function getTcgpExpsData() {
     tcgpSets.push({ urlVal: setName.urlValue, value: setName.value, count: setName.count })
   }
 }
-
 
 /**
  * Pulls the variants for a card
@@ -207,7 +207,8 @@ export async function getTcgpCode(tcgpSetName): Promise<string> {
     await getCodes();
   }
   let codes = tcgpCodes.find((value) => stringSimilarity.compareTwoStrings(tcgpSetName, value.name) > 0.8)
-  return codes != null ? codes.code : ""
+  if (codes == null) { logger.warn(`Failed to find :${tcgpSetName}`); return "" };
+  return codes.code;
 }
 
 /**
@@ -236,7 +237,7 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card | 
     body: tcgRequest
   });
   let data: any = await res.json().then()
-  if(data.results[0].results.length === 0 ) return null
+  if (data.results[0].results.length === 0) return null
   return await convertCard(data.results[0].results[0], set, "");
 }
 
@@ -257,8 +258,9 @@ export async function tcgpUpsertCard(card: Card, exp: Expansion) {
  * @param exp
  */
 export async function updateExpansionTCGP(exp: Expansion) {
-  let tcgpExp = findSetFromTCGP(exp.name)
-  if (tcgpExp == null) { logger.debug(`Could not find TCGP set for name: ${exp.name}`) }
+  let tcgpExp = await findSetFromTCGP(exp.name)
+  logger.debug(`Found TCGP sets ${JSON.stringify(tcgpExp)}`)
+  if (tcgpExp == null || tcgpExp.length === 0) { logger.debug(`Could not find TCGP set for name: ${exp.name}`) }
   exp.tcgName = JSON.stringify(tcgpExp)
   upsertExpantion(exp, UPDATE_SET)
 }

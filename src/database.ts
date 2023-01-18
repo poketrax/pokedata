@@ -3,9 +3,10 @@ import type { Card, Price } from './model/Card.js'
 import { Expansion } from './model/CardMeta.js'
 import * as stringSimilarity from 'string-similarity'
 import { normalizeSetName, logger, cardExpFolder } from './common.js'
-import { PRICE_LIMIT } from './price-scrapper.js'
 import * as fs from 'fs'
 import clc from 'cli-color'
+
+export const PRICE_LIMIT = 300
 
 export const DB_FILE = './databases/data.sqlite';
 export const TEST_FILE = 'test-data.sqlite';
@@ -24,9 +25,9 @@ const ADD_PRICE = "INSERT INTO prices " +
     "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
     "VALUES ($date, $cardId, $variant, $rawPrice, $gradedPriceTen, $gradedPriceNine)"
 
-let dryrun = false
-let db = new Database(DB_FILE)
-let pricedb = new Database(PRICE_DB_FILE)
+let dryrun: boolean = false;
+let db = new Database(DB_FILE);
+let pricedb = new Database(PRICE_DB_FILE);
 
 export function useTestDbFile(del?: boolean) {
     dryrun = true;

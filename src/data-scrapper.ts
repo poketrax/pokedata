@@ -3,7 +3,7 @@ import clc from 'cli-color'
 import minimist from 'minimist'
 import { Expansion } from "./model/CardMeta.js"
 import { updateExpansionPmc } from './scrappers/pmc-scrapper.js'
-import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard } from './scrappers/tcgp-scrapper.js'
+import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard, updateExpansionTCGP } from './scrappers/tcgp-scrapper.js'
 import {
     consoleHeader,
     setUpLogger,
@@ -81,6 +81,7 @@ export async function updateExpansions(): Promise<Expansion[]> {
     for (let set of serebiiNewSets) {
         let exp = await serebiiUpsertSet(set)
         await updateExpansionPmc(exp)
+        await updateExpansionTCGP(exp)
         if (exp) expansions.push(exp)
     }
     consoleHeader("Searching for new promo sets");
@@ -88,6 +89,7 @@ export async function updateExpansions(): Promise<Expansion[]> {
     for (let set of serebiiPromoSets) {
         let exp = await serebiiUpsertSet(set)
         await updateExpansionPmc(exp)
+        await updateExpansionTCGP(exp)
         if (exp) expansions.push(exp)
     }
     return expansions;
