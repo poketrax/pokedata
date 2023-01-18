@@ -81,7 +81,7 @@ const tcgRequest = `{
 export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
   logger.debug(`Pulling TCGP Set: ${set.name} tcgp: ${set.tcgName}`)
-  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]`) return cards
+  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]` || set.tcgName === `[]` ) return cards
   let request = JSON.parse(tcgRequest);
   request.size = 300
   request.filters.term.setName = JSON.parse(set.tcgName);
@@ -154,8 +154,10 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let push = false;
     if (conf > 0.5) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
     if (tcgpName.includes(nameNorm)) { push = true } 
-    if(push === true) logger.debug(`Promo match ${nameNorm.includes("promo")} ${tcgpName.includes("promo")}`)
     if (nameNorm.includes("promo") === false && tcgpName.includes("promo") === true) { push = false }
+    if (nameNorm.includes("promo") === true && tcgpName.includes("promo") === false) { push = false }
+    let promo_rm = nameNorm.replace("promos", "").replace("promo", "").replace("cards","").replace("card", "").trim();
+    if (nameNorm.includes("promo") && tcgpName.includes(promo_rm) === false){ push = false };
     if (push) {matches.push(tcgpSet.urlVal)}
   }
   return matches;
@@ -207,7 +209,7 @@ export async function getTcgpCode(tcgpSetName): Promise<string> {
     await getCodes();
   }
   let codes = tcgpCodes.find((value) => stringSimilarity.compareTwoStrings(tcgpSetName, value.name) > 0.8)
-  if (codes == null) { logger.warn(`Failed to find :${tcgpSetName}`); return "" };
+  if (codes == null) { return "" };
   return codes.code;
 }
 
