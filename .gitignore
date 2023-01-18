@@ -6,3 +6,4 @@ test-data.sqlite
 test-prices.sqlite
 test.json
 dryrun**.json
+log.log
