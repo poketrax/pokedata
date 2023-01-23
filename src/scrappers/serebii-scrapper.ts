@@ -156,9 +156,10 @@ export async function getSerebiiPokemon(): Promise<any[]> {
 export async function serebiiUpsertCard(card: Card, exp: Expansion) {
     let dbCard = findCardComplex(exp.name, card.expCardNumber)
     //Case where img was already downloaded
-    if (dbCard != null && dbCard.img === card.img) { await addCard(card, UPDATE_CARD); return }
+    if (dbCard != null && dbCard.img === card.img && fs.existsSync(`${cardExpFolder(exp)}/${card.cardId.replaceAll("/", "-")}.jpg`)) 
+        { await addCard(card, UPDATE_CARD); return }
     //Case where img has not been downloaded 
-    if (dbCard != null) { dbCard.img = card.img; await addCard(dbCard, UPDATE_CARD, cardExpFolder(exp)); return }
+    if (dbCard != null ) { dbCard.img = card.img; await addCard(dbCard, UPDATE_CARD, cardExpFolder(exp)); return }
     //Case where card is new
     await addCard(card, UPDATE_CARD, cardExpFolder(exp))
 }

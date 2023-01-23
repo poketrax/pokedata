@@ -121,7 +121,7 @@ export async function addCard(card: Card, update: string, downloadPath?: string)
     if (downloadPath != null) {
         let file = `${downloadPath}/${card.cardId.replaceAll("/", "-")}.jpg`
         logger.debug(clc.blackBright(`Downloading picture to ${file}`))
-        if (dryrun) await downloadFile(card.img, file)
+        if (dryrun == false) await downloadFile(card.img, file)
         await delay(300)
     }
     let dex = getPokemon(card.name)
