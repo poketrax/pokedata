@@ -1,7 +1,8 @@
 import * as stringSimilarity from "string-similarity";
 import * as jsdom from 'jsdom'
-import fetch from "node-fetch"
+import * as fs from 'fs'
 import clc from 'cli-color'
+import fetch from 'node-fetch'
 import type { Card } from "../model/Card.js";
 import { Expansion } from "../model/CardMeta.js";
 import { formatExpNumber, formatId, addCard, cardExpFolder, normalizeSetName, logger, downloadFile } from "../common.js";
@@ -14,7 +15,6 @@ const UPDATE_CARD =
     "SET cardId = $cardId, " +
     "img = $img " +
     "WHERE expCardNumber = $expCardNumber AND expName = $expName"
-
 
 export type SerebiiExpantion =
     {
@@ -197,16 +197,21 @@ function parseEnergy(cell: HTMLTableCellElement): string {
 export async function serebiiUpsertSet(set: SerebiiExpantion): Promise<Expansion | undefined> {
     logger.info(clc.green(`Processing Serebii Set: ${set.name}`))
     let series = getLatestSeries();
-    let foundName = await expantionExistsInDB(set.name)
+    let foundName = expantionExistsInDB(set.name)
     let exp: Expansion;
     if (foundName) {
         exp = getExpansion(foundName)
         exp.numberOfCards = set.numberOfCards;
-        if (exp.logoURL !== set.logo || exp.symbolURL !== set.symbol) {
+        let dlLogoPath = `./images/exp_logo/${exp.name.replaceAll(" ", "-")}.png`;
+        logger.debug(`Logo file: ${dlLogoPath}`);
+        let dlSymblPath = `./images/exp_symb/${exp.name.replaceAll(" ", "-")}.png`;
+        logger.debug(`Symbl file: ${dlSymblPath}`)
+        logger.debug(`logo Same:${exp.logoURL !== set.logo}, sym Same:${exp.symbolURL !== set.symbol}, logo file?: ${!fs.existsSync(dlLogoPath)}, sym path?: ${!fs.existsSync(dlSymblPath)}`)
+        if (exp.logoURL !== set.logo || exp.symbolURL !== set.symbol || !fs.existsSync(dlLogoPath) || !fs.existsSync(dlSymblPath)) {
             exp.logoURL = set.logo;
             exp.symbolURL = set.symbol;
-            await downloadFile(set.logo, `./images/exp_logo/${exp.name.replace(" ", "-")}.png`)
-            await downloadFile(set.symbol, `./images/exp_symb/${exp.name.replace(" ", "-")}.png`)
+            await downloadFile(set.logo, dlLogoPath)
+            await downloadFile(set.symbol, dlSymblPath)
         }
     } else {
         exp = new Expansion(

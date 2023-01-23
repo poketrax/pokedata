@@ -20,6 +20,7 @@ export type MetaData = {
 }
 export async function downloadFile(url: string, path: string) {
     if (dryrun) return;
+    logger.debug(`downloading image ${url}`)
     const res = await fetch(url);
     const fileStream = fs.createWriteStream(path);
     await new Promise((resolve, reject) => {
@@ -28,6 +29,7 @@ export async function downloadFile(url: string, path: string) {
             res.body.on("error", reject);
             fileStream.on("finish", resolve);
         } else {
+            logger.error(clc.red("failed to download image file"))
             reject()
         }
     });

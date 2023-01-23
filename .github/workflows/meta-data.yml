@@ -27,7 +27,7 @@ jobs:
           npm run build
           node ./dist/data-scrapper.js 
           git add -A
-          git commit -m "🤖 Auto Update Prices"
+          git commit -m "🤖 Auto Update Data"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
