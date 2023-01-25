@@ -3,7 +3,7 @@ import clc from 'cli-color'
 import minimist from 'minimist'
 import { Expansion } from "./model/CardMeta.js"
 import { updateExpansionPmc } from './scrappers/pmc-scrapper.js'
-import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard, updateExpansionTCGP } from './scrappers/tcgp-scrapper.js'
+import { pullTcgpSetCards, tcgpCardSearch, tcgpUpsertCard, updateExpansionTCGP, updateSealedProducts } from './scrappers/tcgp-scrapper.js'
 import {
     consoleHeader,
     setUpLogger,
@@ -67,6 +67,7 @@ async function run() {
     //update all
     let exps = await updateExpansions();
     await updatePokedex();
+    await updateSealedProducts();
     await updateCards(exps);
     if (args.d === false) updateMetaFile()
 
