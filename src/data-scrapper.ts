@@ -69,6 +69,8 @@ async function run() {
     await updatePokedex();
     await updateCards(exps);
     if (args.d === false) updateMetaFile()
+
+    
 }
 
 /**

@@ -18,6 +18,8 @@ import {
     getPokemon,
     useTestDbFile,
     getCardsByDate,
+    upsertSealedProduct,
+    getSealedProduct,
 } from "../src/database.js"
 import {
     findSetFromTCGP,
@@ -34,6 +36,9 @@ import { URL } from 'url';
 import { Expansion } from '../src/model/CardMeta.js'
 import { Card } from '../src/model/Card.js'
 import { formatExpNumber,setUpLogger } from '../src/common.js'
+import { SealedProduct } from '../src/model/SealedProduct.js'
+import exp from 'constants'
+import { assert } from 'console'
 
 const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
 const TEST_DB = "./test-data.sql"
@@ -215,6 +220,13 @@ describe("SQL Tests", () => {
         upsertPokemon("test", 100000)
         expect(getPokemon(id).name).to.be.equal("test")
     })
+
+    it("should insert pokedex", () => {
+        let id = "test"
+        upsertPokemon("test", 100000)
+        expect(getPokemon(id).name).to.be.equal("test")
+    })
+
     it("should find pokedex value", () => {
         expect(getPokemon("Radiant Hisuian Sneasler").name).to.be.equal("Sneasler")
         expect(getPokemon("Hisuian Goodra VSTAR").name).to.be.equal("Goodra")
@@ -225,15 +237,28 @@ describe("SQL Tests", () => {
         expect(getPokemon("Mr. Mime").name).to.be.equal("Mr. Mime")
         expect(getPokemon("Porygon-Z").name).to.be.equal("Porygon-Z")
     })
+
     it("should find the right exp", () => {
         expect(expantionExistsInDB("SM Promos")).to.be.equal("Sun & Moon Promos")
         expect(expantionExistsInDB("SWSH Promos")).to.be.equal("Sword & Shield Promos")
     })
+
+    it("should add sealed and update sealed", () => {
+        let prod = testSealed();
+        upsertSealedProduct(prod)
+        let db1 = getSealedProduct(prod.name)
+        assert(db1?.expName === prod.expName)
+        prod.price = 10.0;
+        upsertSealedProduct(prod)
+        let db2 = getSealedProduct(prod.name)
+        assert(db2?.price === prod.price)
+    })
+
     it("should get cards via date", () => {
         let start = new Date("2022-11-1")
         let end = new Date("2022-11-30")
-        let cards = getCardsByDate(start, end, false)
-        let rares = getCardsByDate(start, end, true)
+        let cards = getCardsByDate(start, end, false, 250)
+        let rares = getCardsByDate(start, end, true, 250)
         expect(cards.length, JSON.stringify(cards[0])).to.be.equal(246)
         expect(rares.length, JSON.stringify(cards[0])).to.be.equal(137)
     })
@@ -248,6 +273,18 @@ function testSet(): Expansion {
         releaseDate: "2022-12-19T18:20:16+0000",
         logoURL: "",
         symbolURL: "",
+    }
+}
+
+function testSealed(): SealedProduct {
+    return {
+        name: "test-sealed",
+        expIdTCGP: "test",
+        idTCGP: 12345,
+        img: "img.png",
+        price: 0,
+        expName: "test",
+        productType: "Booster Pack"
     }
 }
 

@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3'
 import type { Card, Price } from './model/Card.js'
 import { Expansion } from './model/CardMeta.js'
+import { SealedProduct } from './model/SealedProduct.js'
 import * as stringSimilarity from 'string-similarity'
 import { normalizeSetName, logger, cardExpFolder } from './common.js'
 import * as fs from 'fs'
@@ -15,6 +16,7 @@ export const PRICE_DB_FILE = './databases/prices.sqlite'
 export const PRICE_TEST_FILE = 'test-prices.sqlite'
 
 const SEARCH_SET = "SELECT * FROM expansions WHERE name like ?";
+
 const ADD_SET = "INSERT INTO expansions " +
     "(name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
     "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate)";
@@ -24,6 +26,9 @@ const ADD_CARD = "INSERT INTO cards " +
 const ADD_PRICE = "INSERT INTO prices " +
     "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
     "VALUES ($date, $cardId, $variant, $rawPrice, $gradedPriceTen, $gradedPriceNine)"
+const addSealedSql =
+    "INSERT INTO sealed (idTCGP, name, expIdTCGP, expName, type, img, price) " +
+    "VALUES ($idTCGP, $name, $expIdTCGP, $expName, $productType, $img, $price);"
 
 let dryrun: boolean = false;
 let db = new Database(DB_FILE);
@@ -43,6 +48,9 @@ export function useTestDbFile(del?: boolean) {
     pricedb = new Database(PRICE_TEST_FILE)
 }
 
+/**
+ * Closes and reopens the card database
+ */
 function resetCardDB(){
     db.close()
     if(dryrun){
@@ -52,6 +60,9 @@ function resetCardDB(){
     }
 }
 
+/**
+ * Closes and reopens the prices database
+ */
 function resetPricesDB(){
     pricedb.close()
     if(dryrun){
@@ -276,6 +287,24 @@ export function upsertPokemon(name: string, id: number) {
     }
 }
 
+export function getSealedProduct(name: string) : SealedProduct | undefined{
+    return db.prepare("SELECT * FROM sealed WHERE name = $name").get({name: name})
+}
+
+/**
+ * Upsert Sealed Product 
+ * @param prod 
+ */
+export function upsertSealedProduct(prod: SealedProduct){
+    let found = getSealedProduct(prod.name)
+    if(found == null){
+        db.prepare(addSealedSql).run(prod)
+        logger.info(clc.green(`Added new Sealed Product: ${prod}`))
+    }else{
+        db.prepare(`UPDATE sealed SET price = $price WHERE name = $name`).run(prod);
+    }
+}
+
 /**
  * Get Pokemon by dex value
  * @param id 
@@ -334,7 +363,7 @@ export function getCardsByDate(start: Date, end: Date, rare: boolean, limit: num
 }
 
 /**
- * 
+ * Get Price via card Id
  * @param cardId 
  * @returns 
  */
@@ -379,3 +408,4 @@ export function getPricesComplex(relStart: Date, relEnd: Date, priceFilter: Date
     resetPricesDB();
     return results
 }
+

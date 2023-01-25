@@ -2,8 +2,9 @@ import * as stringSimilarity from "string-similarity";
 import fetch from 'node-fetch'
 import { Card } from '../model/Card.js'
 import { Expansion } from "../model/CardMeta.js";
-import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger } from "../common.js";
-import { findCardComplex, upsertExpantion } from "../database.js";
+import clc from 'cli-color'
+import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger, consoleHeader } from "../common.js";
+import { findCardComplex, upsertExpantion, upsertSealedProduct } from "../database.js";
 
 export type TcgpSet = {
   urlVal: string,
@@ -81,7 +82,7 @@ const tcgRequest = `{
 export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
   logger.debug(`Pulling TCGP Set: ${set.name} tcgp: ${set.tcgName}`)
-  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]` || set.tcgName === `[]` ) return cards
+  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]` || set.tcgName === `[]`) return cards
   let request = JSON.parse(tcgRequest);
   request.size = 300
   request.filters.term.setName = JSON.parse(set.tcgName);
@@ -153,12 +154,12 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let tcgpName = tcgpSet.value.toLowerCase();
     let push = false;
     if (conf > 0.5) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
-    if (tcgpName.includes(nameNorm)) { push = true } 
+    if (tcgpName.includes(nameNorm)) { push = true }
     if (nameNorm.includes("promo") === false && tcgpName.includes("promo") === true) { push = false }
     if (nameNorm.includes("promo") === true && tcgpName.includes("promo") === false) { push = false }
-    let promo_rm = nameNorm.replace("promos", "").replace("promo", "").replace("cards","").replace("card", "").trim();
-    if (nameNorm.includes("promo") && tcgpName.includes(promo_rm) === false){ push = false };
-    if (push) {matches.push(tcgpSet.urlVal)}
+    let promo_rm = nameNorm.replace("promos", "").replace("promo", "").replace("cards", "").replace("card", "").trim();
+    if (nameNorm.includes("promo") && tcgpName.includes(promo_rm) === false) { push = false };
+    if (push) { matches.push(tcgpSet.urlVal) }
   }
   return matches;
 }
@@ -265,4 +266,73 @@ export async function updateExpansionTCGP(exp: Expansion) {
   if (tcgpExp == null || tcgpExp.length === 0) { logger.debug(`Could not find TCGP set for name: ${exp.name}`) }
   exp.tcgName = JSON.stringify(tcgpExp)
   upsertExpantion(exp, UPDATE_SET)
+}
+
+/**
+ * update Sealed Products
+ * from tcgp api
+ */
+async function updateSealedProducts() {
+  consoleHeader("Pulling sealed product")
+  let total = 1000
+  let request = JSON.parse(tcgRequest)
+  request.filters.term.productTypeName.pop()
+  request.filters.term.productTypeName.push("Sealed Products")
+  request.size = 250
+  for (let i = 0; i < total; i += 250) {
+    request.from = i
+    try {
+      let response = await fetch(`https://mpapi.tcgplayer.com/v2/search/request?q=&isList=false`,
+        {
+          method: "POST",
+          body: JSON.stringify(request),
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+      let json: any = await response.json()
+      let productList = json.results[0].results
+
+      if (total === 1000) {
+        console.log(json.results[0].totalResults)
+        total = json.results[0].totalResults
+      }
+
+      for (let product of productList) {
+        upsertSealedProduct({
+          name: product.productName,
+          price: product.marketPrice,
+          idTCGP: product.productId,
+          expIdTCGP: product.setUrlName,
+          productType: getType(product.productName),
+          expName: '',
+          img: `https://product-images.tcgplayer.com/fit-in/437x437/${product.productId?.toFixed()}.jpg`
+        })
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+function getType(name) {
+  if (!name) {
+    return ""
+  }
+  if (name.includes("Booster Box")) {
+    return "Booster Box"
+  } else if (name.includes("Elite Trainer Box")) {
+    return "ETB"
+  } else if (name.includes("Booster Pack")) {
+    return "Booster Pack"
+  } else if (name.includes("Premium") || name.includes("Deluxe") || name.includes("Collector") || name.includes("Special")) {
+    return "Special item"
+  } else if (name.includes("Box")) {
+    return "Box"
+  } else if (name.includes("Blister")) {
+    return "Blister"
+  } else if (name.includes("Theme Deck")) {
+    return "Theme Deck"
+  } else {
+    return ""
+  }
 }
