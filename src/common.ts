@@ -82,11 +82,16 @@ export function formatExpNumber(number: string) {
     return ''
 }
 
+export function formatSealedFileName(name: string) : string {
+    let norm = name.replaceAll(" ", "-").replaceAll(/[\[\]\\\/]/g, "");
+    return `./images/sealed_prods/${norm}.jpg`
+}
+
 export function formatId(set: string, name: string, number: string) {
     let _set = set.trim().replaceAll(' ', '-').replaceAll(`/`, `-`)
     let _name = name
         .replaceAll(/\([a-zA-Z\s0-9]+\)/g, "")
-        .replaceAll(/[0-9]+\/[0-9]+/g, "")
+        .replaceAll(/\d+\/\d+/g, "")
         .trim()
         .replaceAll(' ', '-')
         .replaceAll(`/`, `-`)

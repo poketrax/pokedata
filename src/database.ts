@@ -3,7 +3,7 @@ import type { Card, Price } from './model/Card.js'
 import { Expansion } from './model/CardMeta.js'
 import { SealedProduct } from './model/SealedProduct.js'
 import * as stringSimilarity from 'string-similarity'
-import { normalizeSetName, logger, cardExpFolder } from './common.js'
+import { normalizeSetName, logger, cardExpFolder, downloadFile, formatSealedFileName } from './common.js'
 import * as fs from 'fs'
 import clc from 'cli-color'
 
@@ -299,10 +299,13 @@ export function upsertSealedProduct(prod: SealedProduct){
     let found = getSealedProduct(prod.name)
     if(found == null){
         db.prepare(addSealedSql).run(prod)
-        logger.info(clc.green(`Added new Sealed Product: ${prod}`))
+        logger.info(clc.green(`Added new Sealed Product: ${JSON.stringify(prod)}`))
     }else{
         db.prepare(`UPDATE sealed SET price = $price WHERE name = $name`).run(prod);
     }
+    let fileName = formatSealedFileName(prod.name);
+    if(fs.existsSync(fileName)) return;
+    downloadFile(prod.img, fileName);
 }
 
 /**

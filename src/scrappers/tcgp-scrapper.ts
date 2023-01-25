@@ -272,7 +272,7 @@ export async function updateExpansionTCGP(exp: Expansion) {
  * update Sealed Products
  * from tcgp api
  */
-async function updateSealedProducts() {
+export async function updateSealedProducts() {
   consoleHeader("Pulling sealed product")
   let total = 1000
   let request = JSON.parse(tcgRequest)
