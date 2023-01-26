@@ -3,7 +3,7 @@ import type { Card, Price } from './model/Card.js'
 import { Expansion } from './model/CardMeta.js'
 import { SealedProduct } from './model/SealedProduct.js'
 import * as stringSimilarity from 'string-similarity'
-import { normalizeSetName, logger, cardExpFolder, downloadFile, formatSealedFileName } from './common.js'
+import { normalizeSetName, logger, downloadFile, formatSealedFileName } from './common.js'
 import * as fs from 'fs'
 import clc from 'cli-color'
 
