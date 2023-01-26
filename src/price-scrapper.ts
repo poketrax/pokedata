@@ -135,6 +135,8 @@ async function pullAll() {
 }
 
 export function updateMetaFile() {
+    let npm = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
+    metaData.version = npm.version;
     metaData.prices++;
     fs.writeFileSync("./meta.json", JSON.stringify(metaData));
 }

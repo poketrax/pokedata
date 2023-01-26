@@ -15,6 +15,7 @@ export let logger: Category;
 export function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
 
 export type MetaData = {
+    version: string,
     data: number,
     prices: number
 }
