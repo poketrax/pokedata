@@ -7,9 +7,8 @@ import { LogLevel } from 'typescript-logging';
 import { Card, Price } from "./model/Card.js"
 import { getPokemon, upsertCard } from './database.js';
 
-export let dryrun = false;
 let provider: CategoryProvider;
-
+export let dryrun = false;
 export let logger: Category;
 
 export function delay(ms) { return new Promise(_ => setTimeout(_, ms)) };
@@ -19,6 +18,7 @@ export type MetaData = {
     data: number,
     prices: number
 }
+
 export async function downloadFile(url: string, path: string) {
     if (dryrun) return;
     logger.debug(`downloading image ${url}`)
