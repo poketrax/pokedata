@@ -2,7 +2,7 @@ import {
     getLogoUrl,
     getSerebiiLastestNormalExpantions,
     getSerebiiPokemon,
-    getSerebiiSetCards
+    getSerebiiSetCards, getSerebiiLastestPromoExpantions
 } from '../src/scrappers/serebii-scrapper.js'
 import {
     DB_FILE,
@@ -37,8 +37,8 @@ import { Expansion } from '../src/model/CardMeta.js'
 import { Card } from '../src/model/Card.js'
 import { formatExpNumber,setUpLogger } from '../src/common.js'
 import { SealedProduct } from '../src/model/SealedProduct.js'
-import exp from 'constants'
 import { assert } from 'console'
+
 
 const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
 const TEST_DB = "./test-data.sql"
@@ -83,6 +83,13 @@ describe("Scrape Serebii data", () => {
         return getLogoUrl(testSet).then((url) => { let _url = new URL(url) })
             .catch((e) => expect.fail(`Error scraping serebii ${e.stack}`))
     })
+
+    it("scrape serebii promo sets", async () => {
+        return getSerebiiLastestPromoExpantions(5)
+            .then(
+                (val) => console.log(JSON.stringify(val, null, 1))
+            )
+    }).timeout(10000)
     it("scrape serebii cards", async () => {
         let exp = {
             name: "Silver Tempest",
