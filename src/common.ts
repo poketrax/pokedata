@@ -139,6 +139,7 @@ export function normalizeSetName(name: string): string {
     return name
         .replace(/Pokemon|pokemon|Pokémon|pokémon/, "PKM")
         .replace(/swsh-sword-and-shield/, "Sword & Shield")
+        .replace(/sv|SV/, "Scarlet & Violet")
         .replace(/swsh|SWSH/, "Sword & Shield")
         .replace(/sm|SM/, "Sun & Moon")
         .replace(/hgss/, "HeartGold SoulSilver")
