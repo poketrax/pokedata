@@ -71,7 +71,6 @@ async function run() {
     await updateCards(exps);
     if (args.d === false) updateMetaFile()
 
-    
 }
 
 /**
