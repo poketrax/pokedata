@@ -101,7 +101,7 @@ export async function getSerebiiExpantion(
     await getSerebiiLastestNormalExpantions(COUNT);
   if (serebiiPromoSets.length <= 0)
     await getSerebiiLastestPromoExpantions(COUNT);
-  if (name.matchAll(/promo|Promo/)) {
+  if (name.matchAll(/promo|Promo/g)) {
     return serebiiPromoSets.find(
       (set) =>
         stringSimilarity.compareTwoStrings(
