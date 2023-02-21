@@ -149,6 +149,7 @@ describe("Scrape ebay prices", () => {
         let card = testCard();
         scrapeEbay(card, "raw").then(
             (data) => {
+                console.log(data)
                 expect(data).to.be.not.null;
                 expect(data).to.be.a('number')
             }
@@ -315,10 +316,10 @@ function testCard(): Card {
         count: 1,
         grade: "",
         idTCGP: 9999999999,
-        name: "Charizard V (Full Art)",
+        name: "Charizard V - SWSH260",
         expIdTCGP: "SWSH09 Brilliant Stars",
-        expName: "Brilliant Stars",
-        expCardNumber: "1500",
+        expName: "Sword & Shield Promos",
+        expCardNumber: "SWSH260",
         expCodeTCGP: "SWSH09",
         rarity: "Ultra Rare",
         img: "https://product-images.tcgplayer.com/fit-in/437x437/263872.jpg",

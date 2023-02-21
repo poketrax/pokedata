@@ -25,7 +25,9 @@ import {
     getSerebiiSetCards,
     serebiiUpsertCard,
     serebiiUpsertSet,
-    getSerebiiLastestPromoExpantions
+    getSerebiiLastestPromoExpantions,
+    serebiiNormalSets,
+    serebiiPromoSets
 } from './scrappers/serebii-scrapper.js'
 
 export const COUNT = 5
@@ -106,7 +108,7 @@ async function updateCards(exps: Expansion[]) {
     for (let exp of exps) {
         logger.info(clc.blueBright(`Processing ${exp.name} Cards`))
         let serebii = await getSerebiiExpantion(exp.name);
-        if (serebii == null) { logger.info(clc.red(`Failed to find serebii set : ${exp.name}`)); continue }
+        if (serebii == null) { logger.info(clc.red(`Failed to find serebii set : ${exp.name} \nSets:\n${JSON.stringify(serebiiNormalSets)}\nPromos:${JSON.stringify(serebiiPromoSets)}`)); continue }
         let serebiiCards = await getSerebiiSetCards(serebii.page, exp)
         let tcgpCards = await pullTcgpSetCards(exp)
         for (let card of serebiiCards) {
