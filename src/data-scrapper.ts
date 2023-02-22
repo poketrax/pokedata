@@ -139,6 +139,7 @@ async function updatePokedex() {
     }
 }
 
+
 export function updateMetaFile() {
     let npm = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
     metaData.version = npm.version;
