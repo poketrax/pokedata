@@ -101,7 +101,7 @@ export async function getSerebiiExpantion(
     await getSerebiiLastestNormalExpantions(COUNT);
   if (serebiiPromoSets.length <= 0)
     await getSerebiiLastestPromoExpantions(COUNT);
-  if (name.matchAll(/promo|Promo/g)) {
+  if ((/promo|Promo/g).test(name)) {
     return serebiiPromoSets.find(
       (set) =>
         stringSimilarity.compareTwoStrings(
@@ -191,8 +191,7 @@ export async function getSerebiiPokemon(): Promise<any[]> {
   );
   let data = await res.text();
   const { window } = new jsdom.JSDOM(data);
-  let table: HTMLTableElement =
-    window.document.getElementsByClassName("dextable")[0];
+  let table: HTMLTableElement = window.document.getElementsByClassName("dextable")[0];
   let rows = table.rows;
   for (let i = 2; i < rows.length; i++) {
     let row = rows[i];
