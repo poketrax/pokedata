@@ -7,7 +7,7 @@ import { normalizeSetName, logger, downloadFile, formatSealedFileName } from './
 import * as fs from 'fs'
 import clc from 'cli-color'
 
-export const PRICE_LIMIT = 300
+export const PRICE_LIMIT = 1000
 
 export const DB_FILE = './databases/data.sqlite';
 export const TEST_FILE = 'test-data.sqlite';
