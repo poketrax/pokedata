@@ -153,7 +153,7 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     let conf = stringSimilarity.compareTwoStrings(tcgpNorm, nameNorm)
     let tcgpName = tcgpSet.value.toLowerCase();
     let push = false;
-    if (conf > 0.5) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
+    if (conf > 0.7) { push = true; logger.debug(`tcgp-player match: tcgp: ${tcgpNorm}, name: ${nameNorm} conf: ${conf}`) }
     if (tcgpName.includes(nameNorm)) { push = true }
     if (nameNorm.includes("promo") === false && tcgpName.includes("promo") === true) { push = false }
     if (nameNorm.includes("promo") === true && tcgpName.includes("promo") === false) { push = false }
