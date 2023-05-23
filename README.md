@@ -26,7 +26,7 @@ node ./dist/data-scrapper.js
 | ------- | ----------- |
 | -d      | Dry Run will save to a test file |
 | -f      | Fresh dryrun will overwrite the test file and start with /databases/data.sqlite |
-| - v     | verbose   |
+| -v      | verbose |
 
 | Params | Description | Example |
 | ------- | ----------- | ---- |
