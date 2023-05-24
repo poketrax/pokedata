@@ -22,10 +22,10 @@ export async function scrapeEbay(card, type): Promise<number> {
             url.searchParams.set("kw", `(${card.expName})+(${card.name})+${card.expCardNumber} ${raw} -Digital -Online`)
             break
         case 'grade9':
-            url.searchParams.set("kw", `(${card.expName})+(${card.name})+${card.expCardNumber}+${grade9} -Digital -Online`)
+            url.searchParams.set("kw", `(${card.expName})+(${card.name})+${card.expCardNumber} +${grade9} -Digital -Online`)
             break
         case 'grade10':
-            let kw10 =  `(${card.expName})+(${card.name})+${card.expCardNumber}+${grade10} -Digital -Online`
+            let kw10 =  `(${card.expName})+(${card.name})+${card.expCardNumber} +${grade10} -Digital -Online`
             url.searchParams.set("kw", kw10)
             break
     }
