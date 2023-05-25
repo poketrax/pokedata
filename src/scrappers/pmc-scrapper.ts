@@ -142,6 +142,7 @@ async function getExpLogo(name, marketingPage) {
     const { window } = new jsdom.JSDOM(data)
     const logo = (window.document.getElementsByClassName("productLogo")[0] as HTMLImageElement).src;
     downloadFile(logo, `./images/exp_logo/${name.replace(" ", "-")}.png`)
+    .catch((e) => logger.error(`Failed to download exp img ${name} : \n${e}`))
     return logo;
 }
 
@@ -157,6 +158,7 @@ async function getExpSymbol(name: string) {
     let exp = pmcDbSets.find((exp) => stringSimilarity.compareTwoStrings(name, exp.name) > 0.7)
     if (exp != null) {
         downloadFile(exp.icon, `./images/exp_symb/${name.replace(" ", "-")}`)
+        .catch((e) => logger.error(`Failed to download exp symbol ${name} : \n${e}`))
         return exp.icon;
     } else {
         return ""
