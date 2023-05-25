@@ -1,6 +1,6 @@
 import * as jsdom from 'jsdom'
 import fetch from 'node-fetch'
-import { delay, logger } from '../common.js'
+import { delay, logger, formatCardName } from '../common.js'
 
 const raw = "-PSA -BGS -CGC"
 const grade10 = "(PSA 10,BGS 10,CGC 10)"
@@ -17,15 +17,16 @@ const ebayUrl = "https://www.ebay.com/sch/i.html"
  */
 export async function scrapeEbay(card, type): Promise<number> {
     let url = new URL(ebayUrl)
+    let name = formatCardName(card.name)
     switch (type) {
         case 'raw':
-            url.searchParams.set("kw", `(${card.expName})+(${card.name})+${card.expCardNumber} ${raw} -Digital -Online`)
+            url.searchParams.set("kw", `(${card.expName})+(${name})+${card.expCardNumber} ${raw} -Digital -Online`)
             break
         case 'grade9':
-            url.searchParams.set("kw", `(${card.expName})+(${card.name})+${card.expCardNumber} +${grade9} -Digital -Online`)
+            url.searchParams.set("kw", `(${card.expName})+(${name})+${card.expCardNumber} +${grade9} -Digital -Online`)
             break
         case 'grade10':
-            let kw10 =  `(${card.expName})+(${card.name})+${card.expCardNumber} +${grade10} -Digital -Online`
+            let kw10 =  `(${card.expName})+(${name})+${card.expCardNumber} +${grade10} -Digital -Online`
             url.searchParams.set("kw", kw10)
             break
     }
@@ -53,3 +54,4 @@ export async function scrapeEbay(card, type): Promise<number> {
     }
     return 0;
 }
+

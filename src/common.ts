@@ -37,7 +37,7 @@ export async function downloadFile(url: string, path: string) {
     await delay(200)
 };
 
-export async function consoleHeader(msg: string) {
+export function consoleHeader(msg: string) {
     logger.info(clc.blueBright.bold("----------------------------------------------"))
     logger.info(clc.blueBright.bold(msg))
     logger.info(clc.blueBright.bold("----------------------------------------------"))
@@ -144,6 +144,10 @@ export function normalizeSetName(name: string): string {
         .replace(/sm|SM/, "Sun & Moon")
         .replace(/hgss/, "HeartGold SoulSilver")
         .replace(/and/, "&")
+}
+
+export function formatCardName(name: string): string {
+    return name.replace(/\(.+\)/, "")
 }
 
 /**
