@@ -125,6 +125,7 @@ async function updateCards(exps: Expansion[]) {
     }
     let serebiiCards = await getSerebiiSetCards(serebii.page, exp);
     let tcgpCards = await pullTcgpSetCards(exp);
+    
     for (let card of serebiiCards) {
       await serebiiUpsertCard(card, exp);
       if (tcgpCards.length === 0) {

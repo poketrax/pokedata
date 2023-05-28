@@ -4,7 +4,7 @@ import { Card } from '../model/Card.js'
 import { Expansion } from "../model/CardMeta.js";
 import clc from 'cli-color'
 import { formatExpNumber, formatId, cardExpFolder, addCard, normalizeSetName, logger, consoleHeader } from "../common.js";
-import { findCardComplex, upsertExpantion, upsertSealedProduct } from "../database.js";
+import { findCardComplex, upsertExpantion, upsertSealedProduct, findTcgpCard } from "../database.js";
 
 export type TcgpSet = {
   urlVal: string,
@@ -241,6 +241,11 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card | 
   });
   let data: any = await res.json().then()
   if (data.results[0].results.length === 0) return null
+  if (data.results.length > 1){
+    logger.warn(`Multiple results [${data.results[0].productName},${data.results[1].productName}]`)
+  }else{
+    logger.debug(`TCGP search results ${data.results[0].productName}`)
+  }
   return await convertCard(data.results[0].results[0], set, "");
 }
 
@@ -250,10 +255,19 @@ export async function tcgpCardSearch(name: string, set: string): Promise<Card | 
  * @param exp 
  */
 export async function tcgpUpsertCard(card: Card, exp: Expansion) {
+  is_speacial_card(card)
   let db_card = findCardComplex(exp.name, card.expCardNumber)
   let path = cardExpFolder(exp)
   if (db_card != null) path = null
   await addCard(card, UPDATE_CARD, path);
+}
+
+//Finds speacial variants of cards and changes their number to have a different 
+function is_speacial_card(canidate: Card){
+  if(canidate.name.match(/.*\(.*(Exclusive).*\).*/)){
+    canidate.cardId = `${canidate.cardId}-${canidate.idTCGP}`
+    canidate.expCardNumber = `${canidate.expCardNumber}-${canidate.idTCGP}`
+  }
 }
 
 /**

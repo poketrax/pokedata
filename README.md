@@ -30,4 +30,4 @@ node ./dist/data-scrapper.js
 
 | Params | Description | Example |
 | ------- | ----------- | ---- |
-| -cards | update only one set | -cards="Crown Zeneith" |
+| --cards | update only one set | --cards="Crown Zeneith" |
