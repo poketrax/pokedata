@@ -70,6 +70,8 @@ export function cardExpFolder(exp: Expansion): string {
  * @returns 
  */
 export function formatExpNumber(number: string) {
+    //preformat since TCG Play database is a mess
+    number = number.replaceAll(/SVP/g, "");
     let regex = /(TG)?([A-Z]+)?([0-9]+)\s?( \/)?\s?([0-9]+)?([A-Z]+)?/g
     let results = regex.exec(number)
     if (results) {
