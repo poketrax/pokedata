@@ -16,7 +16,6 @@ import {
   findCardComplex,
   upsertExpantion,
   upsertSealedProduct,
-  findTcgpCard,
 } from "../database.js";
 
 export type TcgpSet = {
@@ -34,6 +33,7 @@ export let tcgpSets = new Array<TcgpSet>();
 export let tcgpCodes = new Array<TcgpCode>();
 
 const TCGP_API = "https://mp-search-api.tcgplayer.com/v1/search/request";
+const TCGP_IMAGE_API = "https://product-images.tcgplayer.com/fit-in/437x437"
 const UPDATE_SET = "UPDATE expansions SET tcgName = $tcgName WHERE name = $name";
 const UPDATE_CARD =
   "UPDATE cards SET " +
@@ -134,7 +134,7 @@ async function convertCard(card: any, setName: string, setReleaseDate: string): 
   let releaseDate =
     card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
   let cardNum = formatExpNumber(card.customAttributes.number.split("/")[0]);
-  let img = `https://product-images.tcgplayer.com/fit-in/437x437/${card.productId.toFixed()}.jpg`;
+  let img = `${TCGP_IMAGE_API}/${card.productId.toFixed()}.jpg`;
   let variants = await pullVariants(card.productId);
   let id = formatId(setName, card.productName, cardNum);
   let newCard: Card = {
@@ -351,7 +351,7 @@ export async function updateSealedProducts() {
   for (let i = 0; i < total; i += 250) {
     request.from = i;
     try {
-      let response = await fetch(`https://mpapi.tcgplayer.com/v2/search/request?q=&isList=false`, {
+      let response = await fetch(`${TCGP_API}?q=&isList=false`, {
         method: "POST",
         body: JSON.stringify(request),
         headers: { "Content-Type": "application/json" },
@@ -372,7 +372,7 @@ export async function updateSealedProducts() {
           expIdTCGP: product.setUrlName,
           productType: getType(product.productName),
           expName: "",
-          img: `https://product-images.tcgplayer.com/fit-in/437x437/${product.productId?.toFixed()}.jpg`,
+          img: `${TCGP_IMAGE_API}/${product.productId?.toFixed()}.jpg`,
         });
       }
     } catch (err) {
