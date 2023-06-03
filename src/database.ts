@@ -27,8 +27,8 @@ const ADD_PRICE = "INSERT INTO prices " +
     "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
     "VALUES ($date, $cardId, $variant, $rawPrice, $gradedPriceTen, $gradedPriceNine)"
 const addSealedSql =
-    "INSERT INTO sealed (idTCGP, name, expIdTCGP, expName, type, img, price) " +
-    "VALUES ($idTCGP, $name, $expIdTCGP, $expName, $productType, $img, $price);"
+    "INSERT INTO sealed (idTCGP, name, expIdTCGP, expName, type, img, price, releaseDate) " +
+    "VALUES ($idTCGP, $name, $expIdTCGP, $expName, $productType, $img, $price, $releaseDate);"
 
 let dryrun: boolean = false;
 let db = new Database(DB_FILE);
@@ -302,6 +302,7 @@ export function upsertSealedProduct(prod: SealedProduct){
         logger.info(clc.green(`Added new Sealed Product: ${JSON.stringify(prod)}`))
     }else{
         db.prepare(`UPDATE sealed SET price = $price WHERE name = $name`).run(prod);
+        db.prepare(`UPDATE sealed SET releaseDate = $releaseDate WHERE name = $name`).run(prod);
     }
     let fileName = formatSealedFileName(prod.name);
     if(fs.existsSync(fileName)) return;

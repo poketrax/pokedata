@@ -2,6 +2,7 @@ export class SealedProduct {
     public name: string
     public price?: number
     public idTCGP?: number
+    public releaseDate?: string
     public expIdTCGP: string
     public expName: string
     public productType?: string

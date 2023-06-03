@@ -369,6 +369,7 @@ export async function updateSealedProducts() {
           name: product.productName,
           price: product.marketPrice,
           idTCGP: product.productId,
+          releaseDate: product.customAttributes?.releaseDate ?? "",
           expIdTCGP: product.setUrlName,
           productType: getType(product.productName),
           expName: "",
