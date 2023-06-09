@@ -185,3 +185,12 @@ export function dejoinPrice(complex: any): Price {
         gradedPriceTen: complex.gradedPriceTen
     }
 }
+
+export function normalizeProductName(name: string): string {
+    return name
+    .replaceAll(/:|\(|\)/g,"")
+    .replaceAll(/\[.+\]/g,"")
+    .replaceAll("Trading Card Game","")
+    .replaceAll("Pokemon TCG","")
+    .trim()
+}

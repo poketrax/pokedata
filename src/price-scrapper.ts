@@ -3,10 +3,12 @@ import minimist, { ParsedArgs } from 'minimist'
 import * as fs from 'fs'
 import * as cliProgress from 'cli-progress';
 import { consoleHeader, logger, setDryrun, setUpLogger, dejoinCard, MetaData } from './common.js';
-import { upsertPrice, useTestDbFile, getPricesComplex, getCardsByDate, getPrice, PRICE_LIMIT } from './database.js';
+import { upsertPrice, useTestDbFile, getPricesComplex, getCardsByDate, getPrice, PRICE_LIMIT, getSealedProducts } from './database.js';
 import clc from 'cli-color'
 import { scrapeEbay } from './scrappers/ebay-scrapper.js';
 import { Price } from './model/Card.js';
+import { RecentProduct, RecentProductPrice } from './model/SealedProduct.js';
+import { scrapeBestBuy } from './scrappers/bestbuy-scapper.js';
 
 //Cards with a release date between now and RECENT_HIGH_RES_PERIOD days ago will be pulled weekly
 const RECENT_HIGH_RES_REL_PERIOD = 3 * 360
@@ -14,6 +16,8 @@ const RECENT_HIGH_RES_PRICE_PERIOD = 7
 //Cards with a release date between LEGAVY_MED_RES_PERIOD and the begining of time will be pulled quarterly
 const LOW_RES_REL_PERIOD = 15 * 360
 const LOW_RES_PRICE_PERIOD = 90
+
+const NUM_RECENT_PRODUCTS = 100
 let args: ParsedArgs;
 let metaData: MetaData = JSON.parse(fs.readFileSync("./meta.json", "utf-8"));
 
@@ -23,13 +27,14 @@ run();
 
 export async function run() {
     args = minimist(process.argv.slice(2), {
-        boolean: ['dryrun', 'fresh', 'verbose', 'high', 'low', 'all'],
+        boolean: ['dryrun', 'fresh', 'verbose', 'high', 'low', 'recent', 'all'],
         alias: {
             d: 'dryrun',
             f: 'fresh',
             v: 'verbose',
             h: 'high',
             l: 'low',
+            r: 'recent',
             a: 'all'
         },
         default: {
@@ -44,7 +49,6 @@ export async function run() {
         logger.info(clc.red.bold(`------------------ DRYRUN --------------------`))
         setDryrun()
     }
-
     let now = new Date()
     let relStartHR = new Date();
     let priceFilterHR = new Date();
@@ -64,8 +68,13 @@ export async function run() {
         "Low Res",
         false
     )
+
+    if (args.r) await pullRecentPrices()
     if (args.a) await pullAll()
     if (args.d === false && updated) updateMetaFile()
+    if (!args.r && !args.h && !args.l && !args.a){
+        logger.info("No options selected!! exiting")
+    }
 }
 
 async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: string, rare: boolean) {
@@ -98,6 +107,17 @@ async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: 
     }
     updated = true;
     bar.stop()
+}
+
+/**
+ * creates a list of recent products and a price comparison.
+ */
+async function pullRecentPrices(){
+    consoleHeader("Creating recent prices JSON")    
+    let results = new Array<RecentProduct>();
+    let bbTotal = await scrapeBestBuy(results);
+    fs.writeFileSync("./dist/recent-prices.json", JSON.stringify(results));
+    logger.info(clc.blue(`Recent prodcut file written! total products: ${results.length}, total BB: ${bbTotal}`))
 }
 
 async function pullAll() {

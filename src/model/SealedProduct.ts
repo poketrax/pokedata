@@ -31,3 +31,15 @@ export class SealedPrice {
         this.price = price
     }
 }
+
+export class RecentProduct {
+    public name: string
+    public prices: RecentProductPrice[];
+}
+
+export class RecentProductPrice {
+    public vendor: string
+    public link: string
+    public sale: boolean
+    public price: number
+}

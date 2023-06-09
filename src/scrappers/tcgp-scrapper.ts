@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import { Card } from "../model/Card.js";
 import { Expansion } from "../model/CardMeta.js";
 import clc from "cli-color";
+
 import {
   formatExpNumber,
   formatId,
@@ -12,6 +13,7 @@ import {
   logger,
   consoleHeader,
 } from "../common.js";
+
 import {
   findCardComplex,
   upsertExpantion,
@@ -381,6 +383,8 @@ export async function updateSealedProducts() {
     }
   }
 }
+
+
 
 function getType(name) {
   if (!name) {

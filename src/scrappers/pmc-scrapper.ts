@@ -1,6 +1,6 @@
 import * as jsdom from 'jsdom'
 import * as stringSimilarity from "string-similarity";
-import { expantionExistsInDB, getLatestSeries, upsertExpantion } from "../database.js"
+import { getLatestSeries, upsertExpantion } from "../database.js"
 import { downloadFile, normalizeSetName, logger } from '../common.js';
 import fetch from 'node-fetch';
 import { Expansion } from '../model/CardMeta.js';

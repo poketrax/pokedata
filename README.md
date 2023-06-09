@@ -25,6 +25,9 @@ node ./dist/data-scrapper.js
 | Options | Description |
 | ------- | ----------- |
 | -d      | Dry Run will save to a test file |
+| -l      | Pull low res prices |
+| -h      | Pull high res prices |
+| -r      | Pull recent price comparisons |
 | -f      | Fresh dryrun will overwrite the test file and start with /databases/data.sqlite |
 | -v      | verbose |
 
