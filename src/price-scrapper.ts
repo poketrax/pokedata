@@ -8,7 +8,7 @@ import clc from 'cli-color'
 import { scrapeEbay } from './scrappers/ebay-scrapper.js';
 import { Price } from './model/Card.js';
 import { RecentProduct, RecentProductPrice } from './model/SealedProduct.js';
-import { scrapeBestBuy } from './scrappers/bestbuy-scapper.js';
+import { scrapeBestBuy } from './scrappers/bestbuy-scrapper.js';
 
 //Cards with a release date between now and RECENT_HIGH_RES_PERIOD days ago will be pulled weekly
 const RECENT_HIGH_RES_REL_PERIOD = 3 * 360

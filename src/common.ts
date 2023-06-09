@@ -188,6 +188,7 @@ export function dejoinPrice(complex: any): Price {
 
 export function normalizeProductName(name: string): string {
     return name
+    .replaceAll(/\([\w\s]{5,}\)/g, "")// removes things like (1 of 3 tins chosen at random) while not removing years like (2023)
     .replaceAll(/:|\(|\)/g,"")
     .replaceAll(/\[.+\]/g,"")
     .replaceAll("Trading Card Game","")

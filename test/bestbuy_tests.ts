@@ -1,14 +1,14 @@
 import { expect } from 'chai';
 import { describe, before, it } from 'mocha';
 import { formatExpNumber,normalizeProductName,setUpLogger } from '../src/common.js'
-import {SEARCH_BASE, getAllProductUrls, get_product_urls, get_recent_product, } from '../src/scrappers/bestbuy-scapper.js'
+import {SEARCH_BASE, getAllProductUrls, getProductUrls, } from '../src/scrappers/bestbuy-scrapper.js'
 
 before(()=> {
     setUpLogger(true)
 })
 describe("Scrape bestbuy tests", () => {
     it("Get page urls", async () => {
-        let urls = await get_product_urls(SEARCH_BASE)
+        let urls = await getProductUrls(SEARCH_BASE)
         console.log(urls)
     }).timeout(60000)
 

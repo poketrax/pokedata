@@ -5,6 +5,7 @@ import { RecentProduct } from "../model/SealedProduct.js";
 import { logger, normalizeProductName } from "../common.js";
 import { getSealedProducts } from "../database.js";
 import clc from 'cli-color'
+
 export let SEARCH_BASE =
   "https://www.bestbuy.com/site/searchpage.jsp?_dyncharset=UTF-8&browsedCategory=pcmcat1604992984556&list=y&qp=brandcharacter_facet%3DFranchise~Pok%C3%A9mon&sc=Global&st=categoryid%24pcmcat1604992984556&type=page&usc=All%20Categories";
 
@@ -22,7 +23,7 @@ export async function scrapeBestBuy(products: Array<RecentProduct>) : Promise<nu
   logger.info(`Found ${product_urls.length} products`)
   for(let url of product_urls){
     logger.debug(`Processing ${url}`)
-    let product = await get_recent_product(url)
+    let product = await getRecentProduct(url)
     let db_product = db_products.find((val) => {
       let normDbName = normalizeProductName(val.name)
       let comp = stringSimilarity.compareTwoStrings(product.name, normDbName);
@@ -65,12 +66,12 @@ export async function getAllProductUrls(): Promise<Array<string>> {
   pageUrls.push(SEARCH_BASE);
   logger.debug(`Found pages from bestbuy: ${JSON.stringify(pageUrls)}`);
   for (let pageUrl of pageUrls) {
-    urls = urls.concat(await get_product_urls(pageUrl));
+    urls = urls.concat(await getProductUrls(pageUrl));
   }
   return urls;
 }
 
-export async function get_product_urls(page: string): Promise<Array<string>> {
+export async function getProductUrls(page: string): Promise<Array<string>> {
   let urls = new Array<string>();
   logger.debug(`pulling page: ${page}`);
   let pageRaw = await (await fetch(page)).text();
@@ -97,7 +98,7 @@ export async function get_product_urls(page: string): Promise<Array<string>> {
   return urls;
 }
 
-export async function get_recent_product(url: string): Promise<RecentProduct>{
+export async function getRecentProduct(url: string): Promise<RecentProduct>{
   let pageRaw = await (await fetch(url)).text();
   let { window } = new jsdom.JSDOM(pageRaw);
   let document = window.document;

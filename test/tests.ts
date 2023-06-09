@@ -38,6 +38,7 @@ import { Card } from '../src/model/Card.js'
 import { formatExpNumber,setUpLogger } from '../src/common.js'
 import { SealedProduct } from '../src/model/SealedProduct.js'
 import { assert } from 'console'
+import { getRecentProducts as getWalmartProducts, SEARCH_BASE as WALMART_BASE} from '../src/scrappers/walmart-scrapper.js' 
 
 
 const UPDATE_SET = "UPDATE expansions SET numberOfCards = $numberOfCards, logoURL = $logoURL, symbolURL = $symbolURL WHERE name = $name"
@@ -272,7 +273,13 @@ describe("SQL Tests", () => {
     })
 })
 
+describe("walmart tests", () => {
+    it("Get products", async () => {
+        let prods = await getWalmartProducts(WALMART_BASE)
 
+        console.log(prods)
+    }).timeout(60000)
+})
 
 
 function testSet(): Expansion {
