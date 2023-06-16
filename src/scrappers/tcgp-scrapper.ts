@@ -14,11 +14,7 @@ import {
   consoleHeader,
 } from "../common.js";
 
-import {
-  findCardComplex,
-  upsertExpantion,
-  upsertSealedProduct,
-} from "../database.js";
+import { findCardComplex, upsertExpantion, upsertSealedProduct } from "../database.js";
 
 export type TcgpSet = {
   urlVal: string;
@@ -35,7 +31,7 @@ export let tcgpSets = new Array<TcgpSet>();
 export let tcgpCodes = new Array<TcgpCode>();
 
 const TCGP_API = "https://mp-search-api.tcgplayer.com/v1/search/request";
-const TCGP_IMAGE_API = "https://product-images.tcgplayer.com/fit-in/437x437"
+const TCGP_IMAGE_API = "https://product-images.tcgplayer.com/fit-in/437x437";
 const UPDATE_SET = "UPDATE expansions SET tcgName = $tcgName WHERE name = $name";
 const UPDATE_CARD =
   "UPDATE cards SET " +
@@ -213,16 +209,16 @@ async function getTcgpExpsData() {
     headers: { "Content-Type": "application/json" },
     body: tcgRequest,
   });
-  if(response.status >= 300){
+  if (response.status >= 300) {
     logger.error(`Request to TCGP_API failed: ${response.status} ${await response.text()}`);
-    return
+    return;
   }
   let data: any;
   try {
     data = await response.json();
   } catch (e) {
     logger.error(`Failed to parse :${e}`);
-    return
+    return;
   }
   for (let setName of data.results[0].aggregations.setName) {
     tcgpSets.push({ urlVal: setName.urlValue, value: setName.value, count: setName.count });
@@ -236,10 +232,15 @@ async function getTcgpExpsData() {
  */
 export async function pullVariants(idTCGP): Promise<string[]> {
   let variants = new Array<string>();
-  let resp = await fetch(
-    `https://infinite-api.tcgplayer.com/price/history/${idTCGP}?range=quarter`
-  );
-  let data: any = await resp.json();
+  let data: any;
+  try {
+    let resp = await fetch(
+      `https://infinite-api.tcgplayer.com/price/history/${idTCGP}?range=quarter`
+    );
+    data = await resp.json();
+  } catch (e) {
+    logger.error(`Failed to pull variants: ${e}`)
+  }
   if (data.result != null && data.result.length != 0) {
     let prices = data.result[0].variants;
     if (prices != null) {
@@ -383,8 +384,6 @@ export async function updateSealedProducts() {
     }
   }
 }
-
-
 
 function getType(name) {
   if (!name) {
