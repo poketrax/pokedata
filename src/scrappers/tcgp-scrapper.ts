@@ -211,7 +211,7 @@ async function getTcgpExpsData() {
   });
   if (response.status >= 300) {
     logger.error(`Request to TCGP_API failed: ${response.status} ${await response.text()}`);
-    return;
+    return ;
   }
   let data: any;
   try {
@@ -240,6 +240,7 @@ export async function pullVariants(idTCGP): Promise<string[]> {
     data = await resp.json();
   } catch (e) {
     logger.error(`Failed to pull variants: ${e}`)
+    return variants;
   }
   if (data.result != null && data.result.length != 0) {
     let prices = data.result[0].variants;
