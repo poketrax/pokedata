@@ -205,12 +205,23 @@ export async function getSerebiiPokemon(): Promise<any[]> {
 export async function serebiiUpsertCard(card: Card, exp: Expansion) {
   let dbCard = findCardComplex(exp.name, card.expCardNumber);
   //Case where img was already downloaded
+  let fileName = `${cardExpFolder(exp)}/${card.cardId.replaceAll("/", "-")}.jpg`
+  let fileExsists = fs.existsSync(fileName)
+  let fileRightSize = true
+  //check file size sometimes a small temp img is downloaded
+  if(fileExsists){
+    let imageFileStats = fs.statSync(fileName)
+    logger.debug(clc.cyan(`image size: ${imageFileStats.size}`));
+    if(imageFileStats.size < 2000 ){
+      fileRightSize = false
+      logger.debug(clc.cyan("Found small card image"));
+    }
+  }
   if (
     dbCard != null &&
     dbCard.img === card.img &&
-    fs.existsSync(
-      `${cardExpFolder(exp)}/${card.cardId.replaceAll("/", "-")}.jpg`
-    )
+    fileExsists &&
+    fileRightSize
   ) {
     await addCard(card, UPDATE_CARD);
     return;
