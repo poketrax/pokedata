@@ -8,43 +8,29 @@
   "subcomponents": null,
   "internal_dependencies": [
     {
-      "name": "chai",
-      "version": "4.3.7",
-      "port": null,
-      "protocol": null,
-      "property_mappings": null
-    },
-    {
-      "name": "ts-mocha",
-      "version": "10.0.0",
-      "port": null,
-      "protocol": null,
-      "property_mappings": null
-    },
-    {
-      "name": "@types/mocha",
-      "version": "10.0.1",
-      "port": null,
-      "protocol": null,
-      "property_mappings": null
-    },
-    {
-      "name": "jest",
-      "version": "29.3.1",
-      "port": null,
-      "protocol": null,
-      "property_mappings": null
-    },
-    {
-      "name": "mocha",
-      "version": "10.2.0",
-      "port": null,
-      "protocol": null,
-      "property_mappings": null
-    },
-    {
       "name": "nyc",
       "version": "15.1.0",
+      "port": null,
+      "protocol": null,
+      "property_mappings": null
+    },
+    {
+      "name": "@types/chai",
+      "version": "4.3.5",
+      "port": null,
+      "protocol": null,
+      "property_mappings": null
+    },
+    {
+      "name": "c8",
+      "version": "8.0.0",
+      "port": null,
+      "protocol": null,
+      "property_mappings": null
+    },
+    {
+      "name": "chai",
+      "version": "4.3.7",
       "port": null,
       "protocol": null,
       "property_mappings": null
@@ -57,15 +43,29 @@
       "property_mappings": null
     },
     {
-      "name": "@types/chai",
-      "version": "4.3.4",
+      "name": "@types/mocha",
+      "version": "10.0.1",
       "port": null,
       "protocol": null,
       "property_mappings": null
     },
     {
-      "name": "c8",
-      "version": "7.12.0",
+      "name": "ts-mocha",
+      "version": "10.0.0",
+      "port": null,
+      "protocol": null,
+      "property_mappings": null
+    },
+    {
+      "name": "jest",
+      "version": "29.6.1",
+      "port": null,
+      "protocol": null,
+      "property_mappings": null
+    },
+    {
+      "name": "mocha",
+      "version": "10.2.0",
       "port": null,
       "protocol": null,
       "property_mappings": null
@@ -78,77 +78,21 @@
       "source": "package.json",
       "dependencies": [
         {
-          "name": "string-similarity",
-          "version": "4.0.4",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "cli-color",
-          "version": "2.0.3",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "jsdom",
-          "version": "20.0.2",
+          "name": "cli-progress",
+          "version": "3.12.0",
           "port": null,
           "protocol": null,
           "property_mappings": null
         },
         {
           "name": "node-fetch",
-          "version": "3.3.0",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "typescript-logging",
-          "version": "2.0.2",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "better-sqlite3",
-          "version": "7.6.2",
+          "version": "3.3.1",
           "port": null,
           "protocol": null,
           "property_mappings": null
         },
         {
           "name": "@types/cli-color",
-          "version": "2.0.2",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "@types/node",
-          "version": "18.11.13",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "typescript",
-          "version": "4.9.4",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "cli-progress",
-          "version": "3.11.2",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "typescript-logging-category-style",
           "version": "2.0.2",
           "port": null,
           "protocol": null,
@@ -162,8 +106,64 @@
           "property_mappings": null
         },
         {
+          "name": "@types/node",
+          "version": "20.4.1",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "typescript",
+          "version": "5.1.6",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "typescript-logging",
+          "version": "2.1.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "cli-color",
+          "version": "2.0.3",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "typescript-logging-category-style",
+          "version": "2.1.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "jsdom",
+          "version": "22.1.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "better-sqlite3",
+          "version": "8.4.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
           "name": "minimist",
-          "version": "1.2.7",
+          "version": "1.2.8",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "string-similarity",
+          "version": "4.0.4",
           "port": null,
           "protocol": null,
           "property_mappings": null
@@ -175,43 +175,29 @@
       "source": "package.json",
       "dependencies": [
         {
-          "name": "chai",
-          "version": "4.3.7",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "ts-mocha",
-          "version": "10.0.0",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "@types/mocha",
-          "version": "10.0.1",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "jest",
-          "version": "29.3.1",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
-          "name": "mocha",
-          "version": "10.2.0",
-          "port": null,
-          "protocol": null,
-          "property_mappings": null
-        },
-        {
           "name": "nyc",
           "version": "15.1.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "@types/chai",
+          "version": "4.3.5",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "c8",
+          "version": "8.0.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "chai",
+          "version": "4.3.7",
           "port": null,
           "protocol": null,
           "property_mappings": null
@@ -224,15 +210,29 @@
           "property_mappings": null
         },
         {
-          "name": "@types/chai",
-          "version": "4.3.4",
+          "name": "@types/mocha",
+          "version": "10.0.1",
           "port": null,
           "protocol": null,
           "property_mappings": null
         },
         {
-          "name": "c8",
-          "version": "7.12.0",
+          "name": "ts-mocha",
+          "version": "10.0.0",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "jest",
+          "version": "29.6.1",
+          "port": null,
+          "protocol": null,
+          "property_mappings": null
+        },
+        {
+          "name": "mocha",
+          "version": "10.2.0",
           "port": null,
           "protocol": null,
           "property_mappings": null
@@ -242,6 +242,7 @@
   ],
   "branches": [
     "HEAD -> origin/main",
+    "Security-test",
     "main"
   ]
 }
