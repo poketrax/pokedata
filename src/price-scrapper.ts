@@ -88,6 +88,7 @@ async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: 
     let index = 0
     for (let complexRow of complexRows) {
         let card = dejoinCard(complexRow)
+        logger.info(`Pulling ${card.cardId}, ${card.releaseDate}`)
         let raw = await scrapeEbay(card, 'raw')
         let grade9 = await scrapeEbay(card, 'grade9')
         let grade10 = await scrapeEbay(card, 'grade10')
