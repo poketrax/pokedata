@@ -55,7 +55,6 @@ const UPDATE_CARD =
   "variants = $variants " +
   "WHERE expCardNumber = $expCardNumber AND expName = $expName"
 
-
 before(()=> {
     setUpLogger(true)
 })
