@@ -79,7 +79,7 @@ export async function run() {
 
 async function pullPrices(relStart: Date, relEnd: Date, priceFilter: Date, msg: string, rare: boolean) {
     const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-    consoleHeader(`Pulling ${msg} Cards`)
+    consoleHeader(`Pulling ${msg} Cards from ${relStart.toDateString()} till ${relEnd.toDateString()}, going back till ${priceFilter}`)
     let complexRows = getPricesComplex(relStart, relEnd, priceFilter)
     if (complexRows == null) { logger.info(clc.magenta(`No ${msg} cards need updating`)); return }
     logger.info(clc.green(`${msg} cards that need updating: ${complexRows.length} prices`))
