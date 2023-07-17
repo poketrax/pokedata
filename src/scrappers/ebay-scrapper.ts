@@ -1,6 +1,7 @@
 import * as jsdom from "jsdom";
 import fetch from "node-fetch";
 import { delay, logger, formatCardName } from "../common.js";
+import clc from "cli-color";
 
 const raw = "-PSA -BGS -CGC";
 const grade10 = "(PSA 10,BGS 10,CGC 10)";
@@ -18,6 +19,7 @@ const ebayUrl = "https://www.ebay.com/sch/i.html";
 export async function scrapeEbay(card, type): Promise<number> {
   let url = new URL(ebayUrl);
   let name = formatCardName(card.name);
+
   switch (type) {
     case "raw":
       let kw = `(${card.expName})+(${name})+${card.expCardNumber} ${raw} -Digital -Online`;
@@ -57,5 +59,6 @@ export async function scrapeEbay(card, type): Promise<number> {
   if (prices.length > 0) {
     return prices[midpoint];
   }
+  logger.warn(clc.yellow(`Found no prices for ${card.id}, ${type}`));
   return 0;
 }
