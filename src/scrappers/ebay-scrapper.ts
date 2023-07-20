@@ -49,8 +49,8 @@ export async function scrapeEbay(card, type): Promise<number> {
   for (let listing of listings) {
     let raw_str: string = listing.getElementsByClassName("s-item__price")[0].innerHTML.toString();
     let parts = [ ...raw_str.matchAll(/(.*)\$(\d+\.\d{2})(.*)/g)];
-    let match = parts[0];
-    let raw_price = match[2];
+    let match = parts ? parts[0] : undefined;
+    let raw_price = match ? match[2] : undefined;
     let price = parseFloat(raw_price ?? "");
     if (isNaN(price) === false) {
       prices.push(price);
