@@ -1,6 +1,6 @@
 import * as jsdom from "jsdom";
 import fetch from "node-fetch";
-import { delay, logger, formatCardName } from "../common.js";
+import { logger, formatCardName } from "../common.js";
 import clc from "cli-color";
 
 const raw = "-PSA -BGS -CGC";
@@ -41,7 +41,13 @@ export async function scrapeEbay(card, type): Promise<number> {
   url.searchParams.set("_SOP", _SOP);
 
   let prices = [];
-  let resp = await fetch(url.toString());
+  let resp;
+  try{
+    resp = await fetch(url.toString());
+  }catch(e){
+    logger.error(clc.red(`Failed to pull data: ${e}`))
+    return 0;
+  }
   let data = await resp.text();
   const { window } = new jsdom.JSDOM(data);
   const listings = window.document.getElementsByClassName("s-item__info");
@@ -55,7 +61,7 @@ export async function scrapeEbay(card, type): Promise<number> {
     if (isNaN(price) === false) {
       prices.push(price);
     }else {
-      logger.warn(`Price was NaN sounds SUS result:\n ${raw_str},\n${raw_price},\n${url.toString()}`)
+      logger.warn(clc.yellow(`Price was NaN sounds SUS result:\n ${raw_str},\n${raw_price},\n${url.toString()}`))
     }
   }
   prices.splice(0, 1);
