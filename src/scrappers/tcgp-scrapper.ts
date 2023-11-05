@@ -101,24 +101,39 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   )
     return cards;
   let request = JSON.parse(tcgRequest);
-  request.size = 300;
+  request.size = 25;
+  request.from = 0;
   request.filters.term.setName = JSON.parse(set.tcgName);
   let url = new URL(TCGP_API);
   url.searchParams.set("q", "");
   url.searchParams.set("isList", "false");
+  
+  let totalResults = await postTCGPRequest(url, request,set, cards);
+  while(request.from < totalResults ){
+    request.from += request.size;
+    await postTCGPRequest(url, request, set, cards);
+  }
+  return cards;
+}
+
+export async function postTCGPRequest(url, request, set, cards) : Promise<number>{
   let response = await fetch(url.toString(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(request),
   });
   let data: any = await response.json();
+  console.log(JSON.stringify(request,null, 1))
+  console.log(data)
+
+  let totalresults = data.results[0].totalResults;
   for (let card of data.results[0].results) {
     if (card.productName.includes("Code Card")) continue;
     let newCard: Card = await convertCard(card, set.name, set.releaseDate);
     //console.log(`TCGP Card: ${newCard.cardId}`)
     cards.push(newCard);
   }
-  return cards;
+  return totalresults;
 }
 
 /**
