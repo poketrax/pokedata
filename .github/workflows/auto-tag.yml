@@ -15,3 +15,5 @@ jobs:
       - uses: butlerlogic/action-autotag@stable
         env:
           GITHUB_TOKEN: "${{ secrets.JPG_ACTION_TOKEN }}"
+        with:
+            strategy: package
