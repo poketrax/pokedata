@@ -13,5 +13,5 @@ jobs:
         with:
           node-version: 18
       - uses: butlerlogic/action-autotag@stable
-        with:
+        env:
           GITHUB_TOKEN: "${{ secrets.JPG_ACTION_TOKEN }}"
