@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: phish108/autotag-action@v1.1.55
+      - uses: phish108/autotag-action@v1.1.64
         with:
           github-token: ${{ secrets.GITHUB_TOKEN}}
