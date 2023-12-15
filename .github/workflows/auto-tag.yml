@@ -12,8 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: butlerlogic/action-autotag@stable
-        env:
-          GITHUB_TOKEN: "${{ secrets.JPG_ACTION_TOKEN }}"
+      - uses: phish108/autotag-action@v1.1.55
         with:
-            strategy: package
+          github-token: ${{ secrets.GITHUB_TOKEN}}
