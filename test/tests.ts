@@ -130,10 +130,10 @@ describe("Test TCGP api fetch", () => {
       .then((value) => expect(value, `returned value: ${JSON.stringify(value)}`).to.contain("swsh12-silver-tempest"))
       .catch((e) => expect.fail(`Error ${e.stack}`));
   });
-  it("should get variants for a cards", async () => {
-    return pullVariants("263872")
-      .then((value) => expect(value, `returned value: ${JSON.stringify(value)}`).to.contain("Holofoil"))
-      .catch((e) => expect.fail(`Error  ${e.stack}`));
+  it("should get variants for a cards", () => {
+    let result =  pullVariants("Common");
+    console.log(result)
+    expect(result, `returned value: ${JSON.stringify(result)}`).to.contain("Normal")
   });
   it("should get tcgp code for a set name", async () => {
     return getTcgpCode("SWSH12 Silver Tempest")

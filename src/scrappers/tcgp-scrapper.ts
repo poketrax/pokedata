@@ -4,6 +4,8 @@ import { Card } from "../model/Card.js";
 import { Expansion } from "../model/CardMeta.js";
 import clc from "cli-color";
 
+const PULL_DELAY = 1000;
+
 import {
   formatExpNumber,
   formatId,
@@ -12,6 +14,7 @@ import {
   normalizeSetName,
   logger,
   consoleHeader,
+  delay,
 } from "../common.js";
 
 import { findCardComplex, upsertExpantion, upsertSealedProduct } from "../database.js";
@@ -93,13 +96,7 @@ const tcgRequest = `{
 export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let cards = new Array<Card>();
   logger.debug(`Pulling TCGP Set: ${set.name} tcgp: ${set.tcgName}`);
-  if (
-    set.tcgName == null ||
-    set.tcgName === "" ||
-    set.tcgName === `["N/A"]` ||
-    set.tcgName === `[]`
-  )
-    return cards;
+  if (set.tcgName == null || set.tcgName === "" || set.tcgName === `["N/A"]` || set.tcgName === `[]`) return cards;
   let request = JSON.parse(tcgRequest);
   request.size = 25;
   request.from = 0;
@@ -107,24 +104,24 @@ export async function pullTcgpSetCards(set: Expansion): Promise<Card[]> {
   let url = new URL(TCGP_API);
   url.searchParams.set("q", "");
   url.searchParams.set("isList", "false");
-  
-  let totalResults = await postTCGPRequest(url, request,set, cards);
-  while(request.from < totalResults ){
+
+  let totalResults = await postTCGPRequest(url, request, set, cards);
+  while (request.from < totalResults) {
     request.from += request.size;
     await postTCGPRequest(url, request, set, cards);
   }
   return cards;
 }
 
-export async function postTCGPRequest(url, request, set, cards) : Promise<number>{
+export async function postTCGPRequest(url, request, set, cards): Promise<number> {
   let response = await fetch(url.toString(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(request),
   });
   let data: any = await response.json();
-  console.log(JSON.stringify(request,null, 1))
-  console.log(data)
+  console.log(JSON.stringify(request, null, 1));
+  console.log(data);
 
   let totalresults = data.results[0].totalResults;
   for (let card of data.results[0].results) {
@@ -144,11 +141,10 @@ export async function postTCGPRequest(url, request, set, cards) : Promise<number
  * @returns
  */
 async function convertCard(card: any, setName: string, setReleaseDate: string): Promise<Card> {
-  let releaseDate =
-    card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
+  let releaseDate = card.customAttributes.releaseDate === null ? setReleaseDate : card.customAttributes.releaseDate;
   let cardNum = formatExpNumber(card.customAttributes.number.split("/")[0]);
   let img = `${TCGP_IMAGE_API}/${card.productId.toFixed()}.jpg`;
-  let variants = await pullVariants(card.productId);
+  let variants = pullVariants(card.rarityName);
   let id = formatId(setName, card.productName, cardNum);
   let newCard: Card = {
     cardId: id,
@@ -162,8 +158,7 @@ async function convertCard(card: any, setName: string, setReleaseDate: string): 
     img: img,
     price: card.marketPrice,
     releaseDate: releaseDate,
-    energyType:
-      card.customAttributes.energyType != null ? card.customAttributes.energyType[0] ?? "" : "",
+    energyType: card.customAttributes.energyType != null ? card.customAttributes.energyType[0] ?? "" : "",
     cardType: card.customAttributes.cardType != null ? card.customAttributes.cardType[0] ?? "" : "",
     variants: variants,
   };
@@ -199,12 +194,7 @@ export async function findSetFromTCGP(name: string): Promise<string[]> {
     if (nameNorm.includes("promo") === true && tcgpName.includes("promo") === false) {
       push = false;
     }
-    let promo_rm = nameNorm
-      .replace("promos", "")
-      .replace("promo", "")
-      .replace("cards", "")
-      .replace("card", "")
-      .trim();
+    let promo_rm = nameNorm.replace("promos", "").replace("promo", "").replace("cards", "").replace("card", "").trim();
     if (nameNorm.includes("promo") && tcgpName.includes(promo_rm) === false) {
       push = false;
     }
@@ -226,7 +216,7 @@ async function getTcgpExpsData() {
   });
   if (response.status >= 300) {
     logger.error(`Request to TCGP_API failed: ${response.status} ${await response.text()}`);
-    return ;
+    return;
   }
   let data: any;
   try {
@@ -245,27 +235,15 @@ async function getTcgpExpsData() {
  * @param idTCGP
  * @returns List of variants
  */
-export async function pullVariants(idTCGP): Promise<string[]> {
-  let variants = new Array<string>();
-  let data: any;
-  try {
-    let resp = await fetch(
-      `https://infinite-api.tcgplayer.com/price/history/${idTCGP}?range=quarter`
-    );
-    data = await resp.json();
-  } catch (e) {
-    logger.error(`Failed to pull variants: ${e}`)
-    return variants;
+export function pullVariants(rarity: string): Array<string> {
+  switch (rarity) {
+    case "Common":
+      return ["Normal", "Reverse Holofoil"];
+    case "Uncommon":
+      return ["Normal", "Reverse Holofoil"];
+    default:
+      return ["Holofoil"];
   }
-  if (data.result != null && data.result.length != 0) {
-    let prices = data.result[0].variants;
-    if (prices != null) {
-      for (let price of prices) {
-        variants.push(price.variant);
-      }
-    }
-  }
-  return variants;
 }
 
 /**
@@ -277,9 +255,7 @@ export async function getTcgpCode(tcgpSetName): Promise<string> {
   if (tcgpCodes.length === 0) {
     await getCodes();
   }
-  let codes = tcgpCodes.find(
-    (value) => stringSimilarity.compareTwoStrings(tcgpSetName, value.name) > 0.8
-  );
+  let codes = tcgpCodes.find((value) => stringSimilarity.compareTwoStrings(tcgpSetName, value.name) > 0.8);
   if (codes == null) {
     return "";
   }
@@ -379,7 +355,6 @@ export async function updateSealedProducts() {
       let productList = json.results[0].results;
 
       if (total === 1000) {
-        console.log(json.results[0].totalResults);
         total = json.results[0].totalResults;
       }
 

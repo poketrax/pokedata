@@ -1,0 +1,962 @@
+2023-12-20 09:13:29,999 INFO  [data-scraper] [1m[31m------------------ DRYRUN --------------------[39m[22m
+2023-12-20 09:13:30,01 INFO  [data-scraper] [1m[31m--------- Results at test-data.sql -----------[39m[22m
+2023-12-20 09:13:30,01 INFO  [data-scraper] [1m[31m------------------ DRYRUN --------------------[39m[22m
+2023-12-20 09:13:30,16 INFO  [data-scraper] [1m[94m----------------------------------------------[39m[22m
+2023-12-20 09:13:30,16 INFO  [data-scraper] [1m[94mUpdating Cards[39m[22m
+2023-12-20 09:13:30,16 INFO  [data-scraper] [1m[94m----------------------------------------------[39m[22m
+2023-12-20 09:13:30,16 INFO  [data-scraper] [94mProcessing 151 Cards[39m
+{
+ "algorithm": "",
+ "from": 0,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi7784d354-4463-4741-93ca-3a8d52fbfab5',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 25,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pice2d2687-aaa3-4f40-b657-f1df59211fe1',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 50,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pif016a241-d619-4144-b9d8-62df13b9971c',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 75,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi61d5922f-fee8-4b34-8a0e-f9bb55bf4747',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 100,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi9a339891-e46e-4d5c-bc28-dc74b37807a0',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 125,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi357a1de7-d42a-40de-a1dc-930791b00a27',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 150,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi164c2715-b691-44cd-95ad-1b19299b253a',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 175,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'piba106e4c-306a-46a2-a423-70cfd72e589c',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 200,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pibf8e6544-dc3b-4642-9305-75fdab7beffd',
+      results: [Array]
+    }
+  ]
+}
+{
+ "algorithm": "",
+ "from": 225,
+ "size": 25,
+ "filters": {
+  "term": {
+   "productLineName": [
+    "pokemon"
+   ],
+   "setName": [
+    "sv-scarlet-and-violet-151"
+   ],
+   "productTypeName": [
+    "Cards"
+   ]
+  },
+  "range": {},
+  "match": {}
+ },
+ "listingSearch": {
+  "filters": {
+   "term": {},
+   "range": {
+    "quantity": {
+     "gte": 1
+    }
+   },
+   "exclude": {
+    "channelExclusion": 0
+   }
+  },
+  "context": {
+   "cart": {}
+  }
+ },
+ "context": {
+  "cart": {},
+  "shippingCountry": "US"
+ },
+ "sort": {}
+}
+{
+  errors: [],
+  results: [
+    {
+      aggregations: [Object],
+      algorithm: 'salesrel',
+      searchType: 'strict',
+      totalResults: 212,
+      resultId: 'pi526448ba-ad3e-40b4-9699-8582e5e887a3',
+      results: []
+    }
+  ]
+}
+2023-12-20 09:14:05,225 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bulbasaur-001","idTCGP":0,"name":"Bulbasaur","expIdTCGP":"","expName":"151","expCardNumber":"001","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/1.jpg","energyType":"Grass","pokedex":1}[39m
+2023-12-20 09:14:05,232 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ivysaur-002","idTCGP":0,"name":"Ivysaur","expIdTCGP":"","expName":"151","expCardNumber":"002","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/2.jpg","energyType":"Grass","pokedex":2}[39m
+2023-12-20 09:14:05,238 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex-003","idTCGP":0,"name":"Venusaur ex","expIdTCGP":"","expName":"151","expCardNumber":"003","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/3.jpg","energyType":"Grass","pokedex":10000}[39m
+2023-12-20 09:14:05,243 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmander-004","idTCGP":0,"name":"Charmander","expIdTCGP":"","expName":"151","expCardNumber":"004","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/4.jpg","energyType":"Fire","pokedex":4}[39m
+2023-12-20 09:14:05,248 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmeleon-005","idTCGP":0,"name":"Charmeleon","expIdTCGP":"","expName":"151","expCardNumber":"005","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/5.jpg","energyType":"Fire","pokedex":5}[39m
+2023-12-20 09:14:05,255 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex-006","idTCGP":0,"name":"Charizard ex","expIdTCGP":"","expName":"151","expCardNumber":"006","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/6.jpg","energyType":"Fire","pokedex":10000}[39m
+2023-12-20 09:14:05,259 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Squirtle-007","idTCGP":0,"name":"Squirtle","expIdTCGP":"","expName":"151","expCardNumber":"007","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/7.jpg","energyType":"Water","pokedex":7}[39m
+2023-12-20 09:14:05,264 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wartortle-008","idTCGP":0,"name":"Wartortle","expIdTCGP":"","expName":"151","expCardNumber":"008","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/8.jpg","energyType":"Water","pokedex":8}[39m
+2023-12-20 09:14:05,269 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex-009","idTCGP":0,"name":"Blastoise ex","expIdTCGP":"","expName":"151","expCardNumber":"009","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/9.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:05,274 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Caterpie-010","idTCGP":0,"name":"Caterpie","expIdTCGP":"","expName":"151","expCardNumber":"010","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/10.jpg","energyType":"Grass","pokedex":10}[39m
+2023-12-20 09:14:05,278 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Metapod-011","idTCGP":0,"name":"Metapod","expIdTCGP":"","expName":"151","expCardNumber":"011","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/11.jpg","energyType":"Grass","pokedex":11}[39m
+2023-12-20 09:14:05,283 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Butterfree-012","idTCGP":0,"name":"Butterfree","expIdTCGP":"","expName":"151","expCardNumber":"012","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/12.jpg","energyType":"Grass","pokedex":12}[39m
+2023-12-20 09:14:05,289 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weedle-013","idTCGP":0,"name":"Weedle","expIdTCGP":"","expName":"151","expCardNumber":"013","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/13.jpg","energyType":"Grass","pokedex":13}[39m
+2023-12-20 09:14:05,293 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kakuna-014","idTCGP":0,"name":"Kakuna","expIdTCGP":"","expName":"151","expCardNumber":"014","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/14.jpg","energyType":"Grass","pokedex":14}[39m
+2023-12-20 09:14:05,299 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Beedrill-015","idTCGP":0,"name":"Beedrill","expIdTCGP":"","expName":"151","expCardNumber":"015","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/15.jpg","energyType":"Grass","pokedex":15}[39m
+2023-12-20 09:14:05,304 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgey-016","idTCGP":0,"name":"Pidgey","expIdTCGP":"","expName":"151","expCardNumber":"016","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/16.jpg","energyType":"Colorless","pokedex":16}[39m
+2023-12-20 09:14:05,309 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgeotto-017","idTCGP":0,"name":"Pidgeotto","expIdTCGP":"","expName":"151","expCardNumber":"017","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/17.jpg","energyType":"Colorless","pokedex":17}[39m
+2023-12-20 09:14:05,314 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgeot-018","idTCGP":0,"name":"Pidgeot","expIdTCGP":"","expName":"151","expCardNumber":"018","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/18.jpg","energyType":"Colorless","pokedex":18}[39m
+2023-12-20 09:14:05,319 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rattata-019","idTCGP":0,"name":"Rattata","expIdTCGP":"","expName":"151","expCardNumber":"019","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/19.jpg","energyType":"Colorless","pokedex":19}[39m
+2023-12-20 09:14:05,324 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Raticate-020","idTCGP":0,"name":"Raticate","expIdTCGP":"","expName":"151","expCardNumber":"020","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/20.jpg","energyType":"Colorless","pokedex":20}[39m
+2023-12-20 09:14:05,329 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Spearow-021","idTCGP":0,"name":"Spearow","expIdTCGP":"","expName":"151","expCardNumber":"021","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/21.jpg","energyType":"Colorless","pokedex":21}[39m
+2023-12-20 09:14:05,334 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Fearow-022","idTCGP":0,"name":"Fearow","expIdTCGP":"","expName":"151","expCardNumber":"022","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/22.jpg","energyType":"Colorless","pokedex":22}[39m
+2023-12-20 09:14:05,338 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ekans-023","idTCGP":0,"name":"Ekans","expIdTCGP":"","expName":"151","expCardNumber":"023","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/23.jpg","energyType":"Darkness","pokedex":23}[39m
+2023-12-20 09:14:05,343 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arbok-ex-024","idTCGP":0,"name":"Arbok ex","expIdTCGP":"","expName":"151","expCardNumber":"024","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/24.jpg","energyType":"Darkness","pokedex":10000}[39m
+2023-12-20 09:14:05,348 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pikachu-025","idTCGP":0,"name":"Pikachu","expIdTCGP":"","expName":"151","expCardNumber":"025","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/25.jpg","energyType":"Lightning","pokedex":25}[39m
+2023-12-20 09:14:05,354 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Raichu-026","idTCGP":0,"name":"Raichu","expIdTCGP":"","expName":"151","expCardNumber":"026","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/26.jpg","energyType":"Lightning","pokedex":26}[39m
+2023-12-20 09:14:05,358 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Sandshrew-027","idTCGP":0,"name":"Sandshrew","expIdTCGP":"","expName":"151","expCardNumber":"027","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/27.jpg","energyType":"Fighting","pokedex":27}[39m
+2023-12-20 09:14:05,363 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Sandslash-028","idTCGP":0,"name":"Sandslash","expIdTCGP":"","expName":"151","expCardNumber":"028","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/28.jpg","energyType":"Fighting","pokedex":28}[39m
+2023-12-20 09:14:05,368 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoran♀-029","idTCGP":0,"name":"Nidoran♀","expIdTCGP":"","expName":"151","expCardNumber":"029","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/29.jpg","energyType":"Darkness","pokedex":29}[39m
+2023-12-20 09:14:05,373 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidorina-030","idTCGP":0,"name":"Nidorina","expIdTCGP":"","expName":"151","expCardNumber":"030","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/30.jpg","energyType":"Darkness","pokedex":30}[39m
+2023-12-20 09:14:05,378 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoqueen-031","idTCGP":0,"name":"Nidoqueen","expIdTCGP":"","expName":"151","expCardNumber":"031","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/31.jpg","energyType":"Darkness","pokedex":31}[39m
+2023-12-20 09:14:05,384 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoran♂-032","idTCGP":0,"name":"Nidoran♂","expIdTCGP":"","expName":"151","expCardNumber":"032","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/32.jpg","energyType":"Darkness","pokedex":32}[39m
+2023-12-20 09:14:05,388 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidorino-033","idTCGP":0,"name":"Nidorino","expIdTCGP":"","expName":"151","expCardNumber":"033","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/33.jpg","energyType":"Darkness","pokedex":33}[39m
+2023-12-20 09:14:05,393 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoking-034","idTCGP":0,"name":"Nidoking","expIdTCGP":"","expName":"151","expCardNumber":"034","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/34.jpg","energyType":"Darkness","pokedex":34}[39m
+2023-12-20 09:14:05,398 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Clefairy-035","idTCGP":0,"name":"Clefairy","expIdTCGP":"","expName":"151","expCardNumber":"035","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/35.jpg","energyType":"Psychic","pokedex":35}[39m
+2023-12-20 09:14:05,404 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Clefable-036","idTCGP":0,"name":"Clefable","expIdTCGP":"","expName":"151","expCardNumber":"036","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/36.jpg","energyType":"Psychic","pokedex":36}[39m
+2023-12-20 09:14:05,408 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vulpix-037","idTCGP":0,"name":"Vulpix","expIdTCGP":"","expName":"151","expCardNumber":"037","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/37.jpg","energyType":"Fire","pokedex":37}[39m
+2023-12-20 09:14:05,413 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ninetales-ex-038","idTCGP":0,"name":"Ninetales ex","expIdTCGP":"","expName":"151","expCardNumber":"038","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/38.jpg","energyType":"Fire","pokedex":10000}[39m
+2023-12-20 09:14:05,418 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jigglypuff-039","idTCGP":0,"name":"Jigglypuff","expIdTCGP":"","expName":"151","expCardNumber":"039","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/39.jpg","energyType":"Colorless","pokedex":39}[39m
+2023-12-20 09:14:05,423 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wigglytuff-ex-040","idTCGP":0,"name":"Wigglytuff ex","expIdTCGP":"","expName":"151","expCardNumber":"040","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/40.jpg","energyType":"Colorless","pokedex":10000}[39m
+2023-12-20 09:14:05,428 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zubat-041","idTCGP":0,"name":"Zubat","expIdTCGP":"","expName":"151","expCardNumber":"041","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/41.jpg","energyType":"Darkness","pokedex":41}[39m
+2023-12-20 09:14:05,433 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golbat-042","idTCGP":0,"name":"Golbat","expIdTCGP":"","expName":"151","expCardNumber":"042","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/42.jpg","energyType":"Darkness","pokedex":42}[39m
+2023-12-20 09:14:05,438 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Oddish-043","idTCGP":0,"name":"Oddish","expIdTCGP":"","expName":"151","expCardNumber":"043","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/43.jpg","energyType":"Grass","pokedex":43}[39m
+2023-12-20 09:14:05,442 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gloom-044","idTCGP":0,"name":"Gloom","expIdTCGP":"","expName":"151","expCardNumber":"044","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/44.jpg","energyType":"Grass","pokedex":44}[39m
+2023-12-20 09:14:05,447 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vileplume-045","idTCGP":0,"name":"Vileplume","expIdTCGP":"","expName":"151","expCardNumber":"045","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/45.jpg","energyType":"Grass","pokedex":45}[39m
+2023-12-20 09:14:05,453 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Paras-046","idTCGP":0,"name":"Paras","expIdTCGP":"","expName":"151","expCardNumber":"046","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/46.jpg","energyType":"Grass","pokedex":46}[39m
+2023-12-20 09:14:05,458 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Parasect-047","idTCGP":0,"name":"Parasect","expIdTCGP":"","expName":"151","expCardNumber":"047","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/47.jpg","energyType":"Grass","pokedex":47}[39m
+2023-12-20 09:14:05,462 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venonat-048","idTCGP":0,"name":"Venonat","expIdTCGP":"","expName":"151","expCardNumber":"048","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/48.jpg","energyType":"Grass","pokedex":48}[39m
+2023-12-20 09:14:05,467 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venomoth-049","idTCGP":0,"name":"Venomoth","expIdTCGP":"","expName":"151","expCardNumber":"049","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/49.jpg","energyType":"Grass","pokedex":49}[39m
+2023-12-20 09:14:05,472 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Diglett-050","idTCGP":0,"name":"Diglett","expIdTCGP":"","expName":"151","expCardNumber":"050","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/50.jpg","energyType":"Fighting","pokedex":50}[39m
+2023-12-20 09:14:05,476 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dugtrio-051","idTCGP":0,"name":"Dugtrio","expIdTCGP":"","expName":"151","expCardNumber":"051","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/51.jpg","energyType":"Fighting","pokedex":51}[39m
+2023-12-20 09:14:05,482 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Meowth-052","idTCGP":0,"name":"Meowth","expIdTCGP":"","expName":"151","expCardNumber":"052","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/52.jpg","energyType":"Colorless","pokedex":52}[39m
+2023-12-20 09:14:05,487 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Persian-053","idTCGP":0,"name":"Persian","expIdTCGP":"","expName":"151","expCardNumber":"053","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/53.jpg","energyType":"Colorless","pokedex":53}[39m
+2023-12-20 09:14:05,491 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Psyduck-054","idTCGP":0,"name":"Psyduck","expIdTCGP":"","expName":"151","expCardNumber":"054","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/54.jpg","energyType":"Water","pokedex":54}[39m
+2023-12-20 09:14:05,496 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golduck-055","idTCGP":0,"name":"Golduck","expIdTCGP":"","expName":"151","expCardNumber":"055","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/55.jpg","energyType":"Water","pokedex":55}[39m
+2023-12-20 09:14:05,500 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mankey-056","idTCGP":0,"name":"Mankey","expIdTCGP":"","expName":"151","expCardNumber":"056","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/56.jpg","energyType":"Fighting","pokedex":56}[39m
+2023-12-20 09:14:05,505 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Primeape-057","idTCGP":0,"name":"Primeape","expIdTCGP":"","expName":"151","expCardNumber":"057","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/57.jpg","energyType":"Fighting","pokedex":57}[39m
+2023-12-20 09:14:05,509 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Growlithe-058","idTCGP":0,"name":"Growlithe","expIdTCGP":"","expName":"151","expCardNumber":"058","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/58.jpg","energyType":"Fire","pokedex":58}[39m
+2023-12-20 09:14:05,514 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arcanine-059","idTCGP":0,"name":"Arcanine","expIdTCGP":"","expName":"151","expCardNumber":"059","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/59.jpg","energyType":"Fire","pokedex":59}[39m
+2023-12-20 09:14:05,520 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwag-060","idTCGP":0,"name":"Poliwag","expIdTCGP":"","expName":"151","expCardNumber":"060","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/60.jpg","energyType":"Water","pokedex":60}[39m
+2023-12-20 09:14:05,525 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwhirl-061","idTCGP":0,"name":"Poliwhirl","expIdTCGP":"","expName":"151","expCardNumber":"061","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/61.jpg","energyType":"Water","pokedex":61}[39m
+2023-12-20 09:14:05,529 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwrath-062","idTCGP":0,"name":"Poliwrath","expIdTCGP":"","expName":"151","expCardNumber":"062","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/62.jpg","energyType":"Water","pokedex":62}[39m
+2023-12-20 09:14:05,534 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Abra-063","idTCGP":0,"name":"Abra","expIdTCGP":"","expName":"151","expCardNumber":"063","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/63.jpg","energyType":"Psychic","pokedex":63}[39m
+2023-12-20 09:14:05,539 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kadabra-064","idTCGP":0,"name":"Kadabra","expIdTCGP":"","expName":"151","expCardNumber":"064","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/64.jpg","energyType":"Psychic","pokedex":64}[39m
+2023-12-20 09:14:05,544 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex-065","idTCGP":0,"name":"Alakazam ex","expIdTCGP":"","expName":"151","expCardNumber":"065","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/65.jpg","energyType":"Psychic","pokedex":10000}[39m
+2023-12-20 09:14:05,549 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machop-066","idTCGP":0,"name":"Machop","expIdTCGP":"","expName":"151","expCardNumber":"066","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/66.jpg","energyType":"Fighting","pokedex":66}[39m
+2023-12-20 09:14:05,554 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machoke-067","idTCGP":0,"name":"Machoke","expIdTCGP":"","expName":"151","expCardNumber":"067","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/67.jpg","energyType":"Fighting","pokedex":67}[39m
+2023-12-20 09:14:05,558 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machamp-068","idTCGP":0,"name":"Machamp","expIdTCGP":"","expName":"151","expCardNumber":"068","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/68.jpg","energyType":"Fighting","pokedex":68}[39m
+2023-12-20 09:14:05,563 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bellsprout-069","idTCGP":0,"name":"Bellsprout","expIdTCGP":"","expName":"151","expCardNumber":"069","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/69.jpg","energyType":"Grass","pokedex":69}[39m
+2023-12-20 09:14:05,568 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weepinbell-070","idTCGP":0,"name":"Weepinbell","expIdTCGP":"","expName":"151","expCardNumber":"070","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/70.jpg","energyType":"Grass","pokedex":70}[39m
+2023-12-20 09:14:05,572 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Victreebel-071","idTCGP":0,"name":"Victreebel","expIdTCGP":"","expName":"151","expCardNumber":"071","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/71.jpg","energyType":"Grass","pokedex":71}[39m
+2023-12-20 09:14:05,576 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tentacool-072","idTCGP":0,"name":"Tentacool","expIdTCGP":"","expName":"151","expCardNumber":"072","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/72.jpg","energyType":"Water","pokedex":72}[39m
+2023-12-20 09:14:05,581 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tentacruel-073","idTCGP":0,"name":"Tentacruel","expIdTCGP":"","expName":"151","expCardNumber":"073","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/73.jpg","energyType":"Water","pokedex":73}[39m
+2023-12-20 09:14:05,586 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Geodude-074","idTCGP":0,"name":"Geodude","expIdTCGP":"","expName":"151","expCardNumber":"074","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/74.jpg","energyType":"Fighting","pokedex":74}[39m
+2023-12-20 09:14:05,590 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Graveler-075","idTCGP":0,"name":"Graveler","expIdTCGP":"","expName":"151","expCardNumber":"075","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/75.jpg","energyType":"Fighting","pokedex":75}[39m
+2023-12-20 09:14:05,595 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golem-ex-076","idTCGP":0,"name":"Golem ex","expIdTCGP":"","expName":"151","expCardNumber":"076","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/76.jpg","energyType":"Fighting","pokedex":10000}[39m
+2023-12-20 09:14:05,601 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ponyta-077","idTCGP":0,"name":"Ponyta","expIdTCGP":"","expName":"151","expCardNumber":"077","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/77.jpg","energyType":"Fire","pokedex":77}[39m
+2023-12-20 09:14:05,605 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rapidash-078","idTCGP":0,"name":"Rapidash","expIdTCGP":"","expName":"151","expCardNumber":"078","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/78.jpg","energyType":"Fire","pokedex":78}[39m
+2023-12-20 09:14:05,610 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Slowpoke-079","idTCGP":0,"name":"Slowpoke","expIdTCGP":"","expName":"151","expCardNumber":"079","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/79.jpg","energyType":"Psychic","pokedex":79}[39m
+2023-12-20 09:14:05,615 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Slowbro-080","idTCGP":0,"name":"Slowbro","expIdTCGP":"","expName":"151","expCardNumber":"080","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/80.jpg","energyType":"Psychic","pokedex":80}[39m
+2023-12-20 09:14:05,621 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magnemite-081","idTCGP":0,"name":"Magnemite","expIdTCGP":"","expName":"151","expCardNumber":"081","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/81.jpg","energyType":"Lightning","pokedex":81}[39m
+2023-12-20 09:14:05,625 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magneton-082","idTCGP":0,"name":"Magneton","expIdTCGP":"","expName":"151","expCardNumber":"082","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/82.jpg","energyType":"Lightning","pokedex":82}[39m
+2023-12-20 09:14:05,630 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Farfetch'd-083","idTCGP":0,"name":"Farfetch'd","expIdTCGP":"","expName":"151","expCardNumber":"083","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/83.jpg","energyType":"Colorless","pokedex":83}[39m
+2023-12-20 09:14:05,635 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Doduo-084","idTCGP":0,"name":"Doduo","expIdTCGP":"","expName":"151","expCardNumber":"084","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/84.jpg","energyType":"Colorless","pokedex":84}[39m
+2023-12-20 09:14:05,640 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dodrio-085","idTCGP":0,"name":"Dodrio","expIdTCGP":"","expName":"151","expCardNumber":"085","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/85.jpg","energyType":"Colorless","pokedex":85}[39m
+2023-12-20 09:14:05,644 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seel-086","idTCGP":0,"name":"Seel","expIdTCGP":"","expName":"151","expCardNumber":"086","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/86.jpg","energyType":"Water","pokedex":86}[39m
+2023-12-20 09:14:05,650 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dewgong-087","idTCGP":0,"name":"Dewgong","expIdTCGP":"","expName":"151","expCardNumber":"087","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/87.jpg","energyType":"Water","pokedex":87}[39m
+2023-12-20 09:14:05,655 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Grimer-088","idTCGP":0,"name":"Grimer","expIdTCGP":"","expName":"151","expCardNumber":"088","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/88.jpg","energyType":"Darkness","pokedex":88}[39m
+2023-12-20 09:14:05,659 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Muk-089","idTCGP":0,"name":"Muk","expIdTCGP":"","expName":"151","expCardNumber":"089","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/89.jpg","energyType":"Darkness","pokedex":89}[39m
+2023-12-20 09:14:05,664 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Shellder-090","idTCGP":0,"name":"Shellder","expIdTCGP":"","expName":"151","expCardNumber":"090","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/90.jpg","energyType":"Water","pokedex":90}[39m
+2023-12-20 09:14:05,669 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cloyster-091","idTCGP":0,"name":"Cloyster","expIdTCGP":"","expName":"151","expCardNumber":"091","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/91.jpg","energyType":"Water","pokedex":91}[39m
+2023-12-20 09:14:05,674 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gastly-092","idTCGP":0,"name":"Gastly","expIdTCGP":"","expName":"151","expCardNumber":"092","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/92.jpg","energyType":"Psychic","pokedex":92}[39m
+2023-12-20 09:14:05,678 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Haunter-093","idTCGP":0,"name":"Haunter","expIdTCGP":"","expName":"151","expCardNumber":"093","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/93.jpg","energyType":"Psychic","pokedex":93}[39m
+2023-12-20 09:14:05,682 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gengar-094","idTCGP":0,"name":"Gengar","expIdTCGP":"","expName":"151","expCardNumber":"094","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/94.jpg","energyType":"Psychic","pokedex":94}[39m
+2023-12-20 09:14:05,687 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Onix-095","idTCGP":0,"name":"Onix","expIdTCGP":"","expName":"151","expCardNumber":"095","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/95.jpg","energyType":"Fighting","pokedex":95}[39m
+2023-12-20 09:14:05,692 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Drowzee-096","idTCGP":0,"name":"Drowzee","expIdTCGP":"","expName":"151","expCardNumber":"096","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/96.jpg","energyType":"Psychic","pokedex":96}[39m
+2023-12-20 09:14:05,697 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hypno-097","idTCGP":0,"name":"Hypno","expIdTCGP":"","expName":"151","expCardNumber":"097","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/97.jpg","energyType":"Psychic","pokedex":97}[39m
+2023-12-20 09:14:05,702 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Krabby-098","idTCGP":0,"name":"Krabby","expIdTCGP":"","expName":"151","expCardNumber":"098","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/98.jpg","energyType":"Psychic","pokedex":98}[39m
+2023-12-20 09:14:05,707 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kingler-099","idTCGP":0,"name":"Kingler","expIdTCGP":"","expName":"151","expCardNumber":"099","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/99.jpg","energyType":"Psychic","pokedex":99}[39m
+2023-12-20 09:14:05,711 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Voltorb-100","idTCGP":0,"name":"Voltorb","expIdTCGP":"","expName":"151","expCardNumber":"100","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/100.jpg","energyType":"Lightning","pokedex":100}[39m
+2023-12-20 09:14:05,717 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Electrode-101","idTCGP":0,"name":"Electrode","expIdTCGP":"","expName":"151","expCardNumber":"101","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/101.jpg","energyType":"Lightning","pokedex":101}[39m
+2023-12-20 09:14:05,721 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Exeggcute-102","idTCGP":0,"name":"Exeggcute","expIdTCGP":"","expName":"151","expCardNumber":"102","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/102.jpg","energyType":"Grass","pokedex":102}[39m
+2023-12-20 09:14:05,725 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Exeggutor-103","idTCGP":0,"name":"Exeggutor","expIdTCGP":"","expName":"151","expCardNumber":"103","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/103.jpg","energyType":"Grass","pokedex":103}[39m
+2023-12-20 09:14:05,730 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cubone-104","idTCGP":0,"name":"Cubone","expIdTCGP":"","expName":"151","expCardNumber":"104","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/104.jpg","energyType":"Fighting","pokedex":104}[39m
+2023-12-20 09:14:05,735 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Marowak-105","idTCGP":0,"name":"Marowak","expIdTCGP":"","expName":"151","expCardNumber":"105","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/105.jpg","energyType":"Fighting","pokedex":105}[39m
+2023-12-20 09:14:05,740 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hitmonlee-106","idTCGP":0,"name":"Hitmonlee","expIdTCGP":"","expName":"151","expCardNumber":"106","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/106.jpg","energyType":"Fighting","pokedex":106}[39m
+2023-12-20 09:14:05,744 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hitmonchan-107","idTCGP":0,"name":"Hitmonchan","expIdTCGP":"","expName":"151","expCardNumber":"107","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/107.jpg","energyType":"Fighting","pokedex":107}[39m
+2023-12-20 09:14:05,751 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Lickitung-108","idTCGP":0,"name":"Lickitung","expIdTCGP":"","expName":"151","expCardNumber":"108","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/108.jpg","energyType":"Colorless","pokedex":108}[39m
+2023-12-20 09:14:05,755 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Koffing-109","idTCGP":0,"name":"Koffing","expIdTCGP":"","expName":"151","expCardNumber":"109","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/109.jpg","energyType":"Darkness","pokedex":109}[39m
+2023-12-20 09:14:05,760 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weezing-110","idTCGP":0,"name":"Weezing","expIdTCGP":"","expName":"151","expCardNumber":"110","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/110.jpg","energyType":"Darkness","pokedex":110}[39m
+2023-12-20 09:14:05,765 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rhyhorn-111","idTCGP":0,"name":"Rhyhorn","expIdTCGP":"","expName":"151","expCardNumber":"111","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/111.jpg","energyType":"Fighting","pokedex":111}[39m
+2023-12-20 09:14:05,771 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rhydon-112","idTCGP":0,"name":"Rhydon","expIdTCGP":"","expName":"151","expCardNumber":"112","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/112.jpg","energyType":"Fighting","pokedex":112}[39m
+2023-12-20 09:14:05,777 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Chansey-113","idTCGP":0,"name":"Chansey","expIdTCGP":"","expName":"151","expCardNumber":"113","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/113.jpg","energyType":"Colorless","pokedex":113}[39m
+2023-12-20 09:14:05,784 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tangela-114","idTCGP":0,"name":"Tangela","expIdTCGP":"","expName":"151","expCardNumber":"114","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/114.jpg","energyType":"Grass","pokedex":114}[39m
+2023-12-20 09:14:05,789 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kangaskhan-ex-115","idTCGP":0,"name":"Kangaskhan ex","expIdTCGP":"","expName":"151","expCardNumber":"115","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/115.jpg","energyType":"Colorless","pokedex":10000}[39m
+2023-12-20 09:14:05,794 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Horsea-116","idTCGP":0,"name":"Horsea","expIdTCGP":"","expName":"151","expCardNumber":"116","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/116.jpg","energyType":"Water","pokedex":116}[39m
+2023-12-20 09:14:05,799 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seadra-117","idTCGP":0,"name":"Seadra","expIdTCGP":"","expName":"151","expCardNumber":"117","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/117.jpg","energyType":"Water","pokedex":117}[39m
+2023-12-20 09:14:05,804 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Goldeen-118","idTCGP":0,"name":"Goldeen","expIdTCGP":"","expName":"151","expCardNumber":"118","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/118.jpg","energyType":"Water","pokedex":118}[39m
+2023-12-20 09:14:05,808 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seaking-119","idTCGP":0,"name":"Seaking","expIdTCGP":"","expName":"151","expCardNumber":"119","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/119.jpg","energyType":"Water","pokedex":119}[39m
+2023-12-20 09:14:05,813 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Staryu-120","idTCGP":0,"name":"Staryu","expIdTCGP":"","expName":"151","expCardNumber":"120","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/120.jpg","energyType":"Water","pokedex":120}[39m
+2023-12-20 09:14:05,818 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Starmie-121","idTCGP":0,"name":"Starmie","expIdTCGP":"","expName":"151","expCardNumber":"121","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/121.jpg","energyType":"Water","pokedex":121}[39m
+2023-12-20 09:14:05,823 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mr.-Mime-122","idTCGP":0,"name":"Mr. Mime","expIdTCGP":"","expName":"151","expCardNumber":"122","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/122.jpg","energyType":"Psychic","pokedex":122}[39m
+2023-12-20 09:14:05,827 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Scyther-123","idTCGP":0,"name":"Scyther","expIdTCGP":"","expName":"151","expCardNumber":"123","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/123.jpg","energyType":"Grass","pokedex":123}[39m
+2023-12-20 09:14:05,832 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jynx-ex-124","idTCGP":0,"name":"Jynx ex","expIdTCGP":"","expName":"151","expCardNumber":"124","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/124.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:05,837 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Electabuzz-125","idTCGP":0,"name":"Electabuzz","expIdTCGP":"","expName":"151","expCardNumber":"125","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/125.jpg","energyType":"Lightning","pokedex":125}[39m
+2023-12-20 09:14:05,841 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magmar-126","idTCGP":0,"name":"Magmar","expIdTCGP":"","expName":"151","expCardNumber":"126","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/126.jpg","energyType":"Fire","pokedex":126}[39m
+2023-12-20 09:14:05,845 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pinsir-127","idTCGP":0,"name":"Pinsir","expIdTCGP":"","expName":"151","expCardNumber":"127","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/127.jpg","energyType":"Grass","pokedex":127}[39m
+2023-12-20 09:14:05,851 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tauros-128","idTCGP":0,"name":"Tauros","expIdTCGP":"","expName":"151","expCardNumber":"128","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/128.jpg","energyType":"Colorless","pokedex":128}[39m
+2023-12-20 09:14:05,855 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magikarp-129","idTCGP":0,"name":"Magikarp","expIdTCGP":"","expName":"151","expCardNumber":"129","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/129.jpg","energyType":"Water","pokedex":129}[39m
+2023-12-20 09:14:05,859 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gyarados-130","idTCGP":0,"name":"Gyarados","expIdTCGP":"","expName":"151","expCardNumber":"130","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/130.jpg","energyType":"Water","pokedex":130}[39m
+2023-12-20 09:14:05,864 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Lapras-131","idTCGP":0,"name":"Lapras","expIdTCGP":"","expName":"151","expCardNumber":"131","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/131.jpg","energyType":"Water","pokedex":131}[39m
+2023-12-20 09:14:05,869 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ditto-132","idTCGP":0,"name":"Ditto","expIdTCGP":"","expName":"151","expCardNumber":"132","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/132.jpg","energyType":"Colorless","pokedex":132}[39m
+2023-12-20 09:14:05,874 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Eevee-133","idTCGP":0,"name":"Eevee","expIdTCGP":"","expName":"151","expCardNumber":"133","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/133.jpg","energyType":"Colorless","pokedex":133}[39m
+2023-12-20 09:14:05,878 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vaporeon-134","idTCGP":0,"name":"Vaporeon","expIdTCGP":"","expName":"151","expCardNumber":"134","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/134.jpg","energyType":"Water","pokedex":134}[39m
+2023-12-20 09:14:05,884 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jolteon-135","idTCGP":0,"name":"Jolteon","expIdTCGP":"","expName":"151","expCardNumber":"135","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/135.jpg","energyType":"Lightning","pokedex":135}[39m
+2023-12-20 09:14:05,889 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Flareon-136","idTCGP":0,"name":"Flareon","expIdTCGP":"","expName":"151","expCardNumber":"136","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/136.jpg","energyType":"Fire","pokedex":136}[39m
+2023-12-20 09:14:05,893 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Porygon-137","idTCGP":0,"name":"Porygon","expIdTCGP":"","expName":"151","expCardNumber":"137","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/137.jpg","energyType":"Colorless","pokedex":137}[39m
+2023-12-20 09:14:05,898 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omanyte-138","idTCGP":0,"name":"Omanyte","expIdTCGP":"","expName":"151","expCardNumber":"138","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/138.jpg","energyType":"Water","pokedex":138}[39m
+2023-12-20 09:14:05,904 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omastar-139","idTCGP":0,"name":"Omastar","expIdTCGP":"","expName":"151","expCardNumber":"139","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/139.jpg","energyType":"Water","pokedex":139}[39m
+2023-12-20 09:14:05,908 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kabuto-140","idTCGP":0,"name":"Kabuto","expIdTCGP":"","expName":"151","expCardNumber":"140","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/140.jpg","energyType":"Fighting","pokedex":140}[39m
+2023-12-20 09:14:05,913 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kabutops-141","idTCGP":0,"name":"Kabutops","expIdTCGP":"","expName":"151","expCardNumber":"141","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/141.jpg","energyType":"Fighting","pokedex":141}[39m
+2023-12-20 09:14:05,919 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Aerodactyl-142","idTCGP":0,"name":"Aerodactyl","expIdTCGP":"","expName":"151","expCardNumber":"142","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/142.jpg","energyType":"Colorless","pokedex":142}[39m
+2023-12-20 09:14:05,923 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Snorlax-143","idTCGP":0,"name":"Snorlax","expIdTCGP":"","expName":"151","expCardNumber":"143","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/143.jpg","energyType":"Colorless","pokedex":143}[39m
+2023-12-20 09:14:05,928 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Articuno-144","idTCGP":0,"name":"Articuno","expIdTCGP":"","expName":"151","expCardNumber":"144","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/144.jpg","energyType":"Water","pokedex":144}[39m
+2023-12-20 09:14:05,932 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex-145","idTCGP":0,"name":"Zapdos ex","expIdTCGP":"","expName":"151","expCardNumber":"145","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/145.jpg","energyType":"Lightning","pokedex":10000}[39m
+2023-12-20 09:14:05,937 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Moltres-146","idTCGP":0,"name":"Moltres","expIdTCGP":"","expName":"151","expCardNumber":"146","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/146.jpg","energyType":"Fire","pokedex":146}[39m
+2023-12-20 09:14:05,942 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dratini-147","idTCGP":0,"name":"Dratini","expIdTCGP":"","expName":"151","expCardNumber":"147","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/147.jpg","energyType":"Dragon","pokedex":147}[39m
+2023-12-20 09:14:05,947 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonair-148","idTCGP":0,"name":"Dragonair","expIdTCGP":"","expName":"151","expCardNumber":"148","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/148.jpg","energyType":"Dragon","pokedex":148}[39m
+2023-12-20 09:14:05,953 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonite-149","idTCGP":0,"name":"Dragonite","expIdTCGP":"","expName":"151","expCardNumber":"149","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/149.jpg","energyType":"Dragon","pokedex":149}[39m
+2023-12-20 09:14:05,958 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mewtwo-150","idTCGP":0,"name":"Mewtwo","expIdTCGP":"","expName":"151","expCardNumber":"150","expCodeTCGP":"","rarity":"Holo Rare","img":"https://www.serebii.net/card/151/150.jpg","energyType":"Psychic","pokedex":150}[39m
+2023-12-20 09:14:06,268 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pretend-Gyarados-Pikachu---151-XY-P-151","idTCGP":516566,"name":"Pretend Gyarados Pikachu - 151/XY-P","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"151","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://www.serebii.net/card/151/151.jpg","price":1500,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:06,274 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Dome-Fossil-152","idTCGP":0,"name":"Antique Dome Fossil","expIdTCGP":"","expName":"151","expCardNumber":"152","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/152.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,279 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Helix-Fossil-153","idTCGP":0,"name":"Antique Helix Fossil","expIdTCGP":"","expName":"151","expCardNumber":"153","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/153.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,285 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Old-Amber-154","idTCGP":0,"name":"Antique Old Amber","expIdTCGP":"","expName":"151","expCardNumber":"154","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/154.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,594 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Big-Balloon-155","idTCGP":516717,"name":"Big Balloon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"155","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://www.serebii.net/card/151/155.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:06,602 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bill's-Transfer-156","idTCGP":0,"name":"Bill's Transfer","expIdTCGP":"","expName":"151","expCardNumber":"156","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/156.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,608 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cycling-Road-157","idTCGP":0,"name":"Cycling Road","expIdTCGP":"","expName":"151","expCardNumber":"157","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/157.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,919 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Daisy's-Assistance-158","idTCGP":516720,"name":"Daisy's Assistance","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"158","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://www.serebii.net/card/151/158.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:06,926 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Energy-Sticker-159","idTCGP":0,"name":"Energy Sticker","expIdTCGP":"","expName":"151","expCardNumber":"159","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/159.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,932 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation-160","idTCGP":0,"name":"Erika's Invitation","expIdTCGP":"","expName":"151","expCardNumber":"160","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/160.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:06,938 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma-161","idTCGP":0,"name":"Giovanni's Charisma","expIdTCGP":"","expName":"151","expCardNumber":"161","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/161.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:07,249 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Snatch-Arm-162","idTCGP":516724,"name":"Snatch Arm","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"162","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://www.serebii.net/card/151/162.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:07,256 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Leftovers-163","idTCGP":0,"name":"Leftovers","expIdTCGP":"","expName":"151","expCardNumber":"163","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/163.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:07,566 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Safety-Goggles-164","idTCGP":516726,"name":"Safety Goggles","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"164","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://www.serebii.net/card/151/164.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:07,876 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Extra-tight-Band-165","idTCGP":516727,"name":"Extra-tight Band","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"165","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://www.serebii.net/card/151/165.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[]"}[39m
+2023-12-20 09:14:07,883 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bulbasaur-166","idTCGP":0,"name":"Bulbasaur","expIdTCGP":"","expName":"151","expCardNumber":"166","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/166.jpg","energyType":"Grass","pokedex":1}[39m
+2023-12-20 09:14:08,192 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ivysaur---167","idTCGP":516998,"name":"Ivysaur - 167/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"167","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://www.serebii.net/card/151/167.jpg","price":null,"description":null,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":2,"variants":"[]"}[39m
+2023-12-20 09:14:08,198 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmander-168","idTCGP":0,"name":"Charmander","expIdTCGP":"","expName":"151","expCardNumber":"168","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/168.jpg","energyType":"Fire","pokedex":4}[39m
+2023-12-20 09:14:08,204 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmeleon-169","idTCGP":0,"name":"Charmeleon","expIdTCGP":"","expName":"151","expCardNumber":"169","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/169.jpg","energyType":"Fire","pokedex":5}[39m
+2023-12-20 09:14:08,209 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Squirtle-170","idTCGP":0,"name":"Squirtle","expIdTCGP":"","expName":"151","expCardNumber":"170","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/170.jpg","energyType":"Water","pokedex":7}[39m
+2023-12-20 09:14:08,216 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wartortle-171","idTCGP":0,"name":"Wartortle","expIdTCGP":"","expName":"151","expCardNumber":"171","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/171.jpg","energyType":"Water","pokedex":8}[39m
+2023-12-20 09:14:08,224 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Caterpie-172","idTCGP":0,"name":"Caterpie","expIdTCGP":"","expName":"151","expCardNumber":"172","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/172.jpg","energyType":"Grass","pokedex":10}[39m
+2023-12-20 09:14:08,230 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pikachu-173","idTCGP":0,"name":"Pikachu","expIdTCGP":"","expName":"151","expCardNumber":"173","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/173.jpg","energyType":"Lightning","pokedex":25}[39m
+2023-12-20 09:14:08,235 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoking-174","idTCGP":0,"name":"Nidoking","expIdTCGP":"","expName":"151","expCardNumber":"174","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/174.jpg","energyType":"Darkness","pokedex":34}[39m
+2023-12-20 09:14:08,240 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Psyduck-175","idTCGP":0,"name":"Psyduck","expIdTCGP":"","expName":"151","expCardNumber":"175","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/175.jpg","energyType":"Water","pokedex":54}[39m
+2023-12-20 09:14:08,244 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwhirl-176","idTCGP":0,"name":"Poliwhirl","expIdTCGP":"","expName":"151","expCardNumber":"176","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/176.jpg","energyType":"Water","pokedex":61}[39m
+2023-12-20 09:14:08,250 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machoke-177","idTCGP":0,"name":"Machoke","expIdTCGP":"","expName":"151","expCardNumber":"177","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/177.jpg","energyType":"Fighting","pokedex":67}[39m
+2023-12-20 09:14:08,255 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tangela-178","idTCGP":0,"name":"Tangela","expIdTCGP":"","expName":"151","expCardNumber":"178","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/178.jpg","energyType":"Grass","pokedex":114}[39m
+2023-12-20 09:14:08,259 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mr.-Mime-179","idTCGP":0,"name":"Mr. Mime","expIdTCGP":"","expName":"151","expCardNumber":"179","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/179.jpg","energyType":"Psychic","pokedex":122}[39m
+2023-12-20 09:14:08,264 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omanyte-180","idTCGP":0,"name":"Omanyte","expIdTCGP":"","expName":"151","expCardNumber":"180","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/180.jpg","energyType":"Water","pokedex":138}[39m
+2023-12-20 09:14:08,269 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonair-181","idTCGP":0,"name":"Dragonair","expIdTCGP":"","expName":"151","expCardNumber":"181","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/181.jpg","energyType":"Dragon","pokedex":148}[39m
+2023-12-20 09:14:08,274 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex-182","idTCGP":0,"name":"Venusaur ex","expIdTCGP":"","expName":"151","expCardNumber":"182","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/182.jpg","energyType":"Grass","pokedex":10000}[39m
+2023-12-20 09:14:08,278 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex-183","idTCGP":0,"name":"Charizard ex","expIdTCGP":"","expName":"151","expCardNumber":"183","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/183.jpg","energyType":"Fire","pokedex":10000}[39m
+2023-12-20 09:14:08,283 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex-184","idTCGP":0,"name":"Blastoise ex","expIdTCGP":"","expName":"151","expCardNumber":"184","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/184.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:08,288 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arbok-ex-185","idTCGP":0,"name":"Arbok ex","expIdTCGP":"","expName":"151","expCardNumber":"185","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/185.jpg","energyType":"Darkness","pokedex":10000}[39m
+2023-12-20 09:14:08,293 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ninetales-ex-186","idTCGP":0,"name":"Ninetales ex","expIdTCGP":"","expName":"151","expCardNumber":"186","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/186.jpg","energyType":"Fire","pokedex":10000}[39m
+2023-12-20 09:14:08,299 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wigglytuff-ex-187","idTCGP":0,"name":"Wigglytuff ex","expIdTCGP":"","expName":"151","expCardNumber":"187","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/187.jpg","energyType":"Colorless","pokedex":10000}[39m
+2023-12-20 09:14:08,303 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex-188","idTCGP":0,"name":"Alakazam ex","expIdTCGP":"","expName":"151","expCardNumber":"188","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/188.jpg","energyType":"Psychic","pokedex":10000}[39m
+2023-12-20 09:14:08,307 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golem-ex-189","idTCGP":0,"name":"Golem ex","expIdTCGP":"","expName":"151","expCardNumber":"189","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/189.jpg","energyType":"Fighting","pokedex":10000}[39m
+2023-12-20 09:14:08,312 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kangaskhan-ex-190","idTCGP":0,"name":"Kangaskhan ex","expIdTCGP":"","expName":"151","expCardNumber":"190","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/190.jpg","energyType":"Colorless","pokedex":10000}[39m
+2023-12-20 09:14:08,318 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jynx-ex-191","idTCGP":0,"name":"Jynx ex","expIdTCGP":"","expName":"151","expCardNumber":"191","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/191.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:08,323 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex-192","idTCGP":0,"name":"Zapdos ex","expIdTCGP":"","expName":"151","expCardNumber":"192","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/192.jpg","energyType":"Lightning","pokedex":10000}[39m
+2023-12-20 09:14:08,327 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex-193","idTCGP":0,"name":"Mew ex","expIdTCGP":"","expName":"151","expCardNumber":"193","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/193.jpg","energyType":"Psychic","pokedex":10000}[39m
+2023-12-20 09:14:08,332 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bill's-Transfer-194","idTCGP":0,"name":"Bill's Transfer","expIdTCGP":"","expName":"151","expCardNumber":"194","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/194.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,337 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Daisy's-Help-195","idTCGP":0,"name":"Daisy's Help","expIdTCGP":"","expName":"151","expCardNumber":"195","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/195.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,341 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation-196","idTCGP":0,"name":"Erika's Invitation","expIdTCGP":"","expName":"151","expCardNumber":"196","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/196.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,346 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma-197","idTCGP":0,"name":"Giovanni's Charisma","expIdTCGP":"","expName":"151","expCardNumber":"197","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/197.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,351 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex-198","idTCGP":0,"name":"Venusaur ex","expIdTCGP":"","expName":"151","expCardNumber":"198","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/198.jpg","energyType":"Grass","pokedex":10000}[39m
+2023-12-20 09:14:08,356 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex-199","idTCGP":0,"name":"Charizard ex","expIdTCGP":"","expName":"151","expCardNumber":"199","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/199.jpg","energyType":"Fire","pokedex":10000}[39m
+2023-12-20 09:14:08,361 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex-200","idTCGP":0,"name":"Blastoise ex","expIdTCGP":"","expName":"151","expCardNumber":"200","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/200.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:08,366 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex-201","idTCGP":0,"name":"Alakazam ex","expIdTCGP":"","expName":"151","expCardNumber":"201","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/201.jpg","energyType":"Psychic","pokedex":10000}[39m
+2023-12-20 09:14:08,371 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex-202","idTCGP":0,"name":"Zapdos ex","expIdTCGP":"","expName":"151","expCardNumber":"202","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/202.jpg","energyType":"Lightning","pokedex":10000}[39m
+2023-12-20 09:14:08,375 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation-203","idTCGP":0,"name":"Erika's Invitation","expIdTCGP":"","expName":"151","expCardNumber":"203","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/203.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,380 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma-204","idTCGP":0,"name":"Giovanni's Charisma","expIdTCGP":"","expName":"151","expCardNumber":"204","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/204.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,385 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex-205","idTCGP":0,"name":"Mew ex","expIdTCGP":"","expName":"151","expCardNumber":"205","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/205.jpg","energyType":"Psychic","pokedex":10000}[39m
+2023-12-20 09:14:08,390 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Switch-206","idTCGP":0,"name":"Switch","expIdTCGP":"","expName":"151","expCardNumber":"206","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/206.jpg","energyType":"","pokedex":10000}[39m
+2023-12-20 09:14:08,395 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Psychic-Energy-207","idTCGP":0,"name":"Psychic Energy","expIdTCGP":"","expName":"151","expCardNumber":"207","expCodeTCGP":"","rarity":"Common","img":"https://www.serebii.net/card/151/207.jpg","energyType":"Water","pokedex":10000}[39m
+2023-12-20 09:14:08,400 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgey-016","idTCGP":502565,"name":"Pidgey","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"016","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502565.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":16,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,404 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmander---004","idTCGP":502555,"name":"Charmander - 004/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"004","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502555.jpg","price":0.18,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":4,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,409 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex---205","idTCGP":519481,"name":"Mew ex - 205/165 (151 Metal Card)","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"205","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/519481.jpg","price":3.29,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Normal\"]"}[39m
+2023-12-20 09:14:08,414 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex---151","idTCGP":516566,"name":"Mew ex - 151/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"151","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516566.jpg","price":4.47,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,419 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex---006","idTCGP":502558,"name":"Charizard ex - 006/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"006","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502558.jpg","price":4.4,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,424 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex---009","idTCGP":502551,"name":"Blastoise ex - 009/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"009","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502551.jpg","price":1.96,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,428 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Grabber-162","idTCGP":516724,"name":"Grabber","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"162","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516724.jpg","price":0.54,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,434 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex---003","idTCGP":502554,"name":"Venusaur ex - 003/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"003","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502554.jpg","price":1.41,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,438 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gengar-094","idTCGP":516663,"name":"Gengar","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"094","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516663.jpg","price":0.34,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":94,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,442 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jolteon-135","idTCGP":516698,"name":"Jolteon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"135","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516698.jpg","price":0.18,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":135,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,448 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Flareon-136","idTCGP":516699,"name":"Flareon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"136","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516699.jpg","price":0.18,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":136,"variants":"[\"Reverse Holofoil\",\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,454 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation---160","idTCGP":516722,"name":"Erika's Invitation - 160/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"160","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516722.jpg","price":0.11,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,458 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ninetales-ex---038","idTCGP":516072,"name":"Ninetales ex - 038/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"038","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516072.jpg","price":0.89,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,463 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vaporeon-134","idTCGP":516697,"name":"Vaporeon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"134","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516697.jpg","price":0.16,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":134,"variants":"[\"Reverse Holofoil\",\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,468 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mewtwo-150","idTCGP":516713,"name":"Mewtwo","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"150","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516713.jpg","price":0.26,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":150,"variants":"[\"Reverse Holofoil\",\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,472 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ditto-132","idTCGP":516695,"name":"Ditto","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"132","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516695.jpg","price":0.15,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":132,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,477 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kangaskhan-ex---115","idTCGP":516581,"name":"Kangaskhan ex - 115/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"115","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516581.jpg","price":1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,483 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonite-149","idTCGP":516712,"name":"Dragonite","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"149","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516712.jpg","price":0.25,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Dragon","cardType":"Pokemon","pokedex":149,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,489 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex---065","idTCGP":516381,"name":"Alakazam ex - 065/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"065","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516381.jpg","price":1.31,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,493 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arbok-ex---024","idTCGP":515956,"name":"Arbok ex - 024/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"024","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/515956.jpg","price":1.19,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,498 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Raichu-026","idTCGP":515957,"name":"Raichu","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"026","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/515957.jpg","price":0.13,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":26,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,503 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmeleon---005","idTCGP":502557,"name":"Charmeleon - 005/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"005","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502557.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":5,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,508 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Leftovers-163","idTCGP":516725,"name":"Leftovers","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"163","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516725.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,512 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex---145","idTCGP":516708,"name":"Zapdos ex - 145/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"145","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516708.jpg","price":1.35,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,517 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wigglytuff-ex---040","idTCGP":516145,"name":"Wigglytuff ex - 040/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"040","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516145.jpg","price":0.86,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,521 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gyarados-130","idTCGP":516693,"name":"Gyarados","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"130","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516693.jpg","price":0.13,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":130,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,526 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bill's-Transfer---156","idTCGP":516718,"name":"Bill's Transfer - 156/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"156","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516718.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,531 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bulbasaur---001","idTCGP":502552,"name":"Bulbasaur - 001/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"001","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502552.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":1,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,536 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golem-ex---076","idTCGP":516574,"name":"Golem ex - 076/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"076","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516574.jpg","price":1.17,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,540 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jynx-ex---124","idTCGP":516687,"name":"Jynx ex - 124/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"124","expCodeTCGP":"MEW","rarity":"Double Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516687.jpg","price":0.91,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,545 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma---161","idTCGP":516723,"name":"Giovanni's Charisma - 161/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"161","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516723.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,550 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pikachu---025","idTCGP":517033,"name":"Pikachu - 025/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"025","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/517033.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":25,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,555 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Switch---206","idTCGP":517052,"name":"Switch - 206/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"206","expCodeTCGP":"MEW","rarity":"Hyper Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517052.jpg","price":4.84,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,560 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Articuno-144","idTCGP":516707,"name":"Articuno","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"144","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516707.jpg","price":0.25,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":144,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,565 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Scyther-123","idTCGP":516686,"name":"Scyther","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"123","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516686.jpg","price":0.11,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":123,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,570 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kabutops-141","idTCGP":516704,"name":"Kabutops","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"141","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516704.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":141,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,575 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Big-Air-Balloon-155","idTCGP":516717,"name":"Big Air Balloon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"155","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516717.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,580 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dodrio-085","idTCGP":516654,"name":"Dodrio","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"085","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516654.jpg","price":0.15,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":85,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,585 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mr.-Mime---122","idTCGP":516685,"name":"Mr. Mime - 122/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"122","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516685.jpg","price":0.16,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":122,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,590 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Squirtle---007","idTCGP":502548,"name":"Squirtle - 007/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"007","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502548.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":7,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,595 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Moltres-146","idTCGP":516709,"name":"Moltres","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"146","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516709.jpg","price":0.2,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":146,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,600 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Chansey-113","idTCGP":516575,"name":"Chansey","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"113","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516575.jpg","price":0.19,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":113,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,604 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoking---034","idTCGP":516024,"name":"Nidoking - 034/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"034","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516024.jpg","price":0.2,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":34,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,609 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machamp-068","idTCGP":516385,"name":"Machamp","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"068","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516385.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":68,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,613 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Basic-Psychic-Energy---207","idTCGP":517053,"name":"Basic Psychic Energy - 207/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"207","expCodeTCGP":"MEW","rarity":"Hyper Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517053.jpg","price":4.3,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Energy","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,619 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Aerodactyl-142","idTCGP":516705,"name":"Aerodactyl","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"142","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516705.jpg","price":0.16,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":142,"variants":"[\"Reverse Holofoil\",\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,623 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Snorlax-143","idTCGP":516706,"name":"Snorlax","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"143","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516706.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":143,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,628 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Electrode-101","idTCGP":516670,"name":"Electrode","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"101","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516670.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":101,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,633 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Starmie-121","idTCGP":516684,"name":"Starmie","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"121","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516684.jpg","price":0.18,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":121,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,638 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rigid-Band-165","idTCGP":516727,"name":"Rigid Band","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"165","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516727.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,642 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Energy-Sticker-159","idTCGP":516721,"name":"Energy Sticker","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"159","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516721.jpg","price":0.23,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,646 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Daisy's-Help---158","idTCGP":516720,"name":"Daisy's Help - 158/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"158","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516720.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:08,651 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Eevee-133","idTCGP":516696,"name":"Eevee","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"133","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516696.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":133,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,656 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Beedrill-015","idTCGP":502564,"name":"Beedrill","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"015","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502564.jpg","price":0.11,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":15,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,661 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonair---148","idTCGP":516711,"name":"Dragonair - 148/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"148","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516711.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Dragon","cardType":"Pokemon","pokedex":148,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,666 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wartortle---008","idTCGP":502550,"name":"Wartortle - 008/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"008","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502550.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":8,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:08,670 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoran-M-032","idTCGP":516006,"name":"Nidoran M","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"032","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516006.jpg","price":0.14,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,674 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machoke---177","idTCGP":517025,"name":"Machoke - 177/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"177","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517025.jpg","price":6.78,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":67,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,679 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Marowak-105","idTCGP":516674,"name":"Marowak","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"105","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516674.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":105,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,686 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vileplume-045","idTCGP":516159,"name":"Vileplume","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"045","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516159.jpg","price":0.19,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":45,"variants":"[\"Reverse Holofoil\",\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,690 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weezing-110","idTCGP":516680,"name":"Weezing","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"110","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516680.jpg","price":0.11,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":110,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,695 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoran-F-029","idTCGP":515994,"name":"Nidoran F","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"029","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/515994.jpg","price":0.18,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,700 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Caterpie---172","idTCGP":517016,"name":"Caterpie - 172/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"172","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517016.jpg","price":5.55,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":10,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,705 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omastar-139","idTCGP":516702,"name":"Omastar","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"139","expCodeTCGP":"MEW","rarity":"Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516702.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":139,"variants":"[\"Holofoil\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,710 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cycling-Road-157","idTCGP":516719,"name":"Cycling Road","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"157","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516719.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Stadium","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,715 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwhirl---176","idTCGP":517034,"name":"Poliwhirl - 176/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"176","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517034.jpg","price":10.54,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":61,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,721 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omanyte---180","idTCGP":517031,"name":"Omanyte - 180/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"180","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517031.jpg","price":4.92,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":138,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,725 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Abra-063","idTCGP":516268,"name":"Abra","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"063","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516268.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":63,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,730 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Protective-Goggles-164","idTCGP":516726,"name":"Protective Goggles","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"164","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516726.jpg","price":0.17,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Tool","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,735 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex---205","idTCGP":517051,"name":"Mew ex - 205/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"205","expCodeTCGP":"MEW","rarity":"Hyper Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517051.jpg","price":7.65,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,739 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ivysaur---002","idTCGP":502553,"name":"Ivysaur - 002/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"002","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502553.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":2,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,744 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgeotto-017","idTCGP":502566,"name":"Pidgeotto","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"017","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502566.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":17,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,750 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bulbasaur---166","idTCGP":516997,"name":"Bulbasaur - 166/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"166","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516997.jpg","price":23.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":1,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,755 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Psyduck---175","idTCGP":517035,"name":"Psyduck - 175/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"175","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517035.jpg","price":9.38,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":54,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,759 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zubat-041","idTCGP":516150,"name":"Zubat","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"041","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516150.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":41,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,764 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Metapod-011","idTCGP":502560,"name":"Metapod","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"011","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502560.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":11,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,768 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmander---168","idTCGP":502556,"name":"Charmander - 168/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"168","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502556.jpg","price":27.13,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":4,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,772 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tangela---178","idTCGP":517036,"name":"Tangela - 178/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"178","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517036.jpg","price":5.29,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":114,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,777 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoking---174","idTCGP":517029,"name":"Nidoking - 174/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"174","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517029.jpg","price":7.37,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":34,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,781 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ivysaur---167","idTCGP":516998,"name":"Ivysaur - 167/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"167","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/516998.jpg","price":16.78,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":2,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,786 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Old-Amber-154","idTCGP":516716,"name":"Antique Old Amber","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"154","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516716.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:08,791 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Lapras-131","idTCGP":516694,"name":"Lapras","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"131","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516694.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":131,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,795 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Helix-Fossil-153","idTCGP":516715,"name":"Antique Helix Fossil","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"153","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516715.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,800 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Squirtle---170","idTCGP":502549,"name":"Squirtle - 170/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"170","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/502549.jpg","price":23.98,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":7,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,805 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dratini-147","idTCGP":516710,"name":"Dratini","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"147","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516710.jpg","price":0.1,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Dragon","cardType":"Pokemon","pokedex":147,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,809 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wartortle---171","idTCGP":517038,"name":"Wartortle - 171/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"171","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517038.jpg","price":18.74,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":8,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,813 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mr.-Mime---179","idTCGP":517028,"name":"Mr. Mime - 179/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"179","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517028.jpg","price":5.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":122,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,818 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Antique-Dome-Fossil-152","idTCGP":516714,"name":"Antique Dome Fossil","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"152","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516714.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Item","pokedex":10000,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,823 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hitmonchan-107","idTCGP":516676,"name":"Hitmonchan","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"107","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516676.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":107,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,827 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gastly-092","idTCGP":516661,"name":"Gastly","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"092","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516661.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":92,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:08,833 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Haunter-093","idTCGP":516662,"name":"Haunter","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"093","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516662.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":93,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:08,838 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kakuna-014","idTCGP":502563,"name":"Kakuna","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"014","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502563.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":14,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,842 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weepinbell-070","idTCGP":516563,"name":"Weepinbell","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"070","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516563.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":70,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,847 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charmeleon---169","idTCGP":517018,"name":"Charmeleon - 169/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"169","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517018.jpg","price":19.64,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":5,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,853 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hitmonlee-106","idTCGP":516675,"name":"Hitmonlee","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"106","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516675.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":106,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,858 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dragonair---181","idTCGP":517020,"name":"Dragonair - 181/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"181","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517020.jpg","price":16.13,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Dragon","cardType":"Pokemon","pokedex":148,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,862 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Hypno-097","idTCGP":516666,"name":"Hypno","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"097","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516666.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":97,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,867 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwhirl---061","idTCGP":516250,"name":"Poliwhirl - 061/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"061","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516250.jpg","price":0.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":61,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,871 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation---196","idTCGP":517176,"name":"Erika's Invitation - 196/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"196","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517176.jpg","price":10.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,876 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kadabra-064","idTCGP":516269,"name":"Kadabra","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"064","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516269.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":64,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,880 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Spearow-021","idTCGP":502587,"name":"Spearow","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"021","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502587.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":21,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,886 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Daisy's-Help---195","idTCGP":517042,"name":"Daisy's Help - 195/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"195","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517042.jpg","price":6.14,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,890 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kingler-099","idTCGP":516668,"name":"Kingler","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"099","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516668.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":99,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,895 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pidgeot-018","idTCGP":502567,"name":"Pidgeot","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"018","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502567.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":18,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,900 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Onix-095","idTCGP":516664,"name":"Onix","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"095","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516664.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":95,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,904 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bill's-Transfer---194","idTCGP":517041,"name":"Bill's Transfer - 194/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"194","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517041.jpg","price":4.33,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,909 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seaking-119","idTCGP":516682,"name":"Seaking","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"119","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516682.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":119,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,914 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma---204","idTCGP":517050,"name":"Giovanni's Charisma - 204/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"204","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517050.jpg","price":10.24,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,919 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pikachu---173","idTCGP":513721,"name":"Pikachu - 173/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"173","expCodeTCGP":"MEW","rarity":"Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/513721.jpg","price":18.47,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":25,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,923 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidoqueen-031","idTCGP":516004,"name":"Nidoqueen","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"031","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516004.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":31,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,927 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Giovanni's-Charisma---197","idTCGP":517043,"name":"Giovanni's Charisma - 197/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"197","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517043.jpg","price":4.5,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,933 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magikarp-129","idTCGP":516692,"name":"Magikarp","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"129","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516692.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":129,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,938 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Erika's-Invitation---203","idTCGP":517049,"name":"Erika's Invitation - 203/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"203","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517049.jpg","price":22.16,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Supporter","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,942 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magmar-126","idTCGP":516689,"name":"Magmar","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"126","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516689.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":126,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,947 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Exeggutor-103","idTCGP":516672,"name":"Exeggutor","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"103","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516672.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":103,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,952 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tauros-128","idTCGP":516691,"name":"Tauros","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"128","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516691.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":128,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,957 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Electabuzz-125","idTCGP":516688,"name":"Electabuzz","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"125","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516688.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":125,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,961 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arcanine-059","idTCGP":516248,"name":"Arcanine","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"059","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516248.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":59,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,966 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ninetales-ex---186","idTCGP":517030,"name":"Ninetales ex - 186/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"186","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517030.jpg","price":10.36,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,970 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Arbok-ex---185","idTCGP":517014,"name":"Arbok ex - 185/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"185","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517014.jpg","price":7.79,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,975 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex---198","idTCGP":517044,"name":"Venusaur ex - 198/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"198","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517044.jpg","price":41.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,979 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kabuto-140","idTCGP":516703,"name":"Kabuto","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"140","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516703.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":140,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:08,986 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex---200","idTCGP":517046,"name":"Blastoise ex - 200/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"200","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517046.jpg","price":41.98,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,991 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Wigglytuff-ex---187","idTCGP":517039,"name":"Wigglytuff ex - 187/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"187","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517039.jpg","price":7.38,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:08,996 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Pinsir-127","idTCGP":516690,"name":"Pinsir","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"127","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516690.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":127,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,01 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex---188","idTCGP":517013,"name":"Alakazam ex - 188/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"188","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517013.jpg","price":10.95,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,06 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Omanyte---138","idTCGP":516701,"name":"Omanyte - 138/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"138","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516701.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":138,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,10 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Doduo-084","idTCGP":516653,"name":"Doduo","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"084","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516653.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":84,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,18 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Alakazam-ex---201","idTCGP":517047,"name":"Alakazam ex - 201/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"201","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517047.jpg","price":32.77,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,23 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex---199","idTCGP":517045,"name":"Charizard ex - 199/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"199","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517045.jpg","price":115.68,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,28 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golem-ex---189","idTCGP":517021,"name":"Golem ex - 189/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"189","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517021.jpg","price":5.91,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,33 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Kangaskhan-ex---190","idTCGP":517024,"name":"Kangaskhan ex - 190/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"190","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517024.jpg","price":7.12,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,38 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidorina-030","idTCGP":516000,"name":"Nidorina","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"030","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516000.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":30,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,43 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mew-ex---193","idTCGP":517027,"name":"Mew ex - 193/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"193","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517027.jpg","price":17.25,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,48 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Clefable-036","idTCGP":516036,"name":"Clefable","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"036","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516036.jpg","price":0.09,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":36,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,53 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Gloom-044","idTCGP":516157,"name":"Gloom","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"044","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516157.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":44,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,57 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Nidorino-033","idTCGP":516016,"name":"Nidorino","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"033","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516016.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":33,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,62 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Blastoise-ex---184","idTCGP":517015,"name":"Blastoise ex - 184/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"184","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517015.jpg","price":18.67,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,67 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jynx-ex---191","idTCGP":517023,"name":"Jynx ex - 191/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"191","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517023.jpg","price":8.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,72 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex---202","idTCGP":517048,"name":"Zapdos ex - 202/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"202","expCodeTCGP":"MEW","rarity":"Special Illustration Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517048.jpg","price":37.75,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,76 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Vulpix-037","idTCGP":516060,"name":"Vulpix","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"037","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516060.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":37,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,81 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Slowpoke-079","idTCGP":516650,"name":"Slowpoke","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"079","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516650.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":79,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,86 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venomoth-049","idTCGP":516213,"name":"Venomoth","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"049","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516213.jpg","price":0.08,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":49,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,90 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Fearow-022","idTCGP":502589,"name":"Fearow","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"022","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502589.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":22,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,94 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venusaur-ex---182","idTCGP":517037,"name":"Venusaur ex - 182/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"182","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517037.jpg","price":16.55,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,99 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Farfetch'd-083","idTCGP":516652,"name":"Farfetch'd","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"083","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516652.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":83,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,104 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Zapdos-ex---192","idTCGP":517040,"name":"Zapdos ex - 192/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"192","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517040.jpg","price":9.95,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,108 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tangela---114","idTCGP":516579,"name":"Tangela - 114/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"114","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516579.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":114,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,113 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Victreebel-071","idTCGP":516564,"name":"Victreebel","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"071","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516564.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":71,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,119 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rattata-019","idTCGP":502568,"name":"Rattata","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"019","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502568.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":19,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,124 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Charizard-ex---183","idTCGP":517017,"name":"Charizard ex - 183/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"183","expCodeTCGP":"MEW","rarity":"Ultra Rare","img":"https://product-images.tcgplayer.com/fit-in/437x437/517017.jpg","price":35.5,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":10000,"variants":"[\"Holofoil\"]"}[39m
+2023-12-20 09:14:09,128 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Clefairy-035","idTCGP":516030,"name":"Clefairy","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"035","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516030.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":35,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,133 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magneton-082","idTCGP":516649,"name":"Magneton","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"082","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516649.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":82,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,138 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Raticate-020","idTCGP":502569,"name":"Raticate","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"020","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502569.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":20,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,142 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cubone-104","idTCGP":516673,"name":"Cubone","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"104","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516673.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":104,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,147 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Venonat-048","idTCGP":516206,"name":"Venonat","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"048","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516206.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":48,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,152 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Butterfree-012","idTCGP":502561,"name":"Butterfree","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"012","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/502561.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":12,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,157 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rapidash-078","idTCGP":516607,"name":"Rapidash","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"078","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516607.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":78,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,161 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Drowzee-096","idTCGP":516665,"name":"Drowzee","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"096","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516665.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":96,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,166 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Sandshrew-027","idTCGP":515978,"name":"Sandshrew","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"027","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/515978.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":27,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,171 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Lickitung-108","idTCGP":516677,"name":"Lickitung","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"108","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516677.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":108,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,175 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Geodude-074","idTCGP":516569,"name":"Geodude","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"074","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516569.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":74,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,180 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Krabby-098","idTCGP":516667,"name":"Krabby","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"098","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516667.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":98,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,185 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Caterpie---010","idTCGP":502559,"name":"Caterpie - 010/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"010","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502559.jpg","price":0.03,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":10,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,190 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Koffing-109","idTCGP":516679,"name":"Koffing","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"109","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516679.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":109,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,194 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Jigglypuff-039","idTCGP":516108,"name":"Jigglypuff","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"039","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516108.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":39,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,199 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ponyta-077","idTCGP":516601,"name":"Ponyta","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"077","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516601.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":77,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,204 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwrath-062","idTCGP":516251,"name":"Poliwrath","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"062","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516251.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":62,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,208 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machop-066","idTCGP":516382,"name":"Machop","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"066","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516382.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":66,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,212 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dugtrio-051","idTCGP":516216,"name":"Dugtrio","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"051","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516216.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":51,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,219 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seadra-117","idTCGP":516584,"name":"Seadra","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"117","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516584.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":117,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,224 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Persian-053","idTCGP":516223,"name":"Persian","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"053","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516223.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":53,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,229 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Paras-046","idTCGP":516163,"name":"Paras","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"046","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516163.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":46,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:09,234 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Goldeen-118","idTCGP":516681,"name":"Goldeen","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"118","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516681.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":118,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,239 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rhyhorn-111","idTCGP":516570,"name":"Rhyhorn","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"111","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516570.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":111,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,243 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Ekans-023","idTCGP":515955,"name":"Ekans","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"023","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/515955.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":23,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,248 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Slowbro-080","idTCGP":516651,"name":"Slowbro","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"080","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516651.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Psychic","cardType":"Pokemon","pokedex":80,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,253 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Machoke---067","idTCGP":516383,"name":"Machoke - 067/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"067","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516383.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":67,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,258 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Meowth-052","idTCGP":516221,"name":"Meowth","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"052","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516221.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":52,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,262 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Sandslash-028","idTCGP":515989,"name":"Sandslash","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"028","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/515989.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":28,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,266 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golbat-042","idTCGP":516152,"name":"Golbat","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"042","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516152.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":42,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,271 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Growlithe-058","idTCGP":516247,"name":"Growlithe","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"058","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516247.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fire","cardType":"Pokemon","pokedex":58,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,275 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Parasect-047","idTCGP":516170,"name":"Parasect","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"047","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516170.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":47,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:09,280 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Primeape-057","idTCGP":516246,"name":"Primeape","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"057","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516246.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":57,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,285 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Voltorb-100","idTCGP":516669,"name":"Voltorb","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"100","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516669.jpg","price":0.03,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Lightning","cardType":"Pokemon","pokedex":100,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,289 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Rhydon-112","idTCGP":516573,"name":"Rhydon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"112","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516573.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":112,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,294 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Staryu-120","idTCGP":516683,"name":"Staryu","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"120","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516683.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":120,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,300 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Graveler-075","idTCGP":516572,"name":"Graveler","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"075","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516572.jpg","price":0.07,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":75,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,304 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Seel-086","idTCGP":516655,"name":"Seel","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"086","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516655.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":86,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,308 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Psyduck---054","idTCGP":516231,"name":"Psyduck - 054/165","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"054","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516231.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":54,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,313 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Poliwag-060","idTCGP":516249,"name":"Poliwag","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"060","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516249.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":60,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,320 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Grimer-088","idTCGP":516657,"name":"Grimer","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"088","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516657.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":88,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,324 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Oddish-043","idTCGP":516156,"name":"Oddish","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"043","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516156.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":43,"variants":"[\"Reverse Holofoil\",\"Normal\"]"}[39m
+2023-12-20 09:14:09,328 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Dewgong-087","idTCGP":516656,"name":"Dewgong","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"087","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516656.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":87,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,333 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Porygon-137","idTCGP":516700,"name":"Porygon","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"137","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516700.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Colorless","cardType":"Pokemon","pokedex":137,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,338 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Bellsprout-069","idTCGP":516560,"name":"Bellsprout","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"069","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516560.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":69,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,343 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tentacruel-073","idTCGP":516567,"name":"Tentacruel","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"073","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516567.jpg","price":0.06,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":73,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,348 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Horsea-116","idTCGP":516583,"name":"Horsea","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"116","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516583.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":116,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,353 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Muk-089","idTCGP":516658,"name":"Muk","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"089","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516658.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Darkness","cardType":"Pokemon","pokedex":89,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,357 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Cloyster-091","idTCGP":516660,"name":"Cloyster","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"091","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516660.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":91,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,362 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Exeggcute-102","idTCGP":516671,"name":"Exeggcute","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"102","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516671.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":102,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,367 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Golduck-055","idTCGP":516232,"name":"Golduck","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"055","expCodeTCGP":"MEW","rarity":"Uncommon","img":"https://product-images.tcgplayer.com/fit-in/437x437/516232.jpg","price":0.05,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":55,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,371 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Weedle-013","idTCGP":502562,"name":"Weedle","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"013","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/502562.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Grass","cardType":"Pokemon","pokedex":13,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,376 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Mankey-056","idTCGP":516242,"name":"Mankey","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"056","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516242.jpg","price":0.03,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":56,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,382 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Magnemite-081","idTCGP":516648,"name":"Magnemite","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"081","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516648.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"","cardType":"Pokemon","pokedex":81,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,387 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Shellder-090","idTCGP":516659,"name":"Shellder","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"090","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516659.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":90,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,391 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Diglett-050","idTCGP":516215,"name":"Diglett","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"050","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516215.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Fighting","cardType":"Pokemon","pokedex":50,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m
+2023-12-20 09:14:09,395 INFO  [data-scraper] [35mUpdating : {"cardId":"151-Tentacool-072","idTCGP":516565,"name":"Tentacool","expIdTCGP":"SV Scarlet and Violet 151","expName":"151","expCardNumber":"072","expCodeTCGP":"MEW","rarity":"Common","img":"https://product-images.tcgplayer.com/fit-in/437x437/516565.jpg","price":0.04,"releaseDate":"2023-09-22T00:00:00Z","energyType":"Water","cardType":"Pokemon","pokedex":72,"variants":"[\"Normal\",\"Reverse Holofoil\"]"}[39m

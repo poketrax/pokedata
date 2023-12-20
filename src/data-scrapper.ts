@@ -113,6 +113,7 @@ async function updateCards(exps: Expansion[]) {
   for (let exp of exps) {
     logger.info(clc.blueBright(`Processing ${exp.name} Cards`));
     let serebii = await getSerebiiExpantion(exp.name);
+    let tcgpCards = await pullTcgpSetCards(exp);
     if (serebii == null) {
       logger.info(
         clc.red(
@@ -122,17 +123,16 @@ async function updateCards(exps: Expansion[]) {
         )
       );
       continue;
-    }
-    let serebiiCards = await getSerebiiSetCards(serebii.page, exp);
-    let tcgpCards = await pullTcgpSetCards(exp);
-    
-    for (let card of serebiiCards) {
-      await serebiiUpsertCard(card, exp);
-      if (tcgpCards.length === 0) {
-        let tcgpCard = await tcgpCardSearch(card.name, exp.name);
-        if (tcgpCard == null) continue;
-        tcgpCard.img = card.img;
-        if (tcgpCard) await tcgpUpsertCard(tcgpCard, exp);
+    }else{
+      let serebiiCards = await getSerebiiSetCards(serebii.page, exp);
+      for (let card of serebiiCards) {
+        await serebiiUpsertCard(card, exp);
+        if (tcgpCards.length === 0) {
+          let tcgpCard = await tcgpCardSearch(card.name, exp.name);
+          if (tcgpCard == null) continue;
+          tcgpCard.img = card.img;
+          if (tcgpCard) await tcgpUpsertCard(tcgpCard, exp);
+        }
       }
     }
     for (let card of tcgpCards) {
