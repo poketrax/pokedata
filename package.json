@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/poketrax/pokedata#readme",
   "dependencies": {
+    "@types/bun": "^1.0.12",
     "@types/cli-color": "^2.0.2",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.11.13",

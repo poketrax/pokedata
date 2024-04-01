@@ -1,4 +1,4 @@
-import * as fs from "fs";
+//import * as fs from "fs";
 import clc from "cli-color";
 import minimist from "minimist";
 import { Expansion } from "./model/CardMeta.js";
@@ -32,7 +32,7 @@ import {
 
 export const COUNT = 5;
 
-let metaData: MetaData = JSON.parse(fs.readFileSync("./meta.json", "utf-8"));
+let metaData: MetaData = await Bun.file("./meta.json").json();
 let args: minimist.ParsedArgs;
 
 run();
@@ -154,9 +154,9 @@ async function updatePokedex() {
   }
 }
 
-export function updateMetaFile() {
-  let npm = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
+export async function updateMetaFile() {
+  let npm = await Bun.file("./package.json").json();
   metaData.version = npm.version;
   metaData.data++;
-  fs.writeFileSync("./meta.json", JSON.stringify(metaData));
+  await Bun.write("./meta.json",JSON.stringify(metaData));
 }
