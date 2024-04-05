@@ -60,6 +60,40 @@ async function scrapeSerebiiSets(
   for (let i = 1; i < num; i++) {
     let cells = setTable.rows[i].cells;
     let pageUrl = `https://www.serebii.net${
+      (cells[2].children[0] as HTMLAnchorElement).href
+    }`;
+    sets.push({
+      name: cells[2].children[0].textContent.trim(),
+      page: pageUrl,
+      logo: await getLogoUrl(pageUrl),
+      symbol: `https://www.serebii.net${
+        (cells[0].children[0].children[0] as HTMLImageElement).src
+      }`,
+      numberOfCards: parseInt(cells[3].textContent),
+    });
+  }
+  return sets;
+}
+
+/**
+ * Get latest expansions from
+ * @param num
+ * @returns
+ */
+async function scrapeSerebiiPromoSets(
+  num: number,
+  url: string
+): Promise<SerebiiExpantion[]> {
+  let res = await fetch(url);
+  let data = await res.text();
+  const { window } = new jsdom.JSDOM(data);
+  let setTable: HTMLTableElement =
+    window.document.getElementsByTagName("table")[0];
+  let sets = new Array<SerebiiExpantion>();
+  num++; //increament since we start on row 1 to skip table headers
+  for (let i = 1; i < num; i++) {
+    let cells = setTable.rows[i].cells;
+    let pageUrl = `https://www.serebii.net${
       (cells[0].children[0] as HTMLAnchorElement).href
     }`;
     sets.push({
@@ -85,7 +119,7 @@ export async function getSerebiiLastestNormalExpantions(num: number) {
 export async function getSerebiiLastestPromoExpantions(num: number) {
   let url = `https://www.serebii.net/card/engpromo.shtml`;
   if (serebiiPromoSets.length >= num) return serebiiPromoSets;
-  serebiiPromoSets = await scrapeSerebiiSets(num, url);
+  serebiiPromoSets = await scrapeSerebiiPromoSets(num, url);
   return serebiiPromoSets;
 }
 
