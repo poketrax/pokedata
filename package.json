@@ -1,6 +1,6 @@
 {
   "name": "pokedata",
-  "version": "0.1.683",
+  "version": "0.1.684",
   "description": "Pokemon TCG data collection suite",
   "main": "index.js",
   "type": "module",
