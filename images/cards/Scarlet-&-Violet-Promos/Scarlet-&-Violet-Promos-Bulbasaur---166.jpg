@@ -405,6 +405,7 @@ body {
 				<li><a href="/apps">Smartphone & Tablet Apps</a></li>
 				<li><a href="/virtualpet">Virtual Pets</a></li>
 				<li><a href="/amiibo">amiibo</a></li>
+				<li><a href="/nintendoswitchonline/">Nintendo Switch Online & Icons</a></li>
 				<li><strong>Arcade</strong></li>
 				<li><a href="/frienda">Pokémon FRIENDA</a></li>
 			</ul>
@@ -663,32 +664,32 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/778.shtml"><img src="/potw-sv/778.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/889.shtml"><img src="/potw-sv/889.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1310.jpg"  class="tbarpic"></div>
-		Episode 73<br/>
-		<b> 	The Three Explorers!</b><br/>
-		<div align="center"><img src="/anime/NextOn/1310-i.jpg"  class="tbarpic"></div>
-			Airdate: 22/11/2024
+		<div align="center"><img src="/anime/NextOn/1311.jpg"  class="tbarpic"></div>
+		Episode 74<br/>
+		<b>The Future We've Been Entrusted, the Shine of This World</b><br/>
+		<div align="center"><img src="/anime/NextOn/1311-i.jpg"  class="tbarpic"></div>
+			Airdate: 29/11/2024
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
-		<div align="center"><a href="/anime/epiguide/pokemon2023/034.shtml"><img src="/1270.jpg"  class="tbarpic"></div>
-		Episode 34<br/>
+		<div align="center"><a href="/anime/epiguide/pokemon2023/045.shtml"><img src="/1281.jpg"  class="tbarpic"></div>
+		Episode 45<br/>
 		<b>Respective Departures!</b><br />
 		<img src="/anime/synopsis.gif">Synopsis</a><br/>
-		<a href="/anime/pictures/pokemon2023/023.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
+		<a href="/anime/pictures/pokemon2023/045.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
 	</div>
 	<div class="navheader">Next In USA</div>
 	<div>
-		<div align="center"><a href="/anime/epiguide/pokemon2023/035.shtml"><img src="/1271.jpg"  class="tbarpic"></div>
-		Episode 35<br/>
-		<b>The Wild Pair, Friede and Cap!</b><br />
-		Airdate: 22/11/2024</a><br />
-		<a href="/anime/epiguide/pokemon2023/035.shtml"><img src="/anime/synopsis.gif">Synopsis</a><br/>
-		<a href="/anime/pictures/pokemon2023/035.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
+		<div align="center"><a href="/anime/epiguide/pokemon2023/046.shtml"><img src="/1282.jpg"  class="tbarpic"></div>
+		Episode 46<br/>
+		<b>How Thrilling! Naranja Academy!</b><br />
+		Airdate: 07/02/2025</a><br />
+		<a href="/anime/epiguide/pokemon2023/046.shtml"><img src="/anime/synopsis.gif">Synopsis</a><br/>
+		<a href="/anime/pictures/pokemon2023/046.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
 	</div>
 	<div class="navheader">Social Media</div>
 	<div class="center">
