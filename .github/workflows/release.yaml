@@ -18,4 +18,4 @@ jobs:
             databases/data.sqlite
             databases/prices.sqlite
             meta.json
-          token: "${{ secrets.SERVICE_ACCOUNT_TOKEN }}"
+          token: "${{ secrets.JPG_ACTION_TOKEN }}"
