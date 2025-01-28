@@ -222,9 +222,7 @@ body {
 				<li><a href="/presentations">Pokémon Presentations</a></li>
 				<li><a href="/pokemonshirts/">Pokémon Shirts</a></li>
 				<li><a href="/themeparks/">Theme Parks</a></li>
-				<li><a href="https://forums.serebii.net" target="blank">Forums</a></li>
-				<li><a href="http://advent.serebii.net" target="blank">Advent Calendar</a></li>
-				<li><a href="/discord.shtml">Discord Chat</a></li>
+				<li><a href="https://forums.serebii.net" target="blank">Forums</a></li>				<li><a href="/discord.shtml">Discord Chat</a></li>
 				<li><a href="/games/currentevents.shtml">Current & Upcoming Events</a></li>
 				<li><a href="/events">Event Database</a></li>
 				<li><a href="/scarletviolet/pokemon.shtml">9th Generation Pokémon</a></li>
@@ -669,11 +667,11 @@ if(window.addEventListener){
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1317.jpg"  class="tbarpic"></div>
-		Episode 81<br/>
-		<b>A Grand Battle! Earth-Gouging Fire</b><br/>
-		<div align="center"><img src="/anime/NextOn/1317-i.jpg"  class="tbarpic"></div>
-			Airdate: 24/01/2025
+		<div align="center"><img src="/anime/NextOn/1318.jpg"  class="tbarpic"></div>
+		Episode 82<br/>
+		<b>At the End of the Shining Rainbow</b><br/>
+		<div align="center"><img src="/anime/NextOn/1318-i.jpg"  class="tbarpic"></div>
+			Airdate: 31/01/2025
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
