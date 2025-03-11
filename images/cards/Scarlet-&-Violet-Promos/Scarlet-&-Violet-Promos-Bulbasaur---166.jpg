@@ -535,6 +535,7 @@ body {
 				<li><a href="/card/xypromos">-XY Promos</a></li>
 				<li><a href="/card/popseries.shtml">-POP Series</a></li>
 				<li><a href="/card/japanese.shtml"><b>Japanese Sets</b></a></li>
+				<li><a href="/card/hotairarena/">-Hot Air Arena</a></li>
 				<li><a href="/card/battlepartners/">-Battle Partners</a></li>
 				<li><a href="/card/terastalfestivalex/">-Terastal Festival ex</a></li>
 				<li><a href="/card/superelectricbreaker/">-Super Electric Breaker</a></li>
@@ -664,15 +665,15 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/1003.shtml"><img src="/potw-sv/1003.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/373.shtml"><img src="/potw-sv/373.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1323.jpg"  class="tbarpic"></div>
-		Episode 87<br/>
-		<b>The Guidance of the Black Rayquaza</b><br/>
-		<div align="center"><img src="/anime/NextOn/1323-i.jpg"  class="tbarpic"></div>
-			Airdate: 07/03/2025
+		<div align="center"><img src="/anime/NextOn/1324.jpg"  class="tbarpic"></div>
+		Episode 88<br/>
+		<b> 	The White Zygarde Causes Shock Waves</b><br/>
+		<div align="center"><img src="/anime/NextOn/1324-i.jpg"  class="tbarpic"></div>
+			Airdate: 14/03/2025
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
