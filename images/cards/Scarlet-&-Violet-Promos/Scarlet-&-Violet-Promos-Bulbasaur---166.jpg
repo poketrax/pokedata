@@ -665,15 +665,15 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/373.shtml"><img src="/potw-sv/373.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/199.shtml"><img src="/potw-sv/199.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1324.jpg"  class="tbarpic"></div>
-		Episode 88<br/>
-		<b> 	The White Zygarde Causes Shock Waves</b><br/>
-		<div align="center"><img src="/anime/NextOn/1324-i.jpg"  class="tbarpic"></div>
-			Airdate: 14/03/2025
+		<div align="center"><img src="/anime/NextOn/1325.jpg"  class="tbarpic"></div>
+		Episode 89<br/>
+		<b>At the End of the Adventures</b><br/>
+		<div align="center"><img src="/anime/NextOn/1325-i.jpg"  class="tbarpic"></div>
+			Airdate: 21/03/2025
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
