@@ -659,7 +659,7 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/1010.shtml"><img src="/potw-sv/1010.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/900.shtml"><img src="/potw-sv/900.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
@@ -682,7 +682,7 @@ if(window.addEventListener){
 		<div align="center"><a href="/anime/epiguide/pokemon2023/057.shtml"><img src="/1293.jpg"  class="tbarpic"></div>
 		Episode 57<br/>
 		<b>The Terapagos I Don't Know</b><br />
-		Airdate: 2025</a><br />
+		Airdate: 25/04/2025</a><br />
 		<a href="/anime/epiguide/pokemon2023/057.shtml"><img src="/anime/synopsis.gif">Synopsis</a><br/>
 		<a href="/anime/pictures/pokemon2023/057.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
 	</div>
