@@ -660,15 +660,15 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/978.shtml"><img src="/potw-sv/978.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/386.shtml"><img src="/potw-sv/386.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1330.jpg"  class="tbarpic"></div>
-		Episode 94<br/>
-		<b>The Pokémon Center Lady</b><br/>
-		<div align="center"><img src="/anime/NextOn/1330-i.jpg"  class="tbarpic"></div>
-			Airdate: 02/05/2025
+		<div align="center"><img src="/anime/NextOn/1331.jpg"  class="tbarpic"></div>
+		Episode 95<br/>
+		<b>The Strong Sphere</b><br/>
+		<div align="center"><img src="/anime/NextOn/1331-i.jpg"  class="tbarpic"></div>
+			Airdate: 09/05/2025
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
