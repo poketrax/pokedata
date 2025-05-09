@@ -510,6 +510,8 @@ body {
 				<li><a href="/card/raidbattles">Raid Battles</a></li>
 				<li><a href="/card/classic/">Pokémon TCG Classic</a></li>
 				<li><a href="/card/english.shtml"><b>English Sets</b></a></li>
+				<li><a href="/card/blackbolt/">-Black Bolt</a></li>
+				<li><a href="/card/whiteflare/">-White Flare</a></li>
 				<li><a href="/card/destinedrivals/">-Destined Rivals</a></li>
 				<li><a href="/card/journeytogether/">-Journey Together</a></li>
 				<li><a href="/card/prismaticevolutions/">-Prismatic Evolutions</a></li>
@@ -539,6 +541,8 @@ body {
 				<li><a href="/card/xypromos">-XY Promos</a></li>
 				<li><a href="/card/popseries.shtml">-POP Series</a></li>
 				<li><a href="/card/japanese.shtml"><b>Japanese Sets</b></a></li>
+				<li><a href="/card/blackbolt-jp/">-Black Bolt</a></li>
+				<li><a href="/card/whiteflare-jp/">-White Flare</a></li>
 				<li><a href="/card/gloryofteamrocket/">-Glory of Team Rocket</a></li>
 				<li><a href="/card/hotairarena/">-Hot Air Arena</a></li>
 				<li><a href="/card/battlepartners/">-Battle Partners</a></li>
