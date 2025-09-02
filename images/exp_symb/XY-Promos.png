@@ -212,6 +212,8 @@ body {
 				<li><a href="/pokemon/timeline.shtml">Pokémon Timeline</a></li>
 				<li><a href="/pokemoncenter/">Pokémon Centers</a></li>
 				<li><a href="/playpokemon">Pokémon Championship Series</a></li>
+				<li><a href="/pokemonxp/">PokémonXP</a></li>
+
 				<li><a href="/music/projectvoltage">Hatsune Miku Project Voltage</a></li>
 				<li><a href="/museums/">Pokémon in Museums & Exhibitions</a></li>
 				<li><a href="/pokemon/vangoghmuseum/">-Pokémon x Van Gogh</a></li>
@@ -268,6 +270,7 @@ body {
 				<li><a href="/anime/other/">Other Animations</a></li>
 				<li><b>Other Series</b></li>
 				<li><a href="/pokemonconcierge/">Pokémon Concierge</a></li>
+				<li><a href="/pokemontales/">Pokémon Tales: The Misadventures of Sirfetch'd & Pichu</a></li>
 
 				<li><b>Live Action</b></li>
 				<li><a href="/poketsume/">PokéTsume</a></li>
@@ -283,6 +286,7 @@ body {
 				<li><a href="/scarletviolet/">Scarlet & Violet</a></li>
 				<li><a href="/legendsz-a/">Legends: Z-A</a></li>
 				<li><a href="/pokemonchampions/">Pokémon Champions</a></li>
+				<li><a href="/pokemonfriends/">Pokémon Friends</a></li>
 				<li><a href="/pokemongo/">Pokémon GO</a></li>
 				<li><a href="/cafemix/">Pokémon Café ReMix</a></li>
 				<li><a href="/pokemonmasters/">Pokémon Masters EX</a></li>
@@ -539,6 +543,7 @@ body {
 				<li><a href="/card/xypromos">-XY Promos</a></li>
 				<li><a href="/card/popseries.shtml">-POP Series</a></li>
 				<li><a href="/card/japanese.shtml"><b>Japanese Sets</b></a></li>
+				<li><a href="/card/infernox/">-Inferno X</a></li>
 				<li><a href="/card/megabrave/">-Mega Brave</a></li>
 				<li><a href="/card/megasymphonia/">-Mega Symphonia</a></li>
 				<li><a href="/card/blackbolt-jp/">-Black Bolt</a></li>
@@ -664,15 +669,15 @@ if(window.addEventListener){
 <aside id="rbar">
 	<a href="/potw-sv/" class="navheader">Pokémon of the Week</a>
 	<div align="center">
-		<a href="/potw-sv/028.shtml"><img src="/potw-sv/028.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
+		<a href="/potw-sv/475.shtml"><img src="/potw-sv/475.jpg" alt="Pokémon of the Week"  class="tbarpic"></a>
 	</div>
 	<div class="navheader">Next In Japan</div>
 	<div>
-		<div align="center"><img src="/anime/NextOn/1339.jpg"  class="tbarpic"></div>
-		Episode 103<br/>
-		<b>Stay Ablaze, My Love for Nidothing!</b><br/>
-		<div align="center"><img src="/anime/NextOn/1339-i.jpg"  class="tbarpic"></div>
-			Airdate: 18/07/2025
+		<div align="center"><img src="/anime/NextOn/1345.jpg"  class="tbarpic"></div>
+		Episode 109<br/>
+		<b> How Tinkatuff Makes the Ultimate Hammer</b><br/>
+		<div align="center"><img src="/anime/NextOn/1345-i.jpg"  class="tbarpic"></div>
+			Airdate: 05/09/2025
 	</div>
 	<div class="navheader">Recently In USA</div>
 	<div>
@@ -687,7 +692,7 @@ if(window.addEventListener){
 		<div align="center"><a href="/anime/epiguide/pokemon2023/079.shtml"><img src="/1315.jpg"  class="tbarpic"></div>
 		Episode 79<br/>
 		<b>Over the Top!</b><br />
-		Airdate: 2025</a><br />
+		Airdate: 26/09/2025</a><br />
 		<a href="/anime/epiguide/pokemon2023/079.shtml"><img src="/anime/synopsis.gif">Synopsis</a><br/>
 		<a href="/anime/pictures/pokemon2023/079.shtml"><img src="/anime/pictures.gif">Pictures</a><br/>
 	</div>
