@@ -109,15 +109,19 @@ async function scrapeSerebiiPromoSets(
   return sets;
 }
 
-export async function getSerebiiLastestNormalExpantions(num: number) {
-  let url = `https://www.serebii.net/card/english.shtml`;
+export async function getSerebiiLastestNormalExpantions(num: number, language: 'en' | 'jp' = 'en') {
+  let url = language === 'jp' 
+    ? `https://www.serebii.net/card/japanese.shtml`
+    : `https://www.serebii.net/card/english.shtml`;
   if (serebiiNormalSets.length >= num) return serebiiNormalSets;
   serebiiNormalSets = await scrapeSerebiiSets(num, url);
   return serebiiNormalSets;
 }
 
-export async function getSerebiiLastestPromoExpantions(num: number) {
-  let url = `https://www.serebii.net/card/engpromo.shtml`;
+export async function getSerebiiLastestPromoExpantions(num: number, language: 'en' | 'jp' = 'en') {
+  let url = language === 'jp'
+    ? `https://www.serebii.net/card/jppromo.shtml`
+    : `https://www.serebii.net/card/engpromo.shtml`;
   if (serebiiPromoSets.length >= num) return serebiiPromoSets;
   serebiiPromoSets = await scrapeSerebiiPromoSets(num, url);
   return serebiiPromoSets;
