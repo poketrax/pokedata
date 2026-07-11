@@ -19,12 +19,12 @@ const SEARCH_SET = "SELECT * FROM expansions WHERE name like ?";
 
 const ADD_SET =
   "INSERT INTO expansions " +
-  "(name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate) " +
-  "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate)";
+  "(name, series, tcgName, numberOfCards, logoURL, symbolURL, releaseDate, language) " +
+  "VALUES ($name, $series, $tcgName, $numberOfCards, $logoURL, $symbolURL, $releaseDate, $language)";
 const ADD_CARD =
   "INSERT INTO cards " +
-  "(cardId, idTCGP, name, expIdTCGP, expCodeTCGP, expName, expCardNumber, rarity, img, price, description, releaseDate, energyType, cardType, variants) " +
-  "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants);";
+  "(cardId, idTCGP, name, expIdTCGP, expCodeTCGP, expName, expCardNumber, rarity, img, price, description, releaseDate, energyType, cardType, variants, language) " +
+  "VALUES ($cardId, $idTCGP, $name, $expIdTCGP, $expCodeTCGP, $expName, $expCardNumber, $rarity, $img, $price, $description, $releaseDate, $energyType, $cardType, $variants, $language);";
 const ADD_PRICE =
   "INSERT INTO prices " +
   "(date, cardId, variant, rawPrice, gradedPriceTen, gradedPriceNine) " +
