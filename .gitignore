@@ -8,3 +8,4 @@ test.json
 dryrun**.json
 log.log
 test-data.sqlite
+.DS_Store
