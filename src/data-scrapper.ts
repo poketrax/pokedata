@@ -39,18 +39,24 @@ run();
 
 async function run() {
   args = minimist(process.argv.slice(2), {
-    string: ["cards"],
+    string: ["cards", "lang"],
     boolean: ["dryrun", "fresh", "verbose"],
     alias: {
       d: "dryrun",
       f: "fresh",
       v: "verbose",
+      l: "lang",
     },
     default: {
       cards: null,
+      lang: "en",  // Default to English
     },
   });
   setUpLogger(args.v);
+  
+  // Validate and set language
+  const language = (args.lang === 'jp' || args.lang === 'japanese') ? 'jp' : 'en';
+  logger.info(clc.cyan(`Scraping ${language === 'en' ? 'English' : 'Japanese'} cards`));
   
   if (args.d) {
     useTestDbFile(args.f);
@@ -72,7 +78,7 @@ async function run() {
     return;
   } else {
     //update all
-    let exps = await updateExpansions();
+    let exps = await updateExpansions(language);
     await updatePokedex();
     await updateSealedProducts();
     await updateCards(exps);
@@ -83,10 +89,10 @@ async function run() {
 /**
  * Scrapes data from multiple sources to get set metadata
  */
-export async function updateExpansions(): Promise<Expansion[]> {
+export async function updateExpansions(language: 'en' | 'jp' = 'en'): Promise<Expansion[]> {
   let expansions = new Array<Expansion>();
-  consoleHeader("Searching for new sets");
-  let serebiiNewSets = await getSerebiiLastestNormalExpantions(COUNT);
+  consoleHeader(`Searching for new sets (${language === 'en' ? 'English' : 'Japanese'})`);
+  let serebiiNewSets = await getSerebiiLastestNormalExpantions(COUNT, language);
   for (let set of serebiiNewSets) {
     let exp = await serebiiUpsertSet(set);
     await updateExpansionPmc(exp);
@@ -94,7 +100,7 @@ export async function updateExpansions(): Promise<Expansion[]> {
     if (exp) expansions.push(exp);
   }
   consoleHeader("Searching for new promo sets");
-  let serebiiPromoSets = await getSerebiiLastestPromoExpantions(COUNT - 1);
+  let serebiiPromoSets = await getSerebiiLastestPromoExpantions(COUNT - 1, language);
   for (let set of serebiiPromoSets) {
     let exp = await serebiiUpsertSet(set);
     await updateExpansionPmc(exp);
